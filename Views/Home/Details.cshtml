@@ -1,0 +1,116 @@
+﻿@model MemberDataEntryForm.Models.MemberData
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Member Details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MemNo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MemNo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Dob)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Dob)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResAddress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResAddress)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ResPhone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResPhone)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfficeNo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfficeNo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Profession)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Profession)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfficeAddress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfficeAddress)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MobileNo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MobileNo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AlternateMobileNo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AlternateMobileNo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+       @*  <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserPassword)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserPassword)
+        </dd> *@
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DateofMarriage)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DateofMarriage)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NameofSpouse)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NameofSpouse)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SpouseDob)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SpouseDob)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChildName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChildName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit Data</a> |
+    <a asp-action="Delete" asp-route-id="@Model?.Id">Delete Data</a> @* |
+    <h6> <a asp-controller="Home" asp-action="Logout">LogOut</a></h6> *@
+    <br />
+    <a asp-action="Index" asp-route-id="@Model?.Id">Back to List</a>
+</div>

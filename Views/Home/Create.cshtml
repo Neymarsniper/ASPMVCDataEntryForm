@@ -1,0 +1,183 @@
+﻿@model MemberDataEntryForm.Models.MemberData
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>MOST URGENT</h1>
+<br />
+
+<h4>FOR MEMBER DIRECTORY</h4>
+<br />
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        @*<label asp-for="Name" class="control-label">Name*</label> *@
+                        <h6 class="d-inline">Name*</h6>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Mem. No</h6>
+                        <input asp-for="MemNo" class="form-control" />
+                        <span asp-validation-for="MemNo" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">D.O.B*</h6>
+                        <input asp-for="Dob" class="form-control" />
+                        <span asp-validation-for="Dob" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Res. Address*</h6>
+                        <input asp-for="ResAddress" class="form-control" />
+                        <span asp-validation-for="ResAddress" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Resi. Phone No*</h6>
+                        <input asp-for="ResPhone" class="form-control" />
+                        <span asp-validation-for="ResPhone" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Office No*</h6>
+                        <input asp-for="OfficeNo" class="form-control" />
+                        <span asp-validation-for="OfficeNo" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Profession OR Occupation*</h6>
+                        <input asp-for="Profession" class="form-control" />
+                        <span asp-validation-for="Profession" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Office Address*</h6>
+                        <input asp-for="OfficeAddress" class="form-control" />
+                        <span asp-validation-for="OfficeAddress" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Mobile No*</h6>
+                        <input asp-for="MobileNo" class="form-control" />
+                        <span asp-validation-for="MobileNo" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">W/No*</h6>
+                        <input asp-for="AlternateMobileNo" class="form-control" />
+                        <span asp-validation-for="AlternateMobileNo" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">E-mail*</h6>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Enter ID*</h6>
+                        <input asp-for="Id" class="form-control" />
+                        <span asp-validation-for="Id" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Date of Marriage*</h6>
+                        <input asp-for="DateofMarriage" class="form-control" />
+                        <span asp-validation-for="DateofMarriage" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Name of Wife/Husband*</h6>
+                        <input asp-for="NameofSpouse" class="form-control" />
+                        <span asp-validation-for="NameofSpouse" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Spouse DOB*</h6>
+                        <input asp-for="SpouseDob" class="form-control" />
+                        <span asp-validation-for="SpouseDob" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Name of Children</h6>
+                        <input asp-for="ChildName" class="form-control" />
+                        <span asp-validation-for="ChildName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <br />
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<div>
+    <a asp-controller="Home" asp-action="Index">Back to the list</a>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
