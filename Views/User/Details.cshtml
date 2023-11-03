@@ -7,9 +7,24 @@
 <h1>Details</h1>
 
 <div>
+
+
     <h4>UserData</h4>
+
+    @{
+        if (ViewBag.msg != null)
+        {
+            <h1 style="color:red;">@ViewBag.msg</h1>
+        }
+    }
     <hr />
     <dl class="row">
+        <dt class = "col-sm-2">
+        @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
@@ -65,6 +80,6 @@
     <a asp-action="Delete" asp-route-id="@Model?.UserId">Delete User Data</a> |
     <h6><a asp-controller="User" asp-action="Logout">LogOut</a></h6>
     <br />
-    <h6> <a asp-controller="User" asp-action="Index">Access Users List</a></h6>
+    <h6> <a asp-controller="User" asp-action="Index" asp-route-id="@Model?.UserId">Access Users List</a></h6>
     <h6> <a asp-controller="Home" asp-action="Index">Access Members List</a></h6>
 </div>

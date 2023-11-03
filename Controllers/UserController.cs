@@ -23,15 +23,19 @@ namespace MemberDataEntryForm.Controllers
         // GET: User
         //[Authorize(Policy = "AdminOnly")]
         //[Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
-            UserData user = new UserData();
-            var myuser = _context.UserDirectoryData.Where(item => item.userType == "Admin").FirstOrDefault();
-            if(myuser !=null)
+            var myuser = await _context.UserDirectoryData.SingleOrDefaultAsync(u => u.UserId == id);
+            if (myuser.userType == "Admin")
+            {
+                ViewBag.message = "Access Granted!";
                 return _context.UserDirectoryData != null ? View(await _context.UserDirectoryData.ToListAsync()) : Problem("Entity set 'MemberDataContext.UserDirectoryData'  is null.");
+            }
             else
-                return RedirectToAction("Details", new { id = user.UserId });
-            //return RedirectToAction("Login");
+            {
+                ViewBag.msg = "Access Denied!!";
+                return RedirectToAction("Details", new { id = myuser.UserId });
+            }
         }
 
 
@@ -41,7 +45,7 @@ namespace MemberDataEntryForm.Controllers
         {
             if (HttpContext.Session.GetString("UserSession") != null)
             {
-                return RedirectToAction("Login  ");
+                return RedirectToAction("Login");
             }
             return View();
         }
@@ -77,6 +81,7 @@ namespace MemberDataEntryForm.Controllers
         // GET: User/Details/5
         public async Task<IActionResult> Details(int id)
         {
+            //ViewBag.message = "Access Denied!!";
             if (id == null || _context.UserDirectoryData == null && HttpContext.Session.GetString("UserSession") == null)
             {
                 return NotFound();
@@ -108,7 +113,7 @@ namespace MemberDataEntryForm.Controllers
             {
                 _context.Add(userData);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", new { id = userData.UserId });
             }
             return View(userData);
         }

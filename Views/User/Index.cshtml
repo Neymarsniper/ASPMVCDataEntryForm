@@ -9,7 +9,12 @@
 
 <h6> <a asp-controller="User" asp-action="Create">Create New User</a></h6>
 <br />
-
+@{
+    if (ViewBag.message != null)
+    {
+        <h1 style="color:green;">@ViewBag.message</h1>
+    }
+}
 <table class="table">
     <thead>
         <tr>
