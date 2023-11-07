@@ -112,5 +112,9 @@
     <a asp-action="Delete" asp-route-id="@Model?.Id">Delete Data</a> @* |
     <h6> <a asp-controller="Home" asp-action="Logout">LogOut</a></h6> *@
     <br />
-    <a asp-action="Index" asp-route-id="@Model?.Id">Back to List</a>
+    <a asp-action="Index">Back to List</a>
+    <br /> 
+    <a asp-controller="MemberBusiness" asp-action="Details" asp-route-id="@Model?.MemNo">Current Business Details</a>
+    <br />
+    <a asp-controller="MemberFamily" asp-action="Details" asp-route-id="@Model?.MemNo">Family Details</a>
 </div>

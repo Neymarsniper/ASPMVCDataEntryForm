@@ -4,6 +4,7 @@ using MemberDataEntryForm.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MemberDataEntryForm.Migrations
 {
     [DbContext(typeof(MemberDataContext))]
-    partial class MemberDataContextModelSnapshot : ModelSnapshot
+    [Migration("20231106164412_AddModel2DB")]
+    partial class AddModel2DB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,9 +57,6 @@ namespace MemberDataEntryForm.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MemNo")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("MemberBusinessDirectoryData");
@@ -86,8 +86,9 @@ namespace MemberDataEntryForm.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MemNo")
-                        .HasColumnType("int");
+                    b.Property<string>("MemNo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MobileNo")
                         .IsRequired()
@@ -141,22 +142,7 @@ namespace MemberDataEntryForm.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FatherMobileNo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("FatherName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FatherOccupation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("MemNo")
-                        .HasColumnType("int");
-
-                    b.Property<string>("MotherMobileNo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -164,19 +150,7 @@ namespace MemberDataEntryForm.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("MotherOccupation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SpouseMobileNo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("SpouseName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SpouseOccupation")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

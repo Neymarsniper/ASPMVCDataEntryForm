@@ -70,10 +70,10 @@ namespace MemberDataEntryForm.Controllers
         // GET: Home/Details/5
         public async Task<IActionResult> Details(int id)
         {
-            if (_context.MemberDirectoryData == null/* && HttpContext.Session.GetString("UserSession") == null*/)
-            {
-                return RedirectToAction("Login");
-            }
+            //if (_context.MemberDirectoryData == null/* && HttpContext.Session.GetString("UserSession") == null*/)
+            //{
+            //    return RedirectToAction("Login");
+            //}
 
             var memberDirectoryDatum = await _context.MemberDirectoryData.FirstOrDefaultAsync(m => m.Id == id);
             if (memberDirectoryDatum == null)
@@ -99,7 +99,7 @@ namespace MemberDataEntryForm.Controllers
             {
                 _context.Add(memberDirectoryDatum);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create","MemberBusiness");
             }
             return View(memberDirectoryDatum);
         }

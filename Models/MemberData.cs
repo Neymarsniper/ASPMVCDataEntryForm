@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MemberDataEntryForm.Models
 {
@@ -13,7 +14,7 @@ namespace MemberDataEntryForm.Models
         public string Name { get; set; } = null!;
 
         [Required(ErrorMessage = "Member Number is must!!!")]
-        public string MemNo { get; set; } = null!;
+        public int MemNo { get; set; }
 
         [Required(ErrorMessage = "D.O.B is Necessary!!!")]
         public DateTime Dob { get; set; }

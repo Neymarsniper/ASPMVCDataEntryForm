@@ -1,0 +1,95 @@
+﻿@model IEnumerable<MemberDataEntryForm.Models.MemberFamilyData>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MemNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpouseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpouseOccupation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpouseMobileNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChildName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FatherName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FatherOccupation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FatherMobileNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MotherName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MotherOccupation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MotherMobileNo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpouseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpouseOccupation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpouseMobileNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChildName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FatherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FatherOccupation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FatherMobileNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MotherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MotherOccupation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MotherMobileNo)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
