@@ -184,13 +184,31 @@ namespace MemberDataEntryForm.Controllers
                 return Problem("Entity set 'MemberDirectoryContext.MemberDirectoryData'  is null.");
             }
             var memberDirectoryDatum = await _context.MemberDirectoryData.FirstOrDefaultAsync(m => m.Id == id);
+
+            var memNo = memberDirectoryDatum.MemNo;
+
             if (memberDirectoryDatum != null)
             {
                 _context.MemberDirectoryData.Remove(memberDirectoryDatum);
             }
 
+            // Delete MemberBusinessData
+            var memberBusinessData = await _context.MemberBusinessDirectoryData.FirstOrDefaultAsync(m => m.MemNo == memNo);
+            if (memberBusinessData != null)
+            {
+                _context.MemberBusinessDirectoryData.Remove(memberBusinessData);
+            }
+
+            // Delete MemberFamilyData
+            var memberFamilyData = await _context.MemberFamilyDirectoryData.FirstOrDefaultAsync(m => m.MemNo == memNo);
+            if (memberFamilyData != null)
+            {
+                _context.MemberFamilyDirectoryData.Remove(memberFamilyData);
+            }
+
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            //return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
 
         private bool MemberDirectoryDatumExists(int id)
