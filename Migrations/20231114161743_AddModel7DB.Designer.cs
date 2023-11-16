@@ -4,6 +4,7 @@ using MemberDataEntryForm.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MemberDataEntryForm.Migrations
 {
     [DbContext(typeof(MemberDataContext))]
-    partial class MemberDataContextModelSnapshot : ModelSnapshot
+    [Migration("20231114161743_AddModel7DB")]
+    partial class AddModel7DB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,53 +24,6 @@ namespace MemberDataEntryForm.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("MemberDataEntryForm.Models.MemberAddressData", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("AdditonalInfo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<string>("AddressType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("MemNo")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PostalCode")
-                        .HasColumnType("int");
-
-                    b.Property<string>("State")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MemNo");
-
-                    b.ToTable("MemberAddressDirectoryData");
-                });
 
             modelBuilder.Entity("MemberDataEntryForm.Models.MemberBusiessData", b =>
                 {
@@ -140,10 +96,6 @@ namespace MemberDataEntryForm.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -314,17 +266,6 @@ namespace MemberDataEntryForm.Migrations
                     b.HasKey("RoleId");
 
                     b.ToTable("GetUserTypes");
-                });
-
-            modelBuilder.Entity("MemberDataEntryForm.Models.MemberAddressData", b =>
-                {
-                    b.HasOne("MemberDataEntryForm.Models.MemberData", "MemberData")
-                        .WithMany()
-                        .HasForeignKey("MemNo")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("MemberData");
                 });
 
             modelBuilder.Entity("MemberDataEntryForm.Models.MemberBusiessData", b =>

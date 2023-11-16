@@ -13,10 +13,12 @@ namespace MemberDataEntryForm.Controllers
     public class HomeController : Controller
     {
         private readonly MemberDataContext _context;
+        IWebHostEnvironment hostingenvironment;
 
-        public HomeController(MemberDataContext context)
+        public HomeController(MemberDataContext context, IWebHostEnvironment hostingenvironment)
         {
             _context = context;
+            this.hostingenvironment = hostingenvironment;
         }
 
         // GET: Home
@@ -93,13 +95,43 @@ namespace MemberDataEntryForm.Controllers
         // POST: Home/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,MemNo,Dob,ResAddress,ResPhone,OfficeNo,Profession,OfficeAddress,MobileNo,AlternateMobileNo,Email,DateofMarriage,NameofSpouse,SpouseDob,ChildName")] MemberData memberDirectoryDatum)
+        public async Task<IActionResult> Create(MemberImageModel member)//([Bind("Id,Name,MemNo,Dob,ResAddress,ResPhone,OfficeNo,Profession,OfficeAddress,MobileNo,AlternateMobileNo,Email,DateofMarriage,NameofSpouse,SpouseDob,ChildName,Image")] MemberData memberDirectoryDatum)
         {
+            //MemberImageModel member = new MemberImageModel();
+            string filename = "";
+            if (member.Photo != null)
+            {
+                string uploadfolder = Path.Combine(hostingenvironment.WebRootPath, "images");
+                filename = Guid.NewGuid().ToString() + "_" + member.Photo.FileName;
+                string filepath = Path.Combine(uploadfolder, filename);
+                member.Photo.CopyTo(new FileStream(filepath, FileMode.Create));
+            }
+            MemberData memberDirectoryDatum = new MemberData
+            {
+                Id = member.Id,
+                Name = member.Name,
+                MemNo = member.MemNo,
+                Dob = member.Dob,
+                ResAddress = member.ResAddress,
+                ResPhone = member.ResPhone,
+                OfficeAddress = member.OfficeAddress,
+                OfficeNo = member.OfficeNo,
+                Profession = member.Profession,
+                MobileNo = member.MobileNo,
+                AlternateMobileNo = member.AlternateMobileNo,
+                Email = member.Email,
+                DateofMarriage = member.DateofMarriage,
+                NameofSpouse = member.NameofSpouse,
+                SpouseDob = member.SpouseDob,
+                ChildName = member.ChildName,
+                Image = filename
+            };
+
             if (ModelState.IsValid)
             {
                 _context.Add(memberDirectoryDatum);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Create","MemberBusiness");
+                return RedirectToAction("Index");
             }
             return View(memberDirectoryDatum);
         }
@@ -123,7 +155,7 @@ namespace MemberDataEntryForm.Controllers
         // POST: Home/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,MemNo,Dob,ResAddress,ResPhone,OfficeNo,Profession,OfficeAddress,MobileNo,AlternateMobileNo,Email,DateofMarriage,NameofSpouse,SpouseDob,ChildName")] MemberData memberDirectoryDatum)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,MemNo,Dob,ResAddress,ResPhone,OfficeNo,Profession,OfficeAddress,MobileNo,AlternateMobileNo,Email,DateofMarriage,NameofSpouse,SpouseDob,ChildName,Image")] MemberData memberDirectoryDatum)
         {
             if (id != memberDirectoryDatum.Id)
             {
@@ -148,8 +180,8 @@ namespace MemberDataEntryForm.Controllers
                         throw;
                     }
                 }
-                //return RedirectToAction("Index");
-                return RedirectToAction("Details", new { id = memberDirectoryDatum.Id });
+                return RedirectToAction("Index");
+                //return RedirectToAction("Details", new { id = memberDirectoryDatum.Id });
             }
             return View(memberDirectoryDatum);
         }
@@ -185,7 +217,7 @@ namespace MemberDataEntryForm.Controllers
             }
             var memberDirectoryDatum = await _context.MemberDirectoryData.FirstOrDefaultAsync(m => m.Id == id);
 
-            var memNo = memberDirectoryDatum.MemNo;
+            var memNo = memberDirectoryDatum.Id;
 
             if (memberDirectoryDatum != null)
             {
@@ -207,7 +239,6 @@ namespace MemberDataEntryForm.Controllers
             }
 
             await _context.SaveChangesAsync();
-            //return RedirectToAction(nameof(Index));
             return RedirectToAction("Index");
         }
 

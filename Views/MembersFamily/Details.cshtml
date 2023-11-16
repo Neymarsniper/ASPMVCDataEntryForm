@@ -1,0 +1,60 @@
+﻿@model MemberDataEntryForm.Models.MembersFamilyData
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>MemberFamilyData</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MemNo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MemNo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Mobile)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Mobile)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChildName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChildName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Relation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Relation)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HomeAddress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HomeAddress)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Add/Edit Details</a> <br />
+    <a asp-controller="Home" asp-action="Index">Back to Member Details</a>
+</div>

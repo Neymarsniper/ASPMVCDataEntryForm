@@ -13,6 +13,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\images\\67479e58-1554-4ad9-b3e3-3f61b57c2a9e_img.jpg",
+      "PackagePath": "staticwebassets\\images\\67479e58-1554-4ad9-b3e3-3f61b57c2a9e_img.jpg"
+    },
+    {
+      "Id": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\images\\dd508003-46ef-4edf-9768-025bbe72d7d7_53000.jpg",
+      "PackagePath": "staticwebassets\\images\\dd508003-46ef-4edf-9768-025bbe72d7d7_53000.jpg"
+    },
+    {
       "Id": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

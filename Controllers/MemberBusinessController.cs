@@ -27,15 +27,15 @@ namespace MemberDataEntryForm.Controllers
         // GET: MemberBusiness/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.MemberBusinessDirectoryData == null)
+            if (id == 0 || _context.MemberBusinessDirectoryData == null)
             {
-                return RedirectToAction(nameof(Create));
+                return NotFound();
             }
 
             var memberBusiessData = await _context.MemberBusinessDirectoryData.FirstOrDefaultAsync(m => m.MemNo == id);
             if (memberBusiessData == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Create));
             }
 
             return View(memberBusiessData);
@@ -54,15 +54,15 @@ namespace MemberDataEntryForm.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,MemNo,BusinessName,BusinessDetail,BusinessAddress,BusinessCity,BusinessPostalCode,BusinessEmail")] MemberBusiessData memberBusiessData)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 //MemberData memberData = new MemberData();
                 //memberBusiessData.Id = memberData.Id;
                 _context.Add(memberBusiessData);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Create", "MemberFamily");
-            }
-            return View(memberBusiessData);
+                return RedirectToAction("Index", "Home");
+            //}
+            //return View(memberBusiessData);
         }
 
         // GET: MemberBusiness/Edit/5
@@ -92,11 +92,6 @@ namespace MemberDataEntryForm.Controllers
             {
                 return NotFound();
             }
-
-            //if(memberBusiessData == null)
-            //{
-            //    return RedirectToAction(nameof(Create));
-            //}
 
             if (ModelState.IsValid)
             {

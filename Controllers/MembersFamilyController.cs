@@ -9,11 +9,11 @@ using MemberDataEntryForm.Models;
 
 namespace MemberDataEntryForm.Controllers
 {
-    public class MemberFamilyController : Controller
+    public class MembersFamilyController : Controller
     {
         private readonly MemberDataContext _context;
 
-        public MemberFamilyController(MemberDataContext context)
+        public MembersFamilyController(MemberDataContext context)
         {
             _context = context;
         }
@@ -21,13 +21,13 @@ namespace MemberDataEntryForm.Controllers
         // GET: MemberFamily
         public async Task<IActionResult> Index()
         {
-              return _context.MemberFamilyDirectoryData != null ? View(await _context.MemberFamilyDirectoryData.ToListAsync()) :Problem("Entity set 'MemberDataContext.MemberFamilyDirectoryData'  is null.");
+            return _context.MemberFamilyDirectoryData != null ? View(await _context.MemberFamilyDirectoryData.ToListAsync()) : Problem("Entity set 'MemberDataContext.MemberFamilyDirectoryData'  is null.");
         }
 
         // GET: MemberFamily/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.MemberFamilyDirectoryData == null)
+            if (id == 0 || _context.MemberFamilyDirectoryData == null)
             {
                 return NotFound();
             }
@@ -35,7 +35,7 @@ namespace MemberDataEntryForm.Controllers
             var memberFamilyData = await _context.MemberFamilyDirectoryData.FirstOrDefaultAsync(m => m.MemNo == id);
             if (memberFamilyData == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Create));
             }
 
             return View(memberFamilyData);
@@ -52,15 +52,15 @@ namespace MemberDataEntryForm.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,MemNo,SpouseName,SpouseOccupation,SpouseMobileNo,ChildName,FatherName,FatherOccupation,FatherMobileNo,MotherName,MotherOccupation,MotherMobileNo")] MemberFamilyData memberFamilyData)
+        public async Task<IActionResult> Create([Bind("Id,MemNo,FirstName,LastName,Mobile,Relation,HomeAddress,ChildName")] MembersFamilyData memberFamilyData)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 _context.Add(memberFamilyData);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index","Home");
-            }
-            return View(memberFamilyData);
+                return RedirectToAction("Index", "Home");
+            //}
+            //return View(memberFamilyData);
         }
 
         // GET: MemberFamily/Edit/5
@@ -84,7 +84,7 @@ namespace MemberDataEntryForm.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,MemNo,SpouseName,SpouseOccupation,SpouseMobileNo,ChildName,FatherName,FatherOccupation,FatherMobileNo,MotherName,MotherOccupation,MotherMobileNo")] MemberFamilyData memberFamilyData)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,MemNo,FirstName,LastName,Mobile,Relation,HomeAddress,ChildName")] MembersFamilyData memberFamilyData)
         {
             if (id != memberFamilyData.Id)
             {
@@ -145,14 +145,14 @@ namespace MemberDataEntryForm.Controllers
             {
                 _context.MemberFamilyDirectoryData.Remove(memberFamilyData);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool MemberFamilyDataExists(int id)
         {
-          return (_context.MemberFamilyDirectoryData?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.MemberFamilyDirectoryData?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

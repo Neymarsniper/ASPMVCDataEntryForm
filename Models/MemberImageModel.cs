@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MemberDataEntryForm.Models
 {
-    public class MemberData
+    public class MemberImageModel
     {
         [Key]
         public int Id { get; set; }
@@ -75,8 +72,6 @@ namespace MemberDataEntryForm.Models
         public string? ChildName { get; set; }
 
         [Required]
-        public string Image { get; set; }
-        //[Required]
-        //public string UserPassword { get; set; } = null!;
+        public IFormFile Photo { get; set; }
     }
 }

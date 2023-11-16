@@ -36,6 +36,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/MemberAddress/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyQWRkcmVzc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/MemberAddress/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyQWRkcmVzc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/MemberAddress/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyQWRkcmVzc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/MemberAddress/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyQWRkcmVzc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/MemberAddress/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyQWRkcmVzc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/MemberBusiness/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyQnVzaW5lc3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -56,24 +76,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyQnVzaW5lc3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/MemberFamily/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyRmFtaWx5XENyZWF0ZS5jc2h0bWw=
+[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/MembersFamily/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyc0ZhbWlseVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/MemberFamily/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyRmFtaWx5XERlbGV0ZS5jc2h0bWw=
+[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/MembersFamily/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyc0ZhbWlseVxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/MemberFamily/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyRmFtaWx5XERldGFpbHMuY3NodG1s
+[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/MembersFamily/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyc0ZhbWlseVxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/MemberFamily/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyRmFtaWx5XEVkaXQuY3NodG1s
+[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/MembersFamily/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyc0ZhbWlseVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/MemberFamily/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyRmFtaWx5XEluZGV4LmNzaHRtbA==
+[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/MembersFamily/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVtYmVyc0ZhbWlseVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/Shared/Error.cshtml]

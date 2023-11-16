@@ -1,4 +1,4 @@
-﻿@model MemberDataEntryForm.Models.MemberData
+﻿@model MemberDataEntryForm.Models.MemberImageModel
 
 @{
     ViewData["Title"] = "Create";
@@ -14,7 +14,7 @@
 
 <div class="row">
     <div class="col-md-6">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -162,6 +162,13 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <h6 class="d-inline">Upload Image</h6>
+                    <input asp-for="Photo" class="form-control" />
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+            </div>
             <br />
 
             <div class="form-group">
@@ -175,7 +182,14 @@
 <div>
     <a asp-controller="Home" asp-action="Index">Back to the list</a>
 </div>
-
+@* <br />
+<div>
+    <a asp-controller="MembersFamily" asp-action="Create">Add Family Data!!</a>
+</div>
+<br />
+<div>
+    <a asp-controller="MemberBusiness" asp-action="Create">Add Business Data!!</a>
+</div> *@
 
 @section Scripts {
     @{

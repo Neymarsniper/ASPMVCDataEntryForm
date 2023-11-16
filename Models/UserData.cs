@@ -9,13 +9,19 @@ namespace MemberDataEntryForm.Models
         public int UserId { get; set; }
 
         [Required(ErrorMessage = "Please enter the First Name")]
+        //[MaxLength(20)]
+        //[MinLength(3)]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Please enter the Last Name")]
+        //[MaxLength(20)]
+        //[MinLength(3)]
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Email is Mandatory!!!")]
         [RegularExpression("^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$")]
+        //[MaxLength(30)]
+        //[MinLength(3)]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Please confirm your Email")]
@@ -31,22 +37,30 @@ namespace MemberDataEntryForm.Models
         public string PasswordConfirmed { get; set; }
         
         [Required]
+        //[MaxLength(100)]
+        //[MinLength(3)]
         public string Address { get; set; }
-        
+
+        [Required]
+        //[MaxLength(20)]
+        //[MinLength(3)]
         public string City { get; set; }
 
         [Required(ErrorMessage = "Enter the Valid Mobile Number!!!")]
+        //[MaxLength(10)]
+        //[MinLength(10)]
         public string MobileNo { get; set; }
 
         [Required]
+        //[MaxLength(20)]
+        //[MinLength(3)]
         public string userType { get; set; }
 
         //[Required]
-        //[ForeignKey("RoleId")]
         //public int useTypeId { get; set; }
 
         //[Required]
-        //[ForeignKey("RoleId")]
-        //public UserType useType { get; set; }
+        //[ForeignKey("userTypeId")]
+        //public UserType UseType { get; set; }
     }
 }

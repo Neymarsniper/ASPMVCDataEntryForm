@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wOJw8HiG/htod7NabUETiBFTvW0p/RGFh4y7A6pJiMA=",
+  "Hash": "E+2rpvoJvoalZ33cx8HToZfnVOMpii26m+qHJR8bDj4=",
   "Source": "MemberDataEntryForm",
   "BasePath": "_content/MemberDataEntryForm",
   "Mode": "Default",
@@ -83,6 +83,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\images\\67479e58-1554-4ad9-b3e3-3f61b57c2a9e_img.jpg",
+      "SourceId": "MemberDataEntryForm",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\",
+      "BasePath": "_content/MemberDataEntryForm",
+      "RelativePath": "images/67479e58-1554-4ad9-b3e3-3f61b57c2a9e_img.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\67479e58-1554-4ad9-b3e3-3f61b57c2a9e_img.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\images\\dd508003-46ef-4edf-9768-025bbe72d7d7_53000.jpg",
+      "SourceId": "MemberDataEntryForm",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\",
+      "BasePath": "_content/MemberDataEntryForm",
+      "RelativePath": "images/dd508003-46ef-4edf-9768-025bbe72d7d7_53000.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\dd508003-46ef-4edf-9768-025bbe72d7d7_53000.jpg"
     },
     {
       "Identity": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\js\\site.js",
