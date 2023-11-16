@@ -15,8 +15,8 @@ namespace MemberDataEntryForm.Models
         [MinLength(3)]
         public string Name { get; set; } = null!;
 
-        [Required(ErrorMessage = "Member Number is must!!!")]
-        public int MemNo { get; set; }
+        //[Required(ErrorMessage = "Member Number is must!!!")]
+        //public int MemNo { get; set; }
 
         [Required(ErrorMessage = "D.O.B is Necessary!!!")]
         public DateTime Dob { get; set; }

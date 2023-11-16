@@ -45,25 +45,23 @@ namespace MemberDataEntryForm.Controllers
         // GET: MemberAddress/Create
         public IActionResult Create()
         {
-            ViewData["MemNo"] = new SelectList(_context.MemberDirectoryData, "Id", "Email");
+            //ViewData["MemNo"] = new SelectList(_context.MemberDirectoryData, "Id", "Email");
             return View();
         }
 
         // POST: MemberAddress/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Address,Country,State,City,PostalCode,AdditonalInfo,AddressType,MemNo")] MemberAddressData memberAddressData)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 _context.Add(memberAddressData);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index","Home");
-            }
-            ViewData["MemNo"] = new SelectList(_context.MemberDirectoryData, "Id", "Email", memberAddressData.MemNo);
-            return View(memberAddressData);
+            //}
+            //ViewData["MemNo"] = new SelectList(_context.MemberDirectoryData, "Id", "Email", memberAddressData.MemNo);
+            //return View(memberAddressData);
         }
 
         // GET: MemberAddress/Edit/5
@@ -127,9 +125,7 @@ namespace MemberDataEntryForm.Controllers
                 return NotFound();
             }
 
-            var memberAddressData = await _context.MemberAddressDirectoryData
-                .Include(m => m.MemberData)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var memberAddressData = await _context.MemberAddressDirectoryData.Include(m => m.MemberData).FirstOrDefaultAsync(m => m.Id == id);
             if (memberAddressData == null)
             {
                 return NotFound();

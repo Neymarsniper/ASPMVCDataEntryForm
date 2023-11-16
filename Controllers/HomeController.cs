@@ -110,7 +110,7 @@ namespace MemberDataEntryForm.Controllers
             {
                 Id = member.Id,
                 Name = member.Name,
-                MemNo = member.MemNo,
+                //MemNo = member.MemNo,
                 Dob = member.Dob,
                 ResAddress = member.ResAddress,
                 ResPhone = member.ResPhone,

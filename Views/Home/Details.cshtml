@@ -21,12 +21,12 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Id)
         </dd>
-        <dt class="col-sm-2">
+        @* <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.MemNo)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.MemNo)
-        </dd>
+        </dd> *@
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Dob)
         </dt>
@@ -124,5 +124,5 @@
     <br />
     <a asp-controller="MembersFamily" asp-action="Details" asp-route-id="@Model?.Id">Ckeckout Family Details</a>
     <br />
-    <a asp-controller="MemberAddress" asp-action="Details" asp-route-id="@Model?.Id">Ckeckout Family Details</a>
+    <a asp-controller="MemberAddress" asp-action="Details" asp-route-id="@Model?.Id">Ckeckout Address Details</a>
 </div>
