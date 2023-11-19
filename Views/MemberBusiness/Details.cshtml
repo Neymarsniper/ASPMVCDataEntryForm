@@ -11,7 +11,7 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MemNo)
+            Member No.
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.MemNo)
@@ -23,37 +23,37 @@
             @Html.DisplayFor(model => model.Id)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BusinessName)
+            Business Name
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.BusinessName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BusinessDetail)
+            Business Detail
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.BusinessDetail)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BusinessAddress)
+            Business Address
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.BusinessAddress)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BusinessCity)
+            Business City
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.BusinessCity)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BusinessPostalCode)
+            Business Postal Code
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.BusinessPostalCode)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BusinessEmail)
+            Business E-mail
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.BusinessEmail)
@@ -61,7 +61,7 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Add/Edit Details</a> <br />
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-secondary">Add/Edit Details</a> <br />
 @*     <a asp-action="Delete" asp-route-id="@Model?.Id">Delete Details</a> <br /> *@
-    <a asp-controller="Home" asp-action="Index">Back to Member Details</a>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back to Member Details</a>
 </div>

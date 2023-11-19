@@ -21,32 +21,26 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Id)
         </dd>
-        @* <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MemNo)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MemNo)
-        </dd> *@
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Dob)
+            D.O.B
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Dob)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ResAddress)
+            Registered Address
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ResAddress)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ResPhone)
+            Registered Phone
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ResPhone)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.OfficeNo)
+            Office No.
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.OfficeNo)
@@ -58,19 +52,19 @@
             @Html.DisplayFor(model => model.Profession)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.OfficeAddress)
+            Office Address
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.OfficeAddress)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MobileNo)
+           Mobile No.
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.MobileNo)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AlternateMobileNo)
+            Alternate Mobile No.
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.AlternateMobileNo)
@@ -81,32 +75,26 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Email)
         </dd>
-       @*  <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.UserPassword)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.UserPassword)
-        </dd> *@
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DateofMarriage)
+            Date of Marriage
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DateofMarriage)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.NameofSpouse)
+            Spouse Name
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.NameofSpouse)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.SpouseDob)
+            Spouse D.O.B
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.SpouseDob)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ChildName)
+           Child Name
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ChildName)
@@ -114,15 +102,15 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit Data</a> |
-    <a asp-action="Delete" asp-route-id="@Model?.Id">Delete Data</a> @* |
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-secondary">Edit Data</a> |
+    <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-secondary">Delete Data</a> @* |
     <h6> <a asp-controller="Home" asp-action="Logout">LogOut</a></h6> *@
     <br />
-    <a asp-action="Index">Back to List</a>
+    <br />
+    <a asp-controller="MemberBusiness" asp-action="Details" asp-route-id="@Model?.Id" class="btn btn-primary">Checkout Business Details</a> |
+    <a asp-controller="MembersFamily" asp-action="Details" asp-route-id="@Model?.Id" class="btn btn-primary">Ckeckout Family Details</a> |
+    <a asp-controller="MemberAddress" asp-action="Details" asp-route-id="@Model?.Id" class="btn btn-primary">Ckeckout Address Details</a>
+    <br />
     <br /> 
-    <a asp-controller="MemberBusiness" asp-action="Details" asp-route-id="@Model?.Id">Checkout Business Details</a>
-    <br />
-    <a asp-controller="MembersFamily" asp-action="Details" asp-route-id="@Model?.Id">Ckeckout Family Details</a>
-    <br />
-    <a asp-controller="MemberAddress" asp-action="Details" asp-route-id="@Model?.Id">Ckeckout Address Details</a>
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
 </div>

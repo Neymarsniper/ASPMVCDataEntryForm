@@ -17,106 +17,88 @@
             @Html.DisplayFor(model => model.Id)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            D.O.B
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        @* <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MemNo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MemNo)
-        </dd> *@
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Dob)
-        </dt>
-        <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Dob)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ResAddress)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ResAddress)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ResPhone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ResPhone)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OfficeNo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OfficeNo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Profession)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Profession)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OfficeAddress)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OfficeAddress)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MobileNo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MobileNo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AlternateMobileNo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AlternateMobileNo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        @* <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.UserPassword)
+        <dt class="col-sm-2">
+            Registered Address
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.UserPassword)
-        </dd> *@
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateofMarriage)
+            @Html.DisplayFor(model => model.ResAddress)
+        </dd>
+        <dt class="col-sm-2">
+            Registered Phone
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ResPhone)
+        </dd>
+        <dt class="col-sm-2">
+            Office No.
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfficeNo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Profession)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Profession)
+        </dd>
+        <dt class="col-sm-2">
+            Office Address
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OfficeAddress)
+        </dd>
+        <dt class="col-sm-2">
+            Mobile No.
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MobileNo)
+        </dd>
+        <dt class="col-sm-2">
+            Alternate Mobile No.
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AlternateMobileNo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            Date of Marriage
+        </dt>
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DateofMarriage)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NameofSpouse)
+        <dt class="col-sm-2">
+            Spouse Name
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.NameofSpouse)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SpouseDob)
+        <dt class="col-sm-2">
+            Spouse D.O.B
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.SpouseDob)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ChildName)
+        <dt class="col-sm-2">
+            Child Name
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ChildName)
         </dd>
     </dl>
-    
+
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Details" asp-route-id="@Model?.Id">Back to Details</a>
+        <a asp-action="Details" asp-route-id="@Model?.Id" class="btn btn-primary">Back to Details</a>
     </form>
 </div>

@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MemberDataEntryForm.Models;
+using SQLitePCL;
+using System.Diagnostics.Metrics;
 
 namespace MemberDataEntryForm.Controllers
 {
@@ -44,6 +46,16 @@ namespace MemberDataEntryForm.Controllers
         // GET: MemberFamily/Create
         public IActionResult Create()
         {
+            //using (var dbContext = new MemberDataContext())
+            //{
+            //    int memno = 
+            //    MemberData member = dbContext.MemberDirectoryData.FirstOrDefaultAsync(m => m.Id == memno);
+            //    MembersFamilyData membersFamilyData = new MembersFamilyData
+            //    {
+            //        MemNo = member.Id
+            //    };
+            //}
+            ViewData["MemNo"] = new SelectList(_context.MemberDirectoryData, "Id", "Id");
             return View();
         }
 
@@ -54,12 +66,22 @@ namespace MemberDataEntryForm.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,MemNo,FirstName,LastName,Mobile,Relation,HomeAddress,ChildName")] MembersFamilyData memberFamilyData)
         {
-            //if (ModelState.IsValid)
+            //using (var dbContext = new MemberDataContext())
             //{
-                _context.Add(memberFamilyData);
+            //    int memno = memberFamilyData.MemNo;
+            //    MemberData member = await dbContext.MemberDirectoryData.FirstOrDefaultAsync(m => m.Id == memno);
+            //    MembersFamilyData membersFamilyData = new MembersFamilyData
+            //    {
+            //        MemNo = member.Id
+            //    };
+            //}
+
+            //if (ModelState.IsValid)
+           // {
+               _context.Add(memberFamilyData);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Home");
-            //}
+           // }
             //return View(memberFamilyData);
         }
 

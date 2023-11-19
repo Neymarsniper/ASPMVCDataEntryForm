@@ -7,7 +7,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New Member</a>
+    <a asp-action="Create" class="btn btn-light">Create New Member</a>
 </p>
 <table class="table">
     <thead>
@@ -22,43 +22,43 @@
                 @Html.DisplayNameFor(model => model.MemNo)
             </th> *@
             <th>
-                @Html.DisplayNameFor(model => model.Dob)
+                D.O.B
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ResAddress)
+                Registered Address
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ResPhone)
+               Registered Phone
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OfficeNo)
+                Office No.
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Profession)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OfficeAddress)
+                Office Address
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MobileNo)
+                Mobile No.
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AlternateMobileNo)
+                Alternate Mobile No.
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateofMarriage)
+                Date of Marriage
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NameofSpouse)
+                Spouse Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SpouseDob)
+                Spouse D.O.B
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ChildName)
+                Child Name
             </th>
             <th></th>
         </tr>
@@ -115,10 +115,10 @@
                 @Html.DisplayFor(modelItem => item.ChildName)
             </td>
             <td>
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> <br/>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a> <br />
             </td>
         </tr>
 }
     </tbody>
 </table>
-             <a asp-controller="User" asp-action="Logout">User Logout</a>
+            <a asp-controller="User" asp-action="Logout" class="btn btn-primary">User Logout</a>

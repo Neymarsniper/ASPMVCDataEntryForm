@@ -45,7 +45,7 @@ namespace MemberDataEntryForm.Controllers
         // GET: MemberAddress/Create
         public IActionResult Create()
         {
-            //ViewData["MemNo"] = new SelectList(_context.MemberDirectoryData, "Id", "Email");
+            ViewData["MemNo"] = new SelectList(_context.MemberDirectoryData, "Id", "Id");
             return View();
         }
 

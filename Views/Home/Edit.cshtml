@@ -12,7 +12,7 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
+            @* <div class="form-group">
                 <label asp-for="Id" class="control-label"></label>
                 <input asp-for="Id" class="form-control" />
                 <span asp-validation-for="Id" class="text-danger"></span>
@@ -22,11 +22,6 @@
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-           @*  <div class="form-group">
-                <label asp-for="MemNo" class="control-label"></label>
-                <input asp-for="MemNo" class="form-control" />
-                <span asp-validation-for="MemNo" class="text-danger"></span>
-            </div> *@
             <div class="form-group">
                 <label asp-for="Dob" class="control-label"></label>
                 <input asp-for="Dob" class="form-control" />
@@ -72,11 +67,6 @@
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-            @* <div class="form-group">
-                <label asp-for="UserPassword" class="control-label"></label>
-                <input asp-for="UserPassword" class="form-control" />
-                <span asp-validation-for="UserPassword" class="text-danger"></span>
-            </div> *@
             <div class="form-group">
                 <label asp-for="DateofMarriage" class="control-label"></label>
                 <input asp-for="DateofMarriage" class="form-control" />
@@ -96,17 +86,144 @@
                 <label asp-for="ChildName" class="control-label"></label>
                 <input asp-for="ChildName" class="form-control" />
                 <span asp-validation-for="ChildName" class="text-danger"></span>
+            </div> *@
+
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Name*</h6>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">D.O.B*</h6>
+                        <input asp-for="Dob" class="form-control" />
+                        <span asp-validation-for="Dob" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Permanent Address*</h6>
+                        <input asp-for="ResAddress" class="form-control" />
+                        <span asp-validation-for="ResAddress" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Registered Phone No*</h6>
+                        <input asp-for="ResPhone" class="form-control" />
+                        <span asp-validation-for="ResPhone" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Office No*</h6>
+                        <input asp-for="OfficeNo" class="form-control" />
+                        <span asp-validation-for="OfficeNo" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Profession / Occupation*</h6>
+                        <input asp-for="Profession" class="form-control" />
+                        <span asp-validation-for="Profession" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Office Address*</h6>
+                        <input asp-for="OfficeAddress" class="form-control" />
+                        <span asp-validation-for="OfficeAddress" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Mobile No*</h6>
+                        <input asp-for="MobileNo" class="form-control" />
+                        <span asp-validation-for="MobileNo" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Alternate Mobile No.*</h6>
+                        <input asp-for="AlternateMobileNo" class="form-control" />
+                        <span asp-validation-for="AlternateMobileNo" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">E-mail*</h6>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Date of Marriage*</h6>
+                        <input asp-for="DateofMarriage" class="form-control" />
+                        <span asp-validation-for="DateofMarriage" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Spouse Name*</h6>
+                        <input asp-for="NameofSpouse" class="form-control" />
+                        <span asp-validation-for="NameofSpouse" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Spouse D.O.B*</h6>
+                        <input asp-for="SpouseDob" class="form-control" />
+                        <span asp-validation-for="SpouseDob" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Child Name</h6>
+                        <input asp-for="ChildName" class="form-control" />
+                        <span asp-validation-for="ChildName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <br />
+
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-success" />
             </div>
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Details" asp-route-id="@Model?.Id">Back to Details</a>
-</div>
+<br />
+    <a asp-action="Details" asp-route-id="@Model?.Id" class="btn btn-primary">Back to Details</a>
 
 @section Scripts {
     @{

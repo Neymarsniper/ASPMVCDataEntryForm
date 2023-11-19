@@ -44,6 +44,7 @@ namespace MemberDataEntryForm.Controllers
         // GET: MemberBusiness/Create
         public IActionResult Create()
         {
+            ViewData["MemNo"] = new SelectList(_context.MemberDirectoryData, "Id", "Id");
             return View();
         }
 
