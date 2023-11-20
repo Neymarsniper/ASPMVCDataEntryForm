@@ -100,15 +100,16 @@
                     </div>
                 </div>
             </div>
-
+            <br/>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-success" />
             </div>
         </form>
+        <br />
     </div>
 </div>
-<h6><a asp-controller="User" asp-action="Index" asp-route-id="@Model?.UserId">Back to List</a></h6>
-<h6><a asp-controller="User" asp-action="Logout">Admin LogOut</a></h6>
+<a asp-controller="User" asp-action="Index" asp-route-id="@Model?.UserId" class="btn btn-primary">Back to List</a> |
+<a asp-controller="User" asp-action="Logout" class="btn btn-primary">Admin LogOut</a>
 @* <div>
     <a asp-action="Index">Have Account? - Login Here</a>
 </div> *@

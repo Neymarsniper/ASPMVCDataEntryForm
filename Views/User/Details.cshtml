@@ -75,11 +75,21 @@
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.UserId">Edit User Data</a> |
-    <a asp-action="Delete" asp-route-id="@Model?.UserId">Delete User Data</a> |
-    <h6><a asp-controller="User" asp-action="Logout">LogOut</a></h6>
+
+    <a asp-action="Edit" asp-route-id="@Model?.UserId" class="btn btn-secondary">Edit Data</a> |
+    <a asp-action="Delete" asp-route-id="@Model?.UserId" class="btn btn-secondary">Delete User Data</a>
     <br />
-    <h6> <a asp-controller="User" asp-action="Index" asp-route-id="@Model?.UserId">Access Users List</a></h6>
-    <h6> <a asp-controller="Home" asp-action="Index">Access Members List</a></h6>
-</div>
+    <br />
+    <a asp-controller="User" asp-action="Logout" class="btn btn-primary">LogOut</a>
+    <br />
+    <br />
+@{
+    if (ViewBag.Auth != null)
+    {
+        
+        <a asp-controller="User" asp-action="Index" asp-route-id="@Model?.UserId" class="btn btn-success">Access Users List</a>
+        <span class="seperator"> | </span>
+    }
+}
+<a asp-controller="Home" asp-action="Index" class="btn btn-primary">Access Members List</a>
+

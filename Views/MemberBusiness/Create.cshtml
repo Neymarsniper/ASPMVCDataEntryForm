@@ -15,6 +15,7 @@
            @*  <input type="hidden" asp-for="Id" /> *@
             <div class="form-group">
                 <h6 class="d-inline">Member No.</h6>
+                <select asp-for="MemNo" class="form-control" asp-items="ViewBag.MemNo"></select>
                 <input asp-for="MemNo" class="form-control" />
                 <span asp-validation-for="MemNo" class="text-danger"></span>
             </div>

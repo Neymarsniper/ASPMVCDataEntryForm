@@ -86,7 +86,11 @@ namespace MemberDataEntryForm.Controllers
             {
                 return NotFound();
             }
-
+            var myuser = await _context.UserDirectoryData.SingleOrDefaultAsync(u => u.UserId == id);
+            if (myuser.userType == "Admin")
+            {
+                ViewBag.Auth = "Success";
+            }
             var userData = await _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == id);
             if (userData == null)
             {

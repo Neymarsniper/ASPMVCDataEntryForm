@@ -155,14 +155,14 @@
             </div>
             <br />
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary"/>
+                <input type="submit" value="Save" class="btn btn-success"/>
             </div>
         </form>
     </div>
 </div>
-
+<br />
 <div>
-    <a asp-action="Details" asp-route-id="@Model?.UserId">Back to Details</a>
+    <a asp-action="Details" asp-route-id="@Model?.UserId" class="btn btn-secondary">Back to Details</a>
 </div>
 
 @section Scripts {
