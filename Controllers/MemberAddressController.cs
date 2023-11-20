@@ -65,7 +65,7 @@ namespace MemberDataEntryForm.Controllers
         }
 
         // GET: MemberAddress/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
             if (id == null || _context.MemberAddressDirectoryData == null)
             {
@@ -77,7 +77,7 @@ namespace MemberDataEntryForm.Controllers
             {
                 return NotFound();
             }
-            ViewData["MemNo"] = new SelectList(_context.MemberDirectoryData, "Id", "Email", memberAddressData.MemNo);
+            //ViewData["MemNo"] = new SelectList(_context.MemberDirectoryData, "Id", "Id", memberAddressData.MemNo);
             return View(memberAddressData);
         }
 
@@ -93,8 +93,8 @@ namespace MemberDataEntryForm.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 try
                 {
                     _context.Update(memberAddressData);
@@ -112,7 +112,7 @@ namespace MemberDataEntryForm.Controllers
                     }
                 }
                 return RedirectToAction("Details", new { id = memberAddressData.MemNo });
-            }
+            //}
             ViewData["MemNo"] = new SelectList(_context.MemberDirectoryData, "Id", "Email", memberAddressData.MemNo);
             return View(memberAddressData);
         }
@@ -150,7 +150,7 @@ namespace MemberDataEntryForm.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Home");
         }
 
         private bool MemberAddressDataExists(int id)

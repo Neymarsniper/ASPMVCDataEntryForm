@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "E+2rpvoJvoalZ33cx8HToZfnVOMpii26m+qHJR8bDj4=",
+  "Hash": "MwPOk2NPWbHkCLq2GYj1ii7KyATMXh19YItb821M9vY=",
   "Source": "MemberDataEntryForm",
   "BasePath": "_content/MemberDataEntryForm",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\images\\2863c9d7-7349-4ec9-ad68-2bbf75ecd9e7_672998.jpg",
+      "SourceId": "MemberDataEntryForm",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\",
+      "BasePath": "_content/MemberDataEntryForm",
+      "RelativePath": "images/2863c9d7-7349-4ec9-ad68-2bbf75ecd9e7_672998.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\2863c9d7-7349-4ec9-ad68-2bbf75ecd9e7_672998.jpg"
     },
     {
       "Identity": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\images\\67479e58-1554-4ad9-b3e3-3f61b57c2a9e_img.jpg",

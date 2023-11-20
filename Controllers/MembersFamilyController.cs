@@ -113,8 +113,8 @@ namespace MemberDataEntryForm.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 try
                 {
                     _context.Update(memberFamilyData);
@@ -132,7 +132,7 @@ namespace MemberDataEntryForm.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
+            //}
             return View(memberFamilyData);
         }
 
@@ -169,7 +169,7 @@ namespace MemberDataEntryForm.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Home");
         }
 
         private bool MemberFamilyDataExists(int id)

@@ -35,7 +35,7 @@ namespace MemberDataEntryForm.Controllers
             var memberBusiessData = await _context.MemberBusinessDirectoryData.FirstOrDefaultAsync(m => m.MemNo == id);
             if (memberBusiessData == null)
             {
-                return RedirectToAction(nameof(Create));
+                return RedirectToAction("Create");
             }
 
             return View(memberBusiessData);
@@ -44,6 +44,12 @@ namespace MemberDataEntryForm.Controllers
         // GET: MemberBusiness/Create
         public IActionResult Create()
         {
+            //var mydata = await _context.MemberBusinessDirectoryData.SingleOrDefaultAsync(b => b.MemNo == id);
+            //MemberBusiessData memberBusiessData = new MemberBusiessData
+            //{
+            //    MemNo = mydata.MemNo
+            //};
+            //ViewData["MemNo"] = mydata.MemNo;
             ViewData["MemNo"] = new SelectList(_context.MemberDirectoryData, "Id", "Id");
             return View();
         }
@@ -94,8 +100,8 @@ namespace MemberDataEntryForm.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 try
                 {
                     _context.Update(memberBusiessData);
@@ -113,7 +119,7 @@ namespace MemberDataEntryForm.Controllers
                     }
                 }
                 return RedirectToAction("Details", new { id = memberBusiessData.MemNo });
-            }
+            //}
             return View(memberBusiessData);
         }
 
@@ -150,7 +156,7 @@ namespace MemberDataEntryForm.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Home");
         }
 
         private bool MemberBusiessDataExists(int id)

@@ -56,7 +56,8 @@
 </div>
 <br />
 <div>
-    <a asp-action="Details" asp-route-id="@Model?.MemNo">Back to Details</a>
+    <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger">Delete</a> |
+    <a asp-action="Details" asp-route-id="@Model?.MemNo" class="btn btn-primary">Back to Details</a>
 </div>
 
 @section Scripts {
