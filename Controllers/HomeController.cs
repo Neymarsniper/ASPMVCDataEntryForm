@@ -238,6 +238,18 @@ namespace MemberDataEntryForm.Controllers
                 _context.MemberFamilyDirectoryData.Remove(memberFamilyData);
             }
 
+            var image = memberDirectoryDatum.Image;
+
+            if (!string.IsNullOrEmpty(image))
+            {
+                string imagePath = Path.Combine(hostingenvironment.WebRootPath, "images", image);
+
+                if (System.IO.File.Exists(imagePath))
+                {
+                    System.IO.File.Delete(imagePath);
+                }
+            }
+
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }

@@ -11434,9 +11434,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\MemberDataEntryForm.csproj",
-      "projectName": "MemberDataEntryForm",
-      "projectPath": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\MemberDataEntryForm.csproj",
+      "projectUniqueName": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\PPCLUB.csproj",
+      "projectName": "PPCLUB",
+      "projectPath": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\PPCLUB.csproj",
       "packagesPath": "C:\\Users\\shubh\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\obj\\",
       "projectStyle": "PackageReference",

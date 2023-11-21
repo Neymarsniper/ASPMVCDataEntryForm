@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iA8NmaMWkFkcEz1qFQ6UhgunFwujx5wQZktCLFh/X6S5uIvjdHn1c8lA0VKLYB9S17dBI7zJZYjXA1trNBhmjQ==",
+  "dgSpecHash": "olL923VANYm9dr7LISnge2N2gXIJH+BVWH/thIyLtp7InbMjYCX3f5pMbWDfwmfdQe8k1/UXI5WWoYHL6i+5pg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\MemberDataEntryForm.csproj",
+  "projectFilePath": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\PPCLUB.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\shubh\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\shubh\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
