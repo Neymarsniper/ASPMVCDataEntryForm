@@ -87,7 +87,7 @@
                     @Html.DisplayFor(modelItem => item.MobileNo)
                 </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.userType)
+                    @Html.DisplayFor(modelItem => item.UserRoleId)
                     </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-secondary">Edit</a> |
@@ -101,4 +101,5 @@
 @*     <h6> <a asp-action="Details" asp-route-id="@Model?.UserId">Back to Details</a></h6> *@
     <h6> <a asp-action="Logout" class="btn btn-primary">LogOut</a></h6>
 </table>
-<a asp-controller="User" asp-action="Create" class="btn btn-primary">Create New User</a>
+<a asp-controller="User" asp-action="Create" class="btn btn-primary">Create New User</a> |
+<a asp-controller="UserType" asp-action="Index" class="btn btn-primary">User Types List</a>

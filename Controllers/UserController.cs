@@ -26,7 +26,7 @@ namespace MemberDataEntryForm.Controllers
         public async Task<IActionResult> Index(int id)
         {
             var myuser = await _context.UserDirectoryData.SingleOrDefaultAsync(u => u.UserId == id);
-            if (myuser.userType == "Admin")
+            if (myuser.UserRoleId == 1)
             {
                 ViewBag.message = "Access Granted!";
                 return _context.UserDirectoryData != null ? View(await _context.UserDirectoryData.ToListAsync()) : Problem("Entity set 'MemberDataContext.UserDirectoryData'  is null.");
@@ -36,6 +36,7 @@ namespace MemberDataEntryForm.Controllers
                 ViewBag.msg = "Access Denied!!";
                 return RedirectToAction("Details", new { id = myuser.UserId });
             }
+            //return _context.UserDirectoryData != null ? View(await _context.UserDirectoryData.ToListAsync()) : Problem("Entity set 'MemberDataContext.UserDirectoryData'  is null.");
         }
 
 
@@ -87,7 +88,7 @@ namespace MemberDataEntryForm.Controllers
                 return NotFound();
             }
             var myuser = await _context.UserDirectoryData.SingleOrDefaultAsync(u => u.UserId == id);
-            if (myuser.userType == "Admin")
+            if (myuser.UserRoleId == 1)
             {
                 ViewBag.Auth = "Success";
             }
@@ -103,6 +104,7 @@ namespace MemberDataEntryForm.Controllers
         // GET: User/Create
         public IActionResult Create()
         {
+            ViewData["userType"] = new SelectList(_context.GetUserTypes, "RoleId", "RoleName");
             return View();
         }
 
@@ -111,15 +113,15 @@ namespace MemberDataEntryForm.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UserId,FirstName,LastName,Email,EmailConfirmed,Password,PasswordConfirmed,Address,City,MobileNo,userType")] UserData userData)
+        public async Task<IActionResult> Create([Bind("UserId,FirstName,LastName,Email,EmailConfirmed,Password,PasswordConfirmed,Address,City,MobileNo,UserRoleId")] UserData userData)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 _context.Add(userData);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index", new { id = userData.UserId });
-            }
-            return View(userData);
+                return RedirectToAction("Index"/*, new { id = userData.UserId }*/);
+            //}
+            //return View(userData);
         }
 
         // GET: User/Edit/5
@@ -143,7 +145,7 @@ namespace MemberDataEntryForm.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserId,FirstName,LastName,Email,EmailConfirmed,Password,PasswordConfirmed,Address,City,MobileNo,userType")] UserData userData)
+        public async Task<IActionResult> Edit(int id, [Bind("UserId,FirstName,LastName,Email,EmailConfirmed,Password,PasswordConfirmed,Address,City,MobileNo,UserRoleId")] UserData userData)
         {
             if (id != userData.UserId)
             {
