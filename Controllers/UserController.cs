@@ -92,7 +92,7 @@ namespace MemberDataEntryForm.Controllers
             {
                 ViewBag.Auth = "Success";
             }
-            var userData = await _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == id);
+            var userData = await _context.UserDirectoryData.Include(m => m.UserType).FirstOrDefaultAsync(m => m.UserId == id);
             if (userData == null)
             {
                 return NotFound();

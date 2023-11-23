@@ -20,19 +20,19 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-        @Html.DisplayNameFor(model => model.UserId)
+        User Id
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.UserId)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
+           First Name
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.FirstName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LastName)
+           Last Name
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.LastName)
@@ -62,16 +62,16 @@
             @Html.DisplayFor(model => model.City)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MobileNo)
+            Mobile No.
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.MobileNo)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.UserRoleId)
+            User Type
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.UserRoleId)
+            @Html.DisplayFor(model => model.UserType.RoleName)
         </dd>
     </dl>
 </div>
