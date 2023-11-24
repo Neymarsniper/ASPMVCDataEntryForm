@@ -119,7 +119,7 @@ namespace MemberDataEntryForm.Controllers
             //{
                 _context.Add(userData);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index"/*, new { id = userData.UserId }*/);
+                return RedirectToAction("Index", new { id = userData.UserId });
             //}
             //return View(userData);
         }

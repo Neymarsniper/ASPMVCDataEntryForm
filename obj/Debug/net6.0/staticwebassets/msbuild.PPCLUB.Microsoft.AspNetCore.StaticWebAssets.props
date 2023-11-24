@@ -32,12 +32,12 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\11fc5adb-c52e-4bf2-adfe-e29fca0d330d_2880929.jpg))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\184dd285-98f4-4395-9097-ff62ff437087_jason_statham_in_the_meg_4k-3840x2160.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>PPCLUB</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/PPCLUB</BasePath>
-      <RelativePath>images/11fc5adb-c52e-4bf2-adfe-e29fca0d330d_2880929.jpg</RelativePath>
+      <RelativePath>images/184dd285-98f4-4395-9097-ff62ff437087_jason_statham_in_the_meg_4k-3840x2160.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -46,14 +46,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\11fc5adb-c52e-4bf2-adfe-e29fca0d330d_2880929.jpg))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\184dd285-98f4-4395-9097-ff62ff437087_jason_statham_in_the_meg_4k-3840x2160.jpg))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\67479e58-1554-4ad9-b3e3-3f61b57c2a9e_img.jpg))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\2525a67f-6bdd-4111-9931-4ceeab0c975c_jason_statham_in_the_meg_4k-3840x2160.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>PPCLUB</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/PPCLUB</BasePath>
-      <RelativePath>images/67479e58-1554-4ad9-b3e3-3f61b57c2a9e_img.jpg</RelativePath>
+      <RelativePath>images/2525a67f-6bdd-4111-9931-4ceeab0c975c_jason_statham_in_the_meg_4k-3840x2160.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -62,7 +62,71 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\67479e58-1554-4ad9-b3e3-3f61b57c2a9e_img.jpg))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\2525a67f-6bdd-4111-9931-4ceeab0c975c_jason_statham_in_the_meg_4k-3840x2160.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\2bbcb095-64e8-4f79-b35e-35024f17713e_jason_statham_in_the_meg_4k-3840x2160.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>PPCLUB</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/PPCLUB</BasePath>
+      <RelativePath>images/2bbcb095-64e8-4f79-b35e-35024f17713e_jason_statham_in_the_meg_4k-3840x2160.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\2bbcb095-64e8-4f79-b35e-35024f17713e_jason_statham_in_the_meg_4k-3840x2160.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\49f9e052-2510-4fda-8321-449cb72ab207_jason_statham_in_the_meg_4k-3840x2160.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>PPCLUB</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/PPCLUB</BasePath>
+      <RelativePath>images/49f9e052-2510-4fda-8321-449cb72ab207_jason_statham_in_the_meg_4k-3840x2160.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\49f9e052-2510-4fda-8321-449cb72ab207_jason_statham_in_the_meg_4k-3840x2160.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\537b10dc-fa54-4f49-b5de-bda22b3714bf_Mercian-Regiment.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>PPCLUB</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/PPCLUB</BasePath>
+      <RelativePath>images/537b10dc-fa54-4f49-b5de-bda22b3714bf_Mercian-Regiment.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\537b10dc-fa54-4f49-b5de-bda22b3714bf_Mercian-Regiment.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\b578e8b5-da0f-4919-b7b1-a90aef0ca0a3_jason_statham_in_the_meg_4k-3840x2160.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>PPCLUB</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/PPCLUB</BasePath>
+      <RelativePath>images/b578e8b5-da0f-4919-b7b1-a90aef0ca0a3_jason_statham_in_the_meg_4k-3840x2160.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\b578e8b5-da0f-4919-b7b1-a90aef0ca0a3_jason_statham_in_the_meg_4k-3840x2160.jpg))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\js\site.js))">
       <SourceType>Package</SourceType>

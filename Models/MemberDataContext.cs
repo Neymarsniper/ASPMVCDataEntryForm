@@ -20,7 +20,7 @@ namespace MemberDataEntryForm.Models
         public virtual DbSet<UserData> UserDirectoryData { get; set; }
         public virtual DbSet<UserType> GetUserTypes { get; set; }
         public virtual DbSet<MembersFamilyData> MemberFamilyDirectoryData { get; set; }
-        public virtual DbSet<MemberBusiessData> MemberBusinessDirectoryData { get; set; }
+        public virtual DbSet<MemberBusinessData> MemberBusinessDirectoryData { get; set; }
         public virtual DbSet<MemberAddressData> MemberAddressDirectoryData { get; set; }
 
     }

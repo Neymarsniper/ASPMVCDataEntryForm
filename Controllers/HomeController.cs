@@ -89,7 +89,8 @@ namespace MemberDataEntryForm.Controllers
         // GET: Home/Create
         public IActionResult Create()
         {
-            return View();
+            var member = new MemberImageModel();
+            return View(member);
         }
 
         // POST: Home/Create
@@ -126,14 +127,54 @@ namespace MemberDataEntryForm.Controllers
                 ChildName = member.ChildName,
                 Image = filename
             };
+            _context.MemberDirectoryData.Add(memberDirectoryDatum);
+            await _context.SaveChangesAsync();
 
-            if (ModelState.IsValid)
+            MembersFamilyData memberFamily = new MembersFamilyData
             {
-                _context.Add(memberDirectoryDatum);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-            return View(memberDirectoryDatum);
+                MemNo = memberDirectoryDatum.Id,
+                FirstName = member.FirstName,
+                LastName = member.LastName,
+                Relation = member.Relation,
+                HomeAddress = member.HomeAddress,
+                Mobile = member.Mobile,
+                ChildName = member.childName
+            };
+            _context.MemberFamilyDirectoryData.Add(memberFamily);
+
+
+            MemberBusinessData memberBusiness = new MemberBusinessData
+            {
+                MemNo = memberDirectoryDatum.Id,
+                BusinessName = member.BusinessName,
+                BusinessDetail = member.BusinessDetail,
+                BusinessAddress = member.BusinessAddress,
+                BusinessCity = member.BusinessCity,
+                BusinessPostalCode = member.BusinessPostalCode,
+                BusinessEmail = member.BusinessEmail
+            };
+            _context.MemberBusinessDirectoryData.Add(memberBusiness);
+
+            MemberAddressData memberAddress = new MemberAddressData
+            {
+                MemNo = memberDirectoryDatum.Id,
+                Address = member.Address,
+                Country = member.Country,
+                State = member.State,
+                City = member.City,
+                PostalCode = member.PostalCode,
+                AdditonalInfo = member.AdditonalInfo,
+                AddressType = member.AddressType
+            };
+            _context.MemberAddressDirectoryData.Add(memberAddress);
+           
+            
+            await _context.SaveChangesAsync();
+            //if (ModelState.IsValid)
+            //{
+            return RedirectToAction("Index");
+            //}
+            //return View(memberDirectoryDatum);
         }
 
         // GET: Home/Edit/5

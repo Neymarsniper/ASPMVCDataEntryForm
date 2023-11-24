@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MemberDataEntryForm.Models
 {
-    public class MemberBusiessData
+    public class MemberBusinessData
     {
         [Key]
         public int Id { get; set; }
