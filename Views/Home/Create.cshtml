@@ -1,4 +1,4 @@
-﻿@model MemberDataEntryForm.Models.MemberImageModel
+﻿@model MemberDataEntryForm.Models.MemberViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -21,16 +21,16 @@
                     <div class="form-group">
                         @*<label asp-for="Name" class="control-label">Name*</label> *@
                         <h6 class="d-inline">Name*</h6>
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
+                        <input asp-for="memberData.Name" class="form-control" />
+                        <span asp-validation-for="memberData.Name" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                         <h6 class="d-inline">E-mail*</h6>
-                        <input asp-for="Email" class="form-control" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
+                        <input asp-for="memberData.Email" class="form-control" />
+                        <span asp-validation-for="memberData.Email" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -39,16 +39,16 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <h6 class="d-inline">D.O.B*</h6>
-                        <input asp-for="Dob" class="form-control" />
-                        <span asp-validation-for="Dob" class="text-danger"></span>
+                        <input asp-for="memberData.Dob" class="form-control" />
+                        <span asp-validation-for="memberData.Dob" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                         <h6 class="d-inline">Permanent Address*</h6>
-                        <input asp-for="ResAddress" class="form-control" />
-                        <span asp-validation-for="ResAddress" class="text-danger"></span>
+                        <input asp-for="memberData.ResAddress" class="form-control" />
+                        <span asp-validation-for="memberData.ResAddress" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -57,16 +57,16 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <h6 class="d-inline">Registered Phone No*</h6>
-                        <input asp-for="ResPhone" class="form-control" />
-                        <span asp-validation-for="ResPhone" class="text-danger"></span>
+                        <input asp-for="memberData.ResPhone" class="form-control" />
+                        <span asp-validation-for="memberData.ResPhone" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                         <h6 class="d-inline">Office No*</h6>
-                        <input asp-for="OfficeNo" class="form-control" />
-                        <span asp-validation-for="OfficeNo" class="text-danger"></span>
+                        <input asp-for="memberData.OfficeNo" class="form-control" />
+                        <span asp-validation-for="memberData.OfficeNo" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -75,16 +75,16 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <h6 class="d-inline">Profession / Occupation*</h6>
-                        <input asp-for="Profession" class="form-control" />
-                        <span asp-validation-for="Profession" class="text-danger"></span>
+                        <input asp-for="memberData.Profession" class="form-control" />
+                        <span asp-validation-for="memberData.Profession" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                         <h6 class="d-inline">Office Address*</h6>
-                        <input asp-for="OfficeAddress" class="form-control" />
-                        <span asp-validation-for="OfficeAddress" class="text-danger"></span>
+                        <input asp-for="memberData.OfficeAddress" class="form-control" />
+                        <span asp-validation-for="memberData.OfficeAddress" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -93,16 +93,16 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <h6 class="d-inline">Mobile No*</h6>
-                        <input asp-for="MobileNo" class="form-control" />
-                        <span asp-validation-for="MobileNo" class="text-danger"></span>
+                        <input asp-for="memberData.MobileNo" class="form-control" />
+                        <span asp-validation-for="memberData.MobileNo" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                         <h6 class="d-inline">Alternate Mobile No.*</h6>
-                        <input asp-for="AlternateMobileNo" class="form-control" />
-                        <span asp-validation-for="AlternateMobileNo" class="text-danger"></span>
+                        <input asp-for="memberData.AlternateMobileNo" class="form-control" />
+                        <span asp-validation-for="memberData.AlternateMobileNo" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -111,16 +111,16 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <h6 class="d-inline">Date of Marriage*</h6>
-                        <input asp-for="DateofMarriage" class="form-control" />
-                        <span asp-validation-for="DateofMarriage" class="text-danger"></span>
+                        <input asp-for="memberData.DateofMarriage" class="form-control" />
+                        <span asp-validation-for="memberData.DateofMarriage" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                         <h6 class="d-inline">Spouse Name*</h6>
-                        <input asp-for="NameofSpouse" class="form-control" />
-                        <span asp-validation-for="NameofSpouse" class="text-danger"></span>
+                        <input asp-for="memberData.NameofSpouse" class="form-control" />
+                        <span asp-validation-for="memberData.NameofSpouse" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -129,16 +129,16 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <h6 class="d-inline">Spouse D.O.B*</h6>
-                        <input asp-for="SpouseDob" class="form-control" />
-                        <span asp-validation-for="SpouseDob" class="text-danger"></span>
+                        <input asp-for="memberData.SpouseDob" class="form-control" />
+                        <span asp-validation-for="memberData.SpouseDob" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
                         <h6 class="d-inline">Child Name</h6>
-                        <input asp-for="ChildName" class="form-control" />
-                        <span asp-validation-for="ChildName" class="text-danger"></span>
+                        <input asp-for="memberData.ChildName" class="form-control" />
+                        <span asp-validation-for="memberData.ChildName" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -146,8 +146,8 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <h6 class="d-inline">Upload Image</h6>
-                    <input asp-for="Photo" class="form-control" />
-                    <span asp-validation-for="Photo" class="text-danger"></span>
+                    <input asp-for="memberImageModel.Photo" class="form-control" />
+                    <span asp-validation-for="memberImageModel.Photo" class="text-danger"></span>
                 </div>
             </div>
         </div>
@@ -161,33 +161,16 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label asp-for="FirstName" class="control-label"></label>
-                        <input asp-for="FirstName" class="form-control" />
-                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                        <label asp-for="FamilyData.FirstName" class="control-label"></label>
+                        <input asp-for="FamilyData.FirstName" class="form-control" />
+                        <span asp-validation-for="FamilyData.FirstName" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label asp-for="LastName" class="control-label"></label>
-                        <input asp-for="LastName" class="form-control" />
-                        <span asp-validation-for="LastName" class="text-danger"></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label asp-for="Mobile" class="control-label"></label>
-                        <input asp-for="Mobile" class="form-control" />
-                        <span asp-validation-for="Mobile" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label asp-for="ChildName" class="control-label"></label>
-                        <input asp-for="ChildName" class="form-control" />
-                        <span asp-validation-for="ChildName" class="text-danger"></span>
+                        <label asp-for="FamilyData.LastName" class="control-label"></label>
+                        <input asp-for="FamilyData.LastName" class="form-control" />
+                        <span asp-validation-for="FamilyData.LastName" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -195,16 +178,33 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label asp-for="Relation" class="control-label"></label>
-                        <input asp-for="Relation" class="form-control" />
-                        <span asp-validation-for="Relation" class="text-danger"></span>
+                        <label asp-for="FamilyData.Mobile" class="control-label"></label>
+                        <input asp-for="FamilyData.Mobile" class="form-control" />
+                        <span asp-validation-for="FamilyData.Mobile" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label asp-for="HomeAddress" class="control-label"></label>
-                        <input asp-for="HomeAddress" class="form-control" />
-                        <span asp-validation-for="HomeAddress" class="text-danger"></span>
+                        <label asp-for="FamilyData.ChildName" class="control-label"></label>
+                        <input asp-for="FamilyData.ChildName" class="form-control" />
+                        <span asp-validation-for="FamilyData.ChildName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="FamilyData.Relation" class="control-label"></label>
+                        <input asp-for="FamilyData.Relation" class="form-control" />
+                        <span asp-validation-for="FamilyData.Relation" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label asp-for="FamilyData.HomeAddress" class="control-label"></label>
+                        <input asp-for="FamilyData.HomeAddress" class="form-control" />
+                        <span asp-validation-for="FamilyData.HomeAddress" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -222,33 +222,16 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label asp-for="BusinessName" class="control-label"></label>
-                            <input asp-for="BusinessName" class="form-control" />
-                            <span asp-validation-for="BusinessName" class="text-danger"></span>
+                        <label asp-for="BusinessData.BusinessName" class="control-label"></label>
+                            <input asp-for="BusinessData.BusinessName" class="form-control" />
+                            <span asp-validation-for="BusinessData.BusinessName" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label asp-for="BusinessDetail" class="control-label"></label>
-                            <input asp-for="BusinessDetail" class="form-control" />
-                            <span asp-validation-for="BusinessDetail" class="text-danger"></span>
-                        </div>
-                    </div>
-                </div>
-
-                 <div class="row">
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label asp-for="BusinessAddress" class="control-label"></label>
-                            <input asp-for="BusinessAddress" class="form-control" />
-                            <span asp-validation-for="BusinessAddress" class="text-danger"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label asp-for="BusinessCity" class="control-label"></label>
-                            <input asp-for="BusinessCity" class="form-control" />
-                            <span asp-validation-for="BusinessCity" class="text-danger"></span>
+                            <label asp-for="BusinessData.BusinessDetail" class="control-label"></label>
+                            <input asp-for="BusinessData.BusinessDetail" class="form-control" />
+                            <span asp-validation-for="BusinessData.BusinessDetail" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
@@ -256,16 +239,33 @@
                  <div class="row">
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label asp-for="BusinessPostalCode" class="control-label"></label>
-                            <input asp-for="BusinessPostalCode" class="form-control" />
-                            <span asp-validation-for="BusinessPostalCode" class="text-danger"></span>
+                            <label asp-for="BusinessData.BusinessAddress" class="control-label"></label>
+                            <input asp-for="BusinessData.BusinessAddress" class="form-control" />
+                            <span asp-validation-for="BusinessData.BusinessAddress" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label asp-for="BusinessEmail" class="control-label"></label>
-                            <input asp-for="BusinessEmail" class="form-control" />
-                            <span asp-validation-for="BusinessEmail" class="text-danger"></span>
+                            <label asp-for="BusinessData.BusinessCity" class="control-label"></label>
+                            <input asp-for="BusinessData.BusinessCity" class="form-control" />
+                            <span asp-validation-for="BusinessData.BusinessCity" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label asp-for="BusinessData.BusinessPostalCode" class="control-label"></label>
+                            <input asp-for="BusinessData.BusinessPostalCode" class="form-control" />
+                        <span asp-validation-for="BusinessData.BusinessPostalCode" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label asp-for="BusinessData.BusinessEmail" class="control-label"></label>
+                            <input asp-for="BusinessData.BusinessEmail" class="form-control" />
+                            <span asp-validation-for="BusinessData.BusinessEmail" class="text-danger"></span>
                         </div>
                     </div>
                 </div>
@@ -281,15 +281,15 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <h6 class="d-inline">Address</h6>
-                                <input asp-for="Address" class="form-control" />
-                                <span asp-validation-for="Address" class="text-danger"></span>
+                        <input asp-for="AddressData.Address" class="form-control" />
+                                <span asp-validation-for="AddressData.Address" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <h6 class="d-inline">Country</h6>
-                                <input asp-for="Country" class="form-control" />
-                                <span asp-validation-for="Country" class="text-danger"></span>
+                                <input asp-for="AddressData.Country" class="form-control" />
+                                <span asp-validation-for="AddressData.Country" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
@@ -298,15 +298,15 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <h6 class="d-inline">State</h6>
-                                <input asp-for="State" class="form-control" />
-                                <span asp-validation-for="State" class="text-danger"></span>
+                                <input asp-for="AddressData.State" class="form-control" />
+                                <span asp-validation-for="AddressData.State" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <h6 class="d-inline">City</h6>
-                                <input asp-for="City" class="form-control" />
-                                <span asp-validation-for="City" class="text-danger"></span>
+                                <input asp-for="AddressData.City" class="form-control" />
+                                <span asp-validation-for="AddressData.City" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
@@ -315,15 +315,15 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <h6 class="d-inline">Postal Code</h6>
-                                <input asp-for="PostalCode" class="form-control" />
-                                <span asp-validation-for="PostalCode" class="text-danger"></span>
+                                <input asp-for="AddressData.PostalCode" class="form-control" />
+                                <span asp-validation-for="AddressData.PostalCode" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <h6 class="d-inline">Address Type</h6>
-                                <input asp-for="AddressType" class="form-control" />
-                                <span asp-validation-for="AddressType" class="text-danger"></span>
+                                <input asp-for="AddressData.AddressType" class="form-control" />
+                                <span asp-validation-for="AddressData.AddressType" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
@@ -331,8 +331,8 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <h6 class="d-inline">Additional Information</h6>
-                                <input asp-for="AdditonalInfo" class="form-control" />
-                                <span asp-validation-for="AdditonalInfo" class="text-danger"></span>
+                                <input asp-for="AddressData.AdditonalInfo" class="form-control" />
+                                <span asp-validation-for="AddressData.AdditonalInfo" class="text-danger"></span>
                             </div>
                         </div>
 

@@ -89,92 +89,45 @@ namespace MemberDataEntryForm.Controllers
         // GET: Home/Create
         public IActionResult Create()
         {
-            var member = new MemberImageModel();
-            return View(member);
+            var memberViewModel = new MemberViewModel();
+            return View(memberViewModel);
         }
 
         // POST: Home/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(MemberImageModel member)//([Bind("Id,Name,MemNo,Dob,ResAddress,ResPhone,OfficeNo,Profession,OfficeAddress,MobileNo,AlternateMobileNo,Email,DateofMarriage,NameofSpouse,SpouseDob,ChildName,Image")] MemberData memberDirectoryDatum)
+        public async Task<IActionResult> Create(MemberViewModel memberViewModel)//([Bind("Id,Name,MemNo,Dob,ResAddress,ResPhone,OfficeNo,Profession,OfficeAddress,MobileNo,AlternateMobileNo,Email,DateofMarriage,NameofSpouse,SpouseDob,ChildName,Image")] MemberData memberDirectoryDatum)
         {
             //MemberImageModel member = new MemberImageModel();
             string filename = "";
-            if (member.Photo != null)
+            if (memberViewModel.memberImageModel.Photo != null)
             {
                 string uploadfolder = Path.Combine(hostingenvironment.WebRootPath, "images");
-                filename = Guid.NewGuid().ToString() + "_" + member.Photo.FileName;
+                filename = Guid.NewGuid().ToString() + "_" + memberViewModel.memberImageModel.Photo.FileName;
                 string filepath = Path.Combine(uploadfolder, filename);
-                member.Photo.CopyTo(new FileStream(filepath, FileMode.Create));
+                memberViewModel.memberImageModel.Photo.CopyTo(new FileStream(filepath, FileMode.Create));
             }
-            MemberData memberDirectoryDatum = new MemberData
-            {
-                Id = member.Id,
-                Name = member.Name,
-                //MemNo = member.MemNo,
-                Dob = member.Dob,
-                ResAddress = member.ResAddress,
-                ResPhone = member.ResPhone,
-                OfficeAddress = member.OfficeAddress,
-                OfficeNo = member.OfficeNo,
-                Profession = member.Profession,
-                MobileNo = member.MobileNo,
-                AlternateMobileNo = member.AlternateMobileNo,
-                Email = member.Email,
-                DateofMarriage = member.DateofMarriage,
-                NameofSpouse = member.NameofSpouse,
-                SpouseDob = member.SpouseDob,
-                ChildName = member.ChildName,
-                Image = filename
-            };
-            _context.MemberDirectoryData.Add(memberDirectoryDatum);
-            await _context.SaveChangesAsync();
 
-            MembersFamilyData memberFamily = new MembersFamilyData
-            {
-                MemNo = memberDirectoryDatum.Id,
-                FirstName = member.FirstName,
-                LastName = member.LastName,
-                Relation = member.Relation,
-                HomeAddress = member.HomeAddress,
-                Mobile = member.Mobile,
-                ChildName = member.childName
-            };
-            _context.MemberFamilyDirectoryData.Add(memberFamily);
-
-
-            MemberBusinessData memberBusiness = new MemberBusinessData
-            {
-                MemNo = memberDirectoryDatum.Id,
-                BusinessName = member.BusinessName,
-                BusinessDetail = member.BusinessDetail,
-                BusinessAddress = member.BusinessAddress,
-                BusinessCity = member.BusinessCity,
-                BusinessPostalCode = member.BusinessPostalCode,
-                BusinessEmail = member.BusinessEmail
-            };
-            _context.MemberBusinessDirectoryData.Add(memberBusiness);
-
-            MemberAddressData memberAddress = new MemberAddressData
-            {
-                MemNo = memberDirectoryDatum.Id,
-                Address = member.Address,
-                Country = member.Country,
-                State = member.State,
-                City = member.City,
-                PostalCode = member.PostalCode,
-                AdditonalInfo = member.AdditonalInfo,
-                AddressType = member.AddressType
-            };
-            _context.MemberAddressDirectoryData.Add(memberAddress);
-           
+            memberViewModel.memberData.Image = filename;
             
+            _context.MemberDirectoryData.Add(memberViewModel.memberData);
             await _context.SaveChangesAsync();
-            //if (ModelState.IsValid)
-            //{
-            return RedirectToAction("Index");
-            //}
-            //return View(memberDirectoryDatum);
+
+            memberViewModel.FamilyData.MemNo = memberViewModel.memberData.Id;
+            _context.MemberFamilyDirectoryData.Add(memberViewModel.FamilyData);
+            
+            memberViewModel.BusinessData.MemNo = memberViewModel.memberData.Id;
+            _context.MemberBusinessDirectoryData.Add(memberViewModel.BusinessData);
+            
+            memberViewModel.AddressData.MemNo = memberViewModel.memberData.Id;
+            _context.MemberAddressDirectoryData.Add(memberViewModel.AddressData);
+
+            if (!ModelState.IsValid)
+            {
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(memberViewModel);
         }
 
         // GET: Home/Edit/5

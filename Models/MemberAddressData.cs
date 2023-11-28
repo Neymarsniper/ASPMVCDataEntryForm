@@ -25,8 +25,8 @@ namespace MemberDataEntryForm.Models
 
         [Required]
         public int PostalCode { get; set; }
-
-        public String AdditonalInfo { get; set; }
+        
+        public string AdditonalInfo { get; set; }
 
         [Required]
         public string AddressType { get; set; }

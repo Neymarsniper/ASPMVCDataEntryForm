@@ -66,6 +66,10 @@ namespace MemberDataEntryForm.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,MemNo,FirstName,LastName,Mobile,Relation,HomeAddress,ChildName")] MembersFamilyData memberFamilyData)
         {
+            //MembersFamilyData membersFamilyData = new MembersFamilyData()
+            //{
+            //    MemNo = memberViewModel.memberData.Id
+            //};
             //using (var dbContext = new MemberDataContext())
             //{
             //    int memno = memberFamilyData.MemNo;
@@ -78,7 +82,7 @@ namespace MemberDataEntryForm.Controllers
 
             //if (ModelState.IsValid)
            // {
-               _context.Add(memberFamilyData);
+               _context.MemberFamilyDirectoryData.Add(memberFamilyData);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Home");
            // }
