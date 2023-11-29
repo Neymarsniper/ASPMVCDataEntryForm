@@ -20,7 +20,7 @@ namespace MemberDataEntryForm.Models
         [MinLength(3)]
         public string Relation { get; set; }
         [Required]
-        [MaxLength(100)]
+        [MaxLength(200)]
         [MinLength(5)]
         public string HomeAddress { get; set; }
         [Required]

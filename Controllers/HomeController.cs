@@ -96,39 +96,59 @@ namespace MemberDataEntryForm.Controllers
         // POST: Home/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(MemberViewModel memberViewModel)//([Bind("Id,Name,MemNo,Dob,ResAddress,ResPhone,OfficeNo,Profession,OfficeAddress,MobileNo,AlternateMobileNo,Email,DateofMarriage,NameofSpouse,SpouseDob,ChildName,Image")] MemberData memberDirectoryDatum)
+        public async Task<IActionResult> Create(MemberViewModel memberViewModel)
         {
-            //MemberImageModel member = new MemberImageModel();
-            string filename = "";
+            //this below code is for inserting image path into SQL server....
+            string imagename = "";
             if (memberViewModel.memberImageModel.Photo != null)
             {
                 string uploadfolder = Path.Combine(hostingenvironment.WebRootPath, "images");
-                filename = Guid.NewGuid().ToString() + "_" + memberViewModel.memberImageModel.Photo.FileName;
-                string filepath = Path.Combine(uploadfolder, filename);
+                imagename = Guid.NewGuid().ToString() + "_" + memberViewModel.memberImageModel.Photo.FileName;
+                string filepath = Path.Combine(uploadfolder, imagename);
                 memberViewModel.memberImageModel.Photo.CopyTo(new FileStream(filepath, FileMode.Create));
             }
+            memberViewModel.memberData.Image = imagename;
 
-            memberViewModel.memberData.Image = filename;
-            
+            //this below code is for inserting image path into SQL server....
+            string signname = "";
+            if (memberViewModel.memberImageModel.Signature != null)
+            {
+                string uploadfolder = Path.Combine(hostingenvironment.WebRootPath, "images");
+                signname = Guid.NewGuid().ToString() + "_" + memberViewModel.memberImageModel.Signature.FileName;
+                string filepath = Path.Combine(uploadfolder, signname);
+                memberViewModel.memberImageModel.Signature.CopyTo(new FileStream(filepath, FileMode.Create));
+            }
+            memberViewModel.memberData.Sign = signname;
+
+            memberViewModel.memberData.CreatedAt = DateTime.UtcNow;
+
+            //this below code is for saving the MemberData model values onto database and generate the Id value....
             _context.MemberDirectoryData.Add(memberViewModel.memberData);
             await _context.SaveChangesAsync();
 
+            //this below code is for assigning the Id property value into the MemNo fields in all children models....
             memberViewModel.FamilyData.MemNo = memberViewModel.memberData.Id;
-            _context.MemberFamilyDirectoryData.Add(memberViewModel.FamilyData);
-            
             memberViewModel.BusinessData.MemNo = memberViewModel.memberData.Id;
-            _context.MemberBusinessDirectoryData.Add(memberViewModel.BusinessData);
-            
             memberViewModel.AddressData.MemNo = memberViewModel.memberData.Id;
-            _context.MemberAddressDirectoryData.Add(memberViewModel.AddressData);
 
-            if (!ModelState.IsValid)
+            //this below code is to save data of all 3 child model tables....
+            if (memberViewModel.FamilyData.MemNo != null && memberViewModel.BusinessData.MemNo != null && memberViewModel.AddressData.MemNo != null)
             {
+                _context.AddRange(memberViewModel.FamilyData, memberViewModel.BusinessData, memberViewModel.AddressData);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(memberViewModel);
+
+            ViewData["ErrorCreating"] = "Only MemberData is successfully saved!! Please complete all remaining forms...";
+            return RedirectToAction("Create");
         }
+
+
+
+
+       
+
+
 
         // GET: Home/Edit/5
         public async Task<IActionResult> Edit(int id)
@@ -232,17 +252,17 @@ namespace MemberDataEntryForm.Controllers
                 _context.MemberFamilyDirectoryData.Remove(memberFamilyData);
             }
 
-            var image = memberDirectoryDatum.Image;
+            //var image = memberDirectoryDatum.Image;
 
-            if (!string.IsNullOrEmpty(image))
-            {
-                string imagePath = Path.Combine(hostingenvironment.WebRootPath, "images", image);
+            //if (!string.IsNullOrEmpty(image))
+            //{
+            //    string imagePath = Path.Combine(hostingenvironment.WebRootPath, "images", image);
 
-                if (System.IO.File.Exists(imagePath))
-                {
-                    System.IO.File.Delete(imagePath);
-                }
-            }
+            //    if (System.IO.File.Exists(imagePath))
+            //    {
+            //        System.IO.File.Delete(imagePath);
+            //    }
+            //}
 
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");

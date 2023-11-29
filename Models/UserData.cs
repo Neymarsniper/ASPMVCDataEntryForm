@@ -19,7 +19,7 @@ namespace MemberDataEntryForm.Models
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Email is Mandatory!!!")]
-        [RegularExpression("^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$")]
+        [RegularExpression("^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$", ErrorMessage = "enter valid Email")]
         //[MaxLength(30)]
         //[MinLength(3)]
         public string Email { get; set; }

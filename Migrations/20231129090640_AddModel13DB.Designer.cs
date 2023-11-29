@@ -4,6 +4,7 @@ using MemberDataEntryForm.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MemberDataEntryForm.Migrations
 {
     [DbContext(typeof(MemberDataContext))]
-    partial class MemberDataContextModelSnapshot : ModelSnapshot
+    [Migration("20231129090640_AddModel13DB")]
+    partial class AddModel13DB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,10 +60,9 @@ namespace MemberDataEntryForm.Migrations
                     b.Property<int>("MemNo")
                         .HasColumnType("int");
 
-                    b.Property<string>("PostalCode")
-                        .IsRequired()
+                    b.Property<int>("PostalCode")
                         .HasMaxLength(6)
-                        .HasColumnType("nvarchar(6)");
+                        .HasColumnType("int");
 
                     b.Property<string>("State")
                         .IsRequired()
@@ -108,10 +110,9 @@ namespace MemberDataEntryForm.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<string>("BusinessPostalCode")
-                        .IsRequired()
+                    b.Property<int>("BusinessPostalCode")
                         .HasMaxLength(6)
-                        .HasColumnType("nvarchar(6)");
+                        .HasColumnType("int");
 
                     b.Property<int>("MemNo")
                         .HasColumnType("int");
@@ -139,9 +140,6 @@ namespace MemberDataEntryForm.Migrations
                     b.Property<string>("ChildName")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DateofMarriage")
                         .HasColumnType("datetime2");
@@ -197,10 +195,6 @@ namespace MemberDataEntryForm.Migrations
                         .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
-
-                    b.Property<string>("Sign")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("SpouseDob")
                         .HasColumnType("datetime2");

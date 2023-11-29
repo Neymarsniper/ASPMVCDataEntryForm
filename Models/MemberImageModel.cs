@@ -7,5 +7,6 @@ namespace MemberDataEntryForm.Models
     {
         [Required]
         public IFormFile Photo { get; set; }
+        public IFormFile Signature { get; set; }
     }
 }

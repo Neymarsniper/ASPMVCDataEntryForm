@@ -12,11 +12,11 @@ namespace MemberDataEntryForm.Models
         [MinLength(3)]
         public string BusinessName { get; set; }
         [Required]
-        [MaxLength(100)]
+        [MaxLength(200)]
         [MinLength(3)]
         public string BusinessDetail { get; set; }
         [Required]
-        [MaxLength(100)]
+        [MaxLength(300)]
         [MinLength(3)]
         public string BusinessAddress { get; set; }
         [Required]
@@ -24,11 +24,10 @@ namespace MemberDataEntryForm.Models
         [MinLength(3)]
         public string BusinessCity { get; set; }
         [Required]
-        [MaxLength(10)]
-        [MinLength(3)]
+        [MaxLength(6)]
         public string BusinessPostalCode { get; set; }
         [Required]
-        [MaxLength(40)]
+        [MaxLength(100)]
         [MinLength(3)]
         public string BusinessEmail { get; set; }
         [Required]

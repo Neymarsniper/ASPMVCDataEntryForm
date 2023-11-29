@@ -11,18 +11,15 @@ namespace MemberDataEntryForm.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Name is must!!!")]
-        [MaxLength(20)]
+        [MaxLength(100)]
         [MinLength(3)]
         public string Name { get; set; } = null!;
-
-        //[Required(ErrorMessage = "Member Number is must!!!")]
-        //public int MemNo { get; set; }
 
         [Required(ErrorMessage = "D.O.B is Necessary!!!")]
         public DateTime Dob { get; set; }
 
         [Required(ErrorMessage = "Please provide the Addess!!!")]
-        [MaxLength(100)]
+        [MaxLength(200)]
         [MinLength(3)]
         public string ResAddress { get; set; } = null!;
 
@@ -42,7 +39,7 @@ namespace MemberDataEntryForm.Models
         public string Profession { get; set; } = null!;
 
         [Required]
-        [MaxLength(100)]
+        [MaxLength(200)]
         [MinLength(3)]
         public string OfficeAddress { get; set; } = null!;
 
@@ -57,6 +54,7 @@ namespace MemberDataEntryForm.Models
 
         [Required(ErrorMessage = "Email is Mandatory!!!")]
         [RegularExpression("^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$")]
+        [MaxLength(200)]
         public string Email { get; set; } = null!;
 
         [Required]
@@ -76,7 +74,14 @@ namespace MemberDataEntryForm.Models
 
         [Required]
         public string Image { get; set; }
-        //[Required]
-        //public string UserPassword { get; set; } = null!;
+
+        [Required]
+        public string Sign { get; set; }
+
+        public DateTime CreatedAt { get; set; }
+
+        public MembersFamilyData FamilyData { get; set; }
+        public MemberBusinessData BusinessData { get; set; }
+        public MemberAddressData AddressData { get; set; }
     }
 }

@@ -10,22 +10,26 @@ namespace MemberDataEntryForm.Models
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(150)]
+        [MaxLength(200)]
         public string Address { get; set; }
 
         [Required]
+        [MaxLength(30)]
         public string Country { get; set; }
 
         [Required]
+        [MaxLength(50)]
         public string State { get; set; }
 
         [Required]
-        [MaxLength(150)]
+        [MaxLength(100)]
         public string City { get; set; }
 
         [Required]
-        public int PostalCode { get; set; }
-        
+        [MaxLength(6)]
+        public string PostalCode { get; set; }
+
+        [MaxLength(300)]
         public string AdditonalInfo { get; set; }
 
         [Required]

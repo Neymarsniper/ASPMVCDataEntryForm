@@ -23,5 +23,23 @@ namespace MemberDataEntryForm.Models
         public virtual DbSet<MemberBusinessData> MemberBusinessDirectoryData { get; set; }
         public virtual DbSet<MemberAddressData> MemberAddressDirectoryData { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<MemberData>()
+                .HasOne(md => md.FamilyData)
+                .WithOne(md => md.MemberData)
+                .HasForeignKey<MembersFamilyData>(fd => fd.MemNo);
+
+            modelBuilder.Entity<MemberData>()
+                .HasOne(md => md.BusinessData)
+                .WithOne(md => md.MemberData)
+                .HasForeignKey<MemberBusinessData>(bd => bd.MemNo);
+
+            modelBuilder.Entity<MemberData>()
+                .HasOne(md => md.AddressData)
+                .WithOne(md => md.MemberData)
+                .HasForeignKey<MemberAddressData>(ad => ad.MemNo);
+        }
+
     }
 }

@@ -8,96 +8,111 @@
 
 <div>
     <hr />
-    @* <dt class="col-sm-2"> *@
-        @* @Html.DisplayNameFor(model => model.Image) *@
-    @* </dt> *@
-    @* <dd class="col-sm-10"> *@
-        <img src="~/images/@Html.DisplayFor(model => model.Image)" style="width:100px; height:100px;" />
-    @* </dd> *@
+
     <dl class="row">
+
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
+            Profile Photo :
+        </dt>
+        <dd class="col-sm-10">
+        <img src="~/images/@Html.DisplayFor(model => model.Image)" style="width:100px; height:100px;" />
+        </dd>
+        <dt class="col-sm-2">
+            Signature :
+        </dt>
+        <dd class="col-sm-10">
+        <img src="~/images/@Html.DisplayFor(model => model.Sign)" style="width:100px; height:100px;" />
+        </dd>
+
+        <dt class="col-sm-2">
+           Member Id :
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Id)
         </dd>
         <dt class="col-sm-2">
-            D.O.B
+            D.O.B :
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Dob)
         </dd>
         <dt class="col-sm-2">
-            Registered Address
+            Registered Address :
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ResAddress)
         </dd>
         <dt class="col-sm-2">
-            Registered Phone
+            Registered Phone :
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ResPhone)
         </dd>
         <dt class="col-sm-2">
-            Office No.
+            Office No. :
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.OfficeNo)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Profession)
+            Profession :
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Profession)
         </dd>
         <dt class="col-sm-2">
-            Office Address
+            Office Address : 
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.OfficeAddress)
         </dd>
         <dt class="col-sm-2">
-           Mobile No.
+           Mobile No. :
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.MobileNo)
         </dd>
         <dt class="col-sm-2">
-            Alternate Mobile No.
+            Alternate Mobile No. :
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.AlternateMobileNo)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
+           Email :
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Email)
         </dd>
         <dt class="col-sm-2">
-            Date of Marriage
+            Date of Marriage :
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DateofMarriage)
         </dd>
         <dt class="col-sm-2">
-            Spouse Name
+            Spouse Name :
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.NameofSpouse)
         </dd>
         <dt class="col-sm-2">
-            Spouse D.O.B
+            Spouse D.O.B :
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.SpouseDob)
         </dd>
         <dt class="col-sm-2">
-           Child Name
+           Child Name :
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ChildName)
+        </dd>
+        <dt class="col-sm-2">
+            Form Created On :
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CreatedAt)
         </dd>
     </dl>
 </div>
