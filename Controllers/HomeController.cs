@@ -24,6 +24,9 @@ namespace MemberDataEntryForm.Controllers
         // GET: Home
         public async Task<IActionResult> Index()
         {
+            //List<MemberData> memberDataList = await _context.MemberDirectoryData.ToListAsync();
+            //var viewModelList = memberDataList.Select(memberData => new MemberViewModel { memberData = memberData }).ToList();
+            //return View(viewModelList);  
             return _context.MemberDirectoryData != null ? View(await _context.MemberDirectoryData.ToListAsync()) : Problem("Entity set 'MemberDirectoryContext.MemberDirectoryData'  is null.");
         }
 
@@ -72,11 +75,6 @@ namespace MemberDataEntryForm.Controllers
         // GET: Home/Details/5
         public async Task<IActionResult> Details(int id)
         {
-            //if (_context.MemberDirectoryData == null/* && HttpContext.Session.GetString("UserSession") == null*/)
-            //{
-            //    return RedirectToAction("Login");
-            //}
-
             var memberDirectoryDatum = await _context.MemberDirectoryData.FirstOrDefaultAsync(m => m.Id == id);
             if (memberDirectoryDatum == null)
             {
@@ -145,11 +143,6 @@ namespace MemberDataEntryForm.Controllers
 
 
 
-
-       
-
-
-
         // GET: Home/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
@@ -166,21 +159,49 @@ namespace MemberDataEntryForm.Controllers
             return View(memberDirectoryDatum);
         }
 
-        // POST: Home/Edit/5
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,MemNo,Dob,ResAddress,ResPhone,OfficeNo,Profession,OfficeAddress,MobileNo,AlternateMobileNo,Email,DateofMarriage,NameofSpouse,SpouseDob,ChildName,Image")] MemberData memberDirectoryDatum)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Dob,ResAddress,ResPhone,OfficeNo,Profession,OfficeAddress,MobileNo,AlternateMobileNo,Email,DateofMarriage,NameofSpouse,SpouseDob,ChildName,Image,Sign,CreatedAt")] MemberData memberDirectoryDatum, IFormFile newPhoto, IFormFile newSignature)
         {
             if (id != memberDirectoryDatum.Id)
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
-            {
                 try
                 {
-                    _context.Update(memberDirectoryDatum);
+                var existingData = await _context.MemberDirectoryData.FindAsync(id);
+
+                if (newPhoto != null)
+                    {
+                        // Upload new photo and update image property
+                        string imagename = Guid.NewGuid().ToString() + "_" + newPhoto.FileName;
+                        string uploadfolder = Path.Combine(hostingenvironment.WebRootPath, "images");
+                        string filepath = Path.Combine(uploadfolder, imagename);
+                        newPhoto.CopyTo(new FileStream(filepath, FileMode.Create));
+                        existingData.Image = imagename;
+                    }
+
+                    if (newSignature != null)
+                    {
+                        // Upload new signature and update sign property
+                        string signname = Guid.NewGuid().ToString() + "_" + newSignature.FileName;
+                        string uploadfolder = Path.Combine(hostingenvironment.WebRootPath, "images");
+                        string filepath = Path.Combine(uploadfolder, signname);
+                        newSignature.CopyTo(new FileStream(filepath, FileMode.Create));
+                        existingData.Sign = signname;
+                    }
+
+                    memberDirectoryDatum.Image = existingData.Image;
+                    memberDirectoryDatum.Sign = existingData.Sign;
+
+                // Detach the existing entity if it's sahring the same Id or same Data...
+                if (existingData != null)
+                {
+                    _context.Entry(existingData).State = EntityState.Detached;
+                }
+                
+                _context.Update(memberDirectoryDatum);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -194,10 +215,7 @@ namespace MemberDataEntryForm.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Index");
-                //return RedirectToAction("Details", new { id = memberDirectoryDatum.Id });
-            }
-            return View(memberDirectoryDatum);
+                return RedirectToAction("Details", new { id = memberDirectoryDatum.Id });
         }
 
 

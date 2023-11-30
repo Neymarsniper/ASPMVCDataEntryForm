@@ -83,5 +83,6 @@ namespace MemberDataEntryForm.Models
         public MembersFamilyData FamilyData { get; set; }
         public MemberBusinessData BusinessData { get; set; }
         public MemberAddressData AddressData { get; set; }
+
     }
 }

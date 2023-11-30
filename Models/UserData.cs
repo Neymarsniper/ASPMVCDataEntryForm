@@ -51,17 +51,12 @@ namespace MemberDataEntryForm.Models
         //[MinLength(10)]
         public string MobileNo { get; set; }
 
-        //[ForeignKey("userType")]
-        //public string userType { get; set; }
         [Required]
         public int UserRoleId { get; set; }
         [ForeignKey("UserRoleId")]
 
         [Required]
         public UserType UserType { get; set; }
-
-        //[Required]
-        //public int useTypeId { get; set; }
 
     }
 }

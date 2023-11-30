@@ -33,7 +33,6 @@ namespace MemberDataEntryForm.Controllers
             }
             else
             {
-                ViewBag.msg = "Access Denied!!";
                 return RedirectToAction("Details", new { id = myuser.UserId });
             }
             //return _context.UserDirectoryData != null ? View(await _context.UserDirectoryData.ToListAsync()) : Problem("Entity set 'MemberDataContext.UserDirectoryData'  is null.");
@@ -132,6 +131,8 @@ namespace MemberDataEntryForm.Controllers
                 return NotFound();
             }
 
+            ViewData["userType"] = new SelectList(_context.GetUserTypes, "RoleId", "RoleName");
+
             var userData = await _context.UserDirectoryData.FindAsync(id);
             if (userData == null)
             {
@@ -152,8 +153,8 @@ namespace MemberDataEntryForm.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 try
                 {
                     _context.Update(userData);
@@ -172,8 +173,8 @@ namespace MemberDataEntryForm.Controllers
                 }
                 //return RedirectToAction(nameof(Index));
                 return RedirectToAction("Details", new { id = userData.UserId });
-            }
-            return View(userData);
+            //}
+            //return View(userData);
         }
 
         // GET: User/Delete/5
