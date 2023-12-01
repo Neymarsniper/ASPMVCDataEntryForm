@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using MemberDataEntryForm.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Net;
 
 namespace MemberDataEntryForm.Controllers
 {
@@ -35,7 +36,6 @@ namespace MemberDataEntryForm.Controllers
             {
                 return RedirectToAction("Details", new { id = myuser.UserId });
             }
-            //return _context.UserDirectoryData != null ? View(await _context.UserDirectoryData.ToListAsync()) : Problem("Entity set 'MemberDataContext.UserDirectoryData'  is null.");
         }
 
 
@@ -86,12 +86,18 @@ namespace MemberDataEntryForm.Controllers
             {
                 return NotFound();
             }
-            var myuser = await _context.UserDirectoryData.SingleOrDefaultAsync(u => u.UserId == id);
-            if (myuser.UserRoleId == 1)
-            {
-                ViewBag.Auth = "Success";
-            }
+
             var userData = await _context.UserDirectoryData.Include(m => m.UserType).FirstOrDefaultAsync(m => m.UserId == id);
+
+            if (userData.UserRoleId == 1)
+            {
+                ViewBag.AdminAuth = "Success";
+            }
+            if (userData.UserRoleId == 2)
+            {
+                ViewBag.FrontAuth = "Success";
+            }
+
             if (userData == null)
             {
                 return NotFound();
@@ -104,6 +110,7 @@ namespace MemberDataEntryForm.Controllers
         public IActionResult Create()
         {
             ViewData["userType"] = new SelectList(_context.GetUserTypes, "RoleId", "RoleName");
+            ViewData["statusCodes"] = new SelectList(_context.UserStatusDirectoryData, "StatusCode", "StatusMessage");
             return View();
         }
 
@@ -112,7 +119,7 @@ namespace MemberDataEntryForm.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UserId,FirstName,LastName,Email,EmailConfirmed,Password,PasswordConfirmed,Address,City,MobileNo,UserRoleId")] UserData userData)
+        public async Task<IActionResult> Create([Bind("UserId,FirstName,LastName,Email,EmailConfirmed,Password,PasswordConfirmed,Address,City,MobileNo,UserRoleId,DataStatusId")] UserData userData)
         {
             //if (ModelState.IsValid)
             //{
@@ -122,6 +129,7 @@ namespace MemberDataEntryForm.Controllers
             //}
             //return View(userData);
         }
+
 
         // GET: User/Edit/5
         public async Task<IActionResult> Edit(int id)
@@ -134,6 +142,7 @@ namespace MemberDataEntryForm.Controllers
             ViewData["userType"] = new SelectList(_context.GetUserTypes, "RoleId", "RoleName");
 
             var userData = await _context.UserDirectoryData.FindAsync(id);
+            
             if (userData == null)
             {
                 return NotFound();
@@ -141,20 +150,81 @@ namespace MemberDataEntryForm.Controllers
             return View(userData);
         }
 
+
+        //public async Task<IActionResult> Pending(int id)
+        //{
+        //    if (id == null || _context.UserProposedDirectoryData == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var userproposedData = _context.UserProposedDirectoryData.FindAsync(id);
+
+        //    var userData = _context.UserDirectoryData.FindAsync(id);
+
+        //    _context.Add(userData);
+        //    await _context.SaveChangesAsync();
+
+        //    if (userData == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return RedirectToAction("Details", new { id = userData.UserId });
+        //}
+
+
         // POST: User/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserId,FirstName,LastName,Email,EmailConfirmed,Password,PasswordConfirmed,Address,City,MobileNo,UserRoleId")] UserData userData)
+        public async Task<IActionResult> Edit(int id, [Bind("UserId,FirstName,LastName,Email,EmailConfirmed,Password,PasswordConfirmed,Address,City,MobileNo,UserRoleId,DataStatusId")] UserData userData)
         {
             if (id != userData.UserId)
             {
                 return NotFound();
             }
 
-            //if (ModelState.IsValid)
-            //{
+            if (userData.UserRoleId == 2)
+            {
+                var allrecords = _context.UserProposedDirectoryData.ToList();
+                _context.UserProposedDirectoryData.RemoveRange(allrecords);
+
+                UserProposedData userProposedData = new UserProposedData
+                {
+                    UserId = userData.UserId,
+                    FirstName = userData.FirstName,
+                    LastName = userData.LastName,
+                    Email = userData.Email,
+                    EmailConfirmed = userData.EmailConfirmed,
+                    Password = userData.Password,
+                    PasswordConfirmed = userData.PasswordConfirmed,
+                    Address = userData.Address,
+                    City = userData.City,
+                    MobileNo = userData.MobileNo,
+                    UserRoleId = userData.UserRoleId,
+                    DataStatusId = 1
+                };
+
+                try
+                {
+                    _context.Add(userProposedData);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!UserDataExists(userData.UserId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+            else
+            {
                 try
                 {
                     _context.Update(userData);
@@ -171,11 +241,14 @@ namespace MemberDataEntryForm.Controllers
                         throw;
                     }
                 }
-                //return RedirectToAction(nameof(Index));
-                return RedirectToAction("Details", new { id = userData.UserId });
-            //}
-            //return View(userData);
+            }
+            return RedirectToAction("Details", new { id = userData.UserId });
+
         }
+
+
+
+
 
         // GET: User/Delete/5
         public async Task<IActionResult> Delete(int? id)

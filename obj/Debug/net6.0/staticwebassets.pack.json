@@ -17,36 +17,24 @@
       "PackagePath": "staticwebassets\\images\\3abc4257-96cb-4e13-920f-c612076ce572_img.jpg"
     },
     {
-      "Id": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\images\\back.jpg",
-      "PackagePath": "staticwebassets\\images\\back.jpg"
-    },
-    {
-      "Id": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\images\\back1.jpg",
-      "PackagePath": "staticwebassets\\images\\back1.jpg"
-    },
-    {
-      "Id": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\images\\back2.jpg",
-      "PackagePath": "staticwebassets\\images\\back2.jpg"
-    },
-    {
-      "Id": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\images\\back3.jpg",
-      "PackagePath": "staticwebassets\\images\\back3.jpg"
-    },
-    {
       "Id": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\images\\bc6aab53-df1a-4b45-a39a-ae05522b98c2_luis-suarez-lionel-messi-neymar-barcelona_1ehok1iadk3771k3unyiojp8zl.jpg",
       "PackagePath": "staticwebassets\\images\\bc6aab53-df1a-4b45-a39a-ae05522b98c2_luis-suarez-lionel-messi-neymar-barcelona_1ehok1iadk3771k3unyiojp8zl.jpg"
     },
     {
-      "Id": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\images\\black.jpeg",
-      "PackagePath": "staticwebassets\\images\\black.jpeg"
+      "Id": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\images\\photo1.jpg",
+      "PackagePath": "staticwebassets\\images\\photo1.jpg"
     },
     {
-      "Id": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\images\\black.jpg",
-      "PackagePath": "staticwebassets\\images\\black.jpg"
+      "Id": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\images\\photo2.jpg",
+      "PackagePath": "staticwebassets\\images\\photo2.jpg"
     },
     {
-      "Id": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\images\\white.jpg",
-      "PackagePath": "staticwebassets\\images\\white.jpg"
+      "Id": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\images\\photo3.jpg",
+      "PackagePath": "staticwebassets\\images\\photo3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\images\\photo4.jpg",
+      "PackagePath": "staticwebassets\\images\\photo4.jpg"
     },
     {
       "Id": "C:\\Users\\shubh\\source\\repos\\MemberDataEntryForm\\MemberDataEntryForm\\wwwroot\\js\\site.js",

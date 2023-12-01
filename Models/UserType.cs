@@ -10,6 +10,6 @@ namespace MemberDataEntryForm.Models
         [Required]
         public string RoleName { get; set; }
 
-        public ICollection<UserData> userData { get; set; }
+        //public ICollection<UserData> userData { get; set; }
     }
 }

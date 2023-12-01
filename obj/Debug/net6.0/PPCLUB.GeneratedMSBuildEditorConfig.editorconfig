@@ -104,6 +104,46 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/UserProposedData/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclByb3Bvc2VkRGF0YVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/UserProposedData/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclByb3Bvc2VkRGF0YVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/UserProposedData/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclByb3Bvc2VkRGF0YVxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/UserProposedData/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclByb3Bvc2VkRGF0YVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/UserProposedData/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclByb3Bvc2VkRGF0YVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/UserStatusCodes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclN0YXR1c0NvZGVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/UserStatusCodes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclN0YXR1c0NvZGVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/UserStatusCodes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclN0YXR1c0NvZGVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/UserStatusCodes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclN0YXR1c0NvZGVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/UserStatusCodes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclN0YXR1c0NvZGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/shubh/source/repos/MemberDataEntryForm/MemberDataEntryForm/Views/UserType/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclR5cGVcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

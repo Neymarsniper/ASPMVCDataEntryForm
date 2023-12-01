@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MemberDataEntryForm.Models
 {
-    public class UserData
+    public class UserProposedData
     {
         [Key]
-        public int UserId { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Please enter the First Name")]
         //[MaxLength(20)]
@@ -27,7 +27,7 @@ namespace MemberDataEntryForm.Models
         [Required(ErrorMessage = "Please confirm your Email")]
         [Compare("Email", ErrorMessage = "Email and Confirm Email must be same!!")]
         public string EmailConfirmed { get; set; }
-        
+
         [Required(ErrorMessage = "Password is Mandatory!!!")]
         [RegularExpression("(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$", ErrorMessage = "Range must be 8 and 15!, must include : Uppercase, Lowercase, Number, Special Symbols...")] // this is Strong Password code
         public string Password { get; set; }
@@ -35,7 +35,7 @@ namespace MemberDataEntryForm.Models
         [Required(ErrorMessage = "Please confirm your Password")]
         [Compare("Password", ErrorMessage = "Password and Confirm password must be same!!")]
         public string PasswordConfirmed { get; set; }
-        
+
         [Required]
         //[MaxLength(100)]
         //[MinLength(3)]
@@ -53,13 +53,13 @@ namespace MemberDataEntryForm.Models
 
         [Required]
         public int UserRoleId { get; set; }
-        [ForeignKey("UserRoleId")]
-
-        [Required]
-        public UserType UserType { get; set; }
         [Required]
         public int DataStatusId { get; set; }
-        //[ForeignKey("DataStatusId")]
-        //public UserStatusCodes UserStatusCodes { get; set; }
+        [ForeignKey("DataStatusId")]
+        public UserStatusCodes UserStatusCodes { get; set; }
+        [Required]
+        public int UserId { get; set; }
+        [ForeignKey("UserId")]
+        public UserData UserData { get; set; }
     }
 }

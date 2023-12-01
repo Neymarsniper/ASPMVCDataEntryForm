@@ -1,4 +1,4 @@
-﻿@model MemberDataEntryForm.Models.UserData
+﻿@model MemberDataEntryForm.Models.UserProposedData
 
 @{
     ViewData["Title"] = "Details";
@@ -6,24 +6,19 @@
 
 <h1>Details</h1>
 
+<div class="row">
 <div>
-    <h4>User Existing Data</h4>
+    <h4>User Proposed Data</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-        User Id
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.UserId)
-        </dd>
-        <dt class = "col-sm-2">
-           First Name
+            @Html.DisplayNameFor(model => model.FirstName)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.FirstName)
         </dd>
         <dt class = "col-sm-2">
-           Last Name
+            @Html.DisplayNameFor(model => model.LastName)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.LastName)
@@ -35,10 +30,22 @@
             @Html.DisplayFor(model => model.Email)
         </dd>
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EmailConfirmed)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmailConfirmed)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Password)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Password)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PasswordConfirmed)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PasswordConfirmed)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Address)
@@ -53,41 +60,28 @@
             @Html.DisplayFor(model => model.City)
         </dd>
         <dt class = "col-sm-2">
-            Mobile No.
+            @Html.DisplayNameFor(model => model.MobileNo)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.MobileNo)
         </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserRoleId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserRoleId)
+        </dd>
         <dt class="col-sm-2">
-            User Type
+            Data Edit Status
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.UserType.RoleName)
+            @Html.DisplayFor(model => model.DataStatusId)
         </dd>
     </dl>
 </div>
+</div>
+<a asp-controller="User" asp-action="Pending" asp-route-id="@Model.UserId" class="btn btn-Success">Accept Changes</a>
 
-    <a asp-controller="User" asp-action="Logout" class="btn btn-primary">LogOut</a>
-    <br />
-    <br />
-@{
-    if (ViewBag.AdminAuth != null)
-    {
-        <a asp-action="Edit" asp-route-id="@Model?.UserId" class="btn btn-secondary">Edit Data</a>
-        <span class="seperator"> | </span>
-        <a asp-action="Delete" asp-route-id="@Model?.UserId" class="btn btn-secondary">Delete User Data</a>
-        <span class="seperator"> | </span>
-        <a asp-controller="User" asp-action="Index" asp-route-id="@Model?.UserId" class="btn btn-success">Access Users List</a>
-        <span class="seperator"> | </span>
-    }
-
-    if (ViewBag.FrontAuth != null)
-    {
-        <a asp-action="Edit" asp-route-id="@Model?.UserId" class="btn btn-secondary">Edit Data</a>
-        <span class="seperator"> | </span>
-        <a asp-action="Delete" asp-route-id="@Model?.UserId" class="btn btn-secondary">Delete User Data</a>
-        <span class="seperator"> | </span>
-    }
-}
-<a asp-controller="Home" asp-action="Index" class="btn btn-primary">Access Members List</a>
-
+<div>
+    <a asp-controller="User" asp-action="Index" asp-route-id="@Model.UserId" class="btn btn-primary">Back to the List</a>
+</div>

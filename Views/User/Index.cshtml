@@ -91,9 +91,8 @@
                     </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-secondary">Edit</a> |
-                @*     <a asp-action="Details" asp-route-id="@item.UserId">Details</a> | *@
+                    <a asp-controller="UserProposedData" asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-primary">Pending Request</a> |
                     <a asp-action="Delete" asp-route-id="@item.UserId" class="btn btn-secondary">Delete</a>
-                        @* <a asp-action="Login">User Login here</a> *@
                 </td>
             </tr>
         }
@@ -102,4 +101,4 @@
     <a asp-action="Logout" class="btn btn-primary">LogOut</a>
 </table>
 <a asp-controller="User" asp-action="Create" class="btn btn-primary">Create New User</a> |
-<a asp-controller="UserType" asp-action="Index" class="btn btn-primary">User Types List</a>
+<a asp-controller="UserType" asp-action="Index" class="btn btn-primary">User Types List</a> 

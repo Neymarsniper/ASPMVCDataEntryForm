@@ -4,6 +4,7 @@ using MemberDataEntryForm.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MemberDataEntryForm.Migrations
 {
     [DbContext(typeof(MemberDataContext))]
-    partial class MemberDataContextModelSnapshot : ModelSnapshot
+    [Migration("20231201092636_AddModel17DB")]
+    partial class AddModel17DB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -363,17 +366,10 @@ namespace MemberDataEntryForm.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.Property<int>("UserRoleId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DataStatusId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("UserProposedDirectoryData");
                 });
@@ -454,25 +450,6 @@ namespace MemberDataEntryForm.Migrations
                         .IsRequired();
 
                     b.Navigation("UserType");
-                });
-
-            modelBuilder.Entity("MemberDataEntryForm.Models.UserProposedData", b =>
-                {
-                    b.HasOne("MemberDataEntryForm.Models.UserStatusCodes", "UserStatusCodes")
-                        .WithMany()
-                        .HasForeignKey("DataStatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MemberDataEntryForm.Models.UserData", "UserData")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("UserData");
-
-                    b.Navigation("UserStatusCodes");
                 });
 
             modelBuilder.Entity("MemberDataEntryForm.Models.MemberData", b =>
