@@ -27,7 +27,16 @@ namespace MemberDataEntryForm.Controllers
         public async Task<IActionResult> Index(int id)
         {
             var myuser = await _context.UserDirectoryData.SingleOrDefaultAsync(u => u.UserId == id);
-            if (myuser.UserRoleId == 1)
+
+
+            if(myuser.UserRoleId == 1)
+            {
+                var AdminUserId = myuser.UserId;
+                ViewBag.AdminUserId = AdminUserId;
+                ViewBag.msg = "Success";
+            }
+
+            if (myuser.UserRoleId == 1 || myuser.UserRoleId == 2)
             {
                 ViewBag.message = "Access Granted!";
                 return _context.UserDirectoryData != null ? View(await _context.UserDirectoryData.ToListAsync()) : Problem("Entity set 'MemberDataContext.UserDirectoryData'  is null.");
@@ -89,13 +98,9 @@ namespace MemberDataEntryForm.Controllers
 
             var userData = await _context.UserDirectoryData.Include(m => m.UserType).FirstOrDefaultAsync(m => m.UserId == id);
 
-            if (userData.UserRoleId == 1)
+            if (userData.UserRoleId == 1 || userData.UserRoleId == 2)
             {
                 ViewBag.AdminAuth = "Success";
-            }
-            if (userData.UserRoleId == 2)
-            {
-                ViewBag.FrontAuth = "Success";
             }
 
             if (userData == null)

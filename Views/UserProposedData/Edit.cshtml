@@ -4,20 +4,20 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
 
 
-<h4>User Existing Data</h4>
-<hr />
 <div class="row">
         <form asp-action="Edit">
+    <div class="col-md-6">
+<h4>User Existing Data</h4>
+<br />
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="UserId" />
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <h6 class="d-inline">First Name*</h6>
+                        <h6 class="d-inline">First Name</h6>
                     <input asp-for="UserData.FirstName" class="form-control" readonly />
                         <span asp-validation-for="UserData.FirstName" class="text-danger"></span>
                     </div>
@@ -25,7 +25,7 @@
 
                 <div class="col-md-3">
                     <div class="form-group">
-                        <h6 class="d-inline">Last Name*</h6>
+                        <h6 class="d-inline">Last Name</h6>
                     <input asp-for="UserData.LastName" class="form-control" readonly />
                         <span asp-validation-for="UserData.LastName" class="text-danger"></span>
                     </div>
@@ -35,7 +35,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <h6 class="d-inline">E-Mail Address*</h6>
+                        <h6 class="d-inline">E-Mail Address</h6>
                     <input asp-for="UserData.Email" class="form-control" readonly />
                         <span asp-validation-for="UserData.Email" class="text-danger"></span>
                     </div>
@@ -43,9 +43,9 @@
 
                 <div class="col-md-3">
                     <div class="form-group">
-                        <h6 class="d-inline">Confirm E-Mail*</h6>
-                    <input asp-for="UserData.EmailConfirmed" class="form-control" readonly />
-                        <span asp-validation-for="UserData.EmailConfirmed" class="text-danger"></span>
+                        <h6 class="d-inline">Password</h6>
+                    <input asp-for="UserData.Password" class="form-control" readonly />
+                        <span asp-validation-for="UserData.Password" class="text-danger"></span>
                     </div>
                 </div>
             </div>
@@ -53,15 +53,15 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <h6 class="d-inline">Enter Password*</h6>
-                    <input asp-for="UserData.Password" class="form-control" readonly />
-                        <span asp-validation-for="UserData.Password" class="text-danger"></span>
+                        <h6 class="d-inline">E-Mail Address</h6>
+                    <input asp-for="UserData.EmailConfirmed" class="form-control" readonly />
+                        <span asp-validation-for="UserData.EmailConfirmed" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
-                        <h6 class="d-inline">Confirm Password*</h6>
+                        <h6 class="d-inline">Password</h6>
                     <input asp-for="UserData.PasswordConfirmed" class="form-control" readonly />
                         <span asp-validation-for="UserData.PasswordConfirmed" class="text-danger"></span>
                     </div>
@@ -71,15 +71,15 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <h6 class="d-inline">Address*</h6>
+                        <h6 class="d-inline">Address</h6>
                     <input asp-for="UserData.Address" class="form-control" readonly />
-                        <span asp-validation-for="Address" class="text-danger"></span>
+                        <span asp-validation-for="UserData.Address" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="col-md-3">
                     <div class="form-group">
-                        <h6 class="d-inline">City*</h6>
+                        <h6 class="d-inline">City</h6>
                     <input asp-for="UserData.City" class="form-control" readonly />
                         <span asp-validation-for="UserData.City" class="text-danger"></span>
                     </div>
@@ -89,89 +89,125 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <h6 class="d-inline">Contact Number*</h6>
+                        <h6 class="d-inline">Contact Number</h6>
                     <input asp-for="UserData.MobileNo" class="form-control" readonly />
                         <span asp-validation-for="UserData.MobileNo" class="text-danger"></span>
                     </div>
                 </div>
 
-                @* <div class="col-md-3">
+                <div class="col-md-3">
                     <div class="form-group">
-                        <h6 class="d-inline">User Role*</h6>
-                        <select asp-for="UserRoleId" class="form-control" asp-items="ViewBag.userType"></select>
-                        <span asp-validation-for="UserRoleId" class="text-danger"></span>
+                        <h6 class="d-inline">User Role</h6>
+                    <input asp-for="UserData.UserRoleId" class="form-control" readonly />
+                    <span asp-validation-for="UserData.UserRoleId" class="text-danger"></span>
                     </div>
-                </div> *@
+                </div>
             </div>
-@* 
-            <br />
-            <div class="form-group">
-                <input type="submit" value="Request changes" class="btn btn-success" />
-            </div> *@
-        </form>
+        @* </form> *@
 </div>
 
 
+        <div class="col-md-6">
 <h4>User Proposed Data</h4>
-<hr />
-<div class="row">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" readonly/>
-                <span asp-validation-for="FirstName" class="text-danger"></span>
+@*     <form asp-action="Edit">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="UserId" /> *@
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <h6 class="d-inline">First Name</h6>
+                    <input asp-for="FirstName" class="form-control" readonly />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-            <input asp-for="LastName" class="form-control" readonly />
-                <span asp-validation-for="LastName" class="text-danger"></span>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <h6 class="d-inline">Last Name</h6>
+                    <input asp-for="LastName" class="form-control" readonly />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-            <input asp-for="Email" class="form-control" readonly />
-                <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <h6 class="d-inline">E-Mail Address</h6>
+                    <input asp-for="Email" class="form-control" readonly />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="EmailConfirmed" class="control-label"></label>
-            <input asp-for="EmailConfirmed" class="form-control" readonly />
-                <span asp-validation-for="EmailConfirmed" class="text-danger"></span>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <h6 class="d-inline">Password</h6>
+                    <input asp-for="Password" class="form-control" readonly />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-            <input asp-for="Password" class="form-control" readonly />
-                <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <h6 class="d-inline">E-Mail Address</h6>
+                    <input asp-for="Email" class="form-control" readonly />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="PasswordConfirmed" class="control-label"></label>
-            <input asp-for="PasswordConfirmed" class="form-control" readonly />
-                <span asp-validation-for="PasswordConfirmed" class="text-danger"></span>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <h6 class="d-inline">Password</h6>
+                    <input asp-for="PasswordConfirmed" class="form-control" readonly />
+                    <span asp-validation-for="PasswordConfirmed" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-            <input asp-for="Address" class="form-control" readonly />
-                <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <h6 class="d-inline">Address</h6>
+                    <input asp-for="Address" class="form-control" readonly />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="City" class="control-label"></label>
-            <input asp-for="City" class="form-control" readonly />
-                <span asp-validation-for="City" class="text-danger"></span>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <h6 class="d-inline">City</h6>
+                    <input asp-for="City" class="form-control" readonly />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="MobileNo" class="control-label"></label>
-            <input asp-for="MobileNo" class="form-control" readonly />
-                <span asp-validation-for="MobileNo" class="text-danger"></span>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <h6 class="d-inline">Contact Number</h6>
+                    <input asp-for="MobileNo" class="form-control" readonly />
+                    <span asp-validation-for="MobileNo" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="UserRoleId" class="control-label"></label>
-            <input asp-for="UserRoleId" class="form-control" readonly />
-                <span asp-validation-for="UserRoleId" class="text-danger"></span>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <h6 class="d-inline">User Role</h6>
+                    <input asp-for="UserRoleId" class="form-control" readonly />
+                    <span asp-validation-for="UserRoleId" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Accepted" class="btn btn-success" />
-            </div>
-        </form>
+        </div>
+        <br />
+                <div class="form-group">
+                    <input type="submit" value="Accepted" class="btn btn-success" />
+                </div>
+</div>
+    </form>
 </div>
 <br />
 <div>

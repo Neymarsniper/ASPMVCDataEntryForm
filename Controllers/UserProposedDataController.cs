@@ -66,19 +66,28 @@ namespace PPCLUB.Controllers
             return View(userProposedData);
         }
 
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
         // GET: UserProposedData/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, int? AdminUserId)
         {
+            //var userdata = _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == AdminUserId);
+            
             if (id == null || _context.UserProposedDirectoryData == null)
             {
                 return NotFound();
             }
 
             var userProposedData = await _context.UserProposedDirectoryData.Include(m => m.UserStatusCodes).Include(m => m.UserData).FirstOrDefaultAsync(m => m.UserId == id);
+           
             if (userProposedData == null)
             {
-                return NotFound();
+
+                return RedirectToAction("Index","User", new { id = AdminUserId });
             }
+            
             return View(userProposedData);
         }
 
@@ -87,9 +96,9 @@ namespace PPCLUB.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Email,EmailConfirmed,Password,PasswordConfirmed,Address,City,MobileNo,UserRoleId,UserId")] UserProposedData userProposedData)
+        public async Task<IActionResult> Edit(int id, int AdminUserId, [Bind("FirstName,LastName,Email,EmailConfirmed,Password,PasswordConfirmed,Address,City,MobileNo,UserRoleId,UserId")] UserProposedData userProposedData)
         {
-            if (id != userProposedData.Id)
+            if (id != userProposedData.UserId)
             {
                 return NotFound();
             }
@@ -99,7 +108,7 @@ namespace PPCLUB.Controllers
             userdata.FirstName = userProposedData.FirstName;
             userdata.LastName = userProposedData.LastName;
             userdata.Email = userProposedData.Email;
-            userdata.EmailConfirmed = userProposedData.EmailConfirmed;
+            //userdata.EmailConfirmed = userProposedData.EmailConfirmed;
             userdata.Password = userProposedData.Password;
             userdata.PasswordConfirmed = userProposedData.PasswordConfirmed;
             userdata.Address = userProposedData.Address;
@@ -107,14 +116,17 @@ namespace PPCLUB.Controllers
             userdata.MobileNo = userProposedData.MobileNo;
             userdata.UserRoleId = userProposedData.UserRoleId;
             userdata.DataStatusId = 2;
+            userProposedData.DataStatusId = 2;
 
             //if (ModelState.IsValid)
             //{
                 try
                 {
                     _context.UserDirectoryData.Update(userdata);
+                    //var allrecords = _context.UserProposedDirectoryData.ToList();
+                    //_context.UserProposedDirectoryData.RemoveRange(allrecords);
                     await _context.SaveChangesAsync();
-                }
+            }
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!UserProposedDataExists(userProposedData.Id))
@@ -126,11 +138,32 @@ namespace PPCLUB.Controllers
                         throw;
                     }
                 }
-            //return RedirectToAction("Details", "User", new { id = userdata.UserId });
-            return RedirectToAction("Logout", "User");
+            return RedirectToAction("Index", "User", new { id = AdminUserId });
+            //return RedirectToAction("Logout", "User");
             //}
             //return View(userProposedData);
         }
+
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            if (_context.UserProposedDirectoryData == null)
+            {
+                return Problem("Entity set 'MemberDataContext.UserProposedDirectoryData'  is null.");
+            }
+            var userProposedData = await _context.UserProposedDirectoryData.FindAsync(id);
+            if (userProposedData != null)
+            {
+                _context.UserProposedDirectoryData.Remove(userProposedData);
+            }
+            
+            await _context.SaveChangesAsync();
+            //return RedirectToAction(nameof(Index));
+            return RedirectToAction("Logout", "User");
+        }
+
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 
@@ -156,22 +189,8 @@ namespace PPCLUB.Controllers
         // POST: UserProposedData/Delete/5
         //[HttpPost, ActionName("Delete")]
         //[ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.UserProposedDirectoryData == null)
-            {
-                return Problem("Entity set 'MemberDataContext.UserProposedDirectoryData'  is null.");
-            }
-            var userProposedData = await _context.UserProposedDirectoryData.FindAsync(id);
-            if (userProposedData != null)
-            {
-                _context.UserProposedDirectoryData.Remove(userProposedData);
-            }
-            
-            await _context.SaveChangesAsync();
-            //return RedirectToAction(nameof(Index));
-            return RedirectToAction("Logout", "User");
-        }
+
+
 
         private bool UserProposedDataExists(int id)
         {

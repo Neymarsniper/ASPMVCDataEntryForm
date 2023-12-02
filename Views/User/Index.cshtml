@@ -13,7 +13,7 @@
         <h1 style="color:green;">@ViewBag.message</h1>
     }
 }
-<table class="table">
+<table class="table text-white" style="backdrop-filter:blur(260px); width:contain; padding:25px 25px;">
     <thead>
         <tr>
             <th>
@@ -90,8 +90,15 @@
                     @Html.DisplayFor(modelItem => item.UserRoleId)
                     </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-secondary">Edit</a> |
-                    <a asp-controller="UserProposedData" asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-primary">Pending Request</a> |
+                    <a asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-secondary">Edit</a> 
+                    @{
+                        if(ViewBag.msg != null)
+                        {
+                            <span class="seperator"> | </span>
+                            <a asp-controller="UserProposedData" asp-action="Edit" asp-route-id="@item.UserId" asp-route-AdminUserId="@ViewBag.AdminUserId" class="btn btn-primary">Pending Request</a>
+                            <span class="seperator"> | </span>
+                        }
+                    }
                     <a asp-action="Delete" asp-route-id="@item.UserId" class="btn btn-secondary">Delete</a>
                 </td>
             </tr>
@@ -100,5 +107,11 @@
 @*     <h6> <a asp-action="Details" asp-route-id="@Model?.UserId">Back to Details</a></h6> *@
     <a asp-action="Logout" class="btn btn-primary">LogOut</a>
 </table>
-<a asp-controller="User" asp-action="Create" class="btn btn-primary">Create New User</a> |
-<a asp-controller="UserType" asp-action="Index" class="btn btn-primary">User Types List</a> 
+@{
+    if(ViewBag.msg != null)
+    {    
+        <a asp-controller="User" asp-action="Create" class="btn btn-primary">Create New User</a>
+        <span class="seperator"> | </span>
+        <a asp-controller="UserType" asp-action="Index" class="btn btn-primary">User Types List</a> 
+    }
+}
