@@ -5,14 +5,18 @@
 }
 
 <h1>Edit</h1>
+@{
+    <h6>@ViewBag.msg</h6>
+}
 
 <h4>User Existing Data</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" asp-route-AdminUserId="@ViewBag.AdminUserId">
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @* <input type="hidden" name="AdminUserId" asp-route-AdminUserId="@ViewBag.AdminUserId" /> *@
             <input type="hidden" asp-for="UserId" />
             <div class="row">
                 <div class="col-md-3">
@@ -94,6 +98,7 @@
                         <span asp-validation-for="MobileNo" class="text-danger"></span>
                     </div>
                 </div>
+                
 
                 <div class="col-md-3">
                     <div class="form-group">
@@ -104,19 +109,16 @@
                 </div>
             </div>
 
-           @*  <div class="row">
-                <div class="col-md-3">
+             <div class="col-md-3">
                     <div class="form-group">
-                        <h6 class="d-inline">Data Edit Status*</h6>
-                        <select asp-for="DataStatusId" class="form-control" asp-items="ViewBag.statusCodes"></select>
+                        <input type="hidden" asp-for="DataStatusId" class="form-control" value="@ViewBag.DataStatusId"/>
                         <span asp-validation-for="DataStatusId" class="text-danger"></span>
                     </div>
                 </div>
-            </div> *@
 
             <br />
             <div class="form-group">
-            <input type="submit" value="Request changes" class="btn btn-success"/>
+                <input type="submit" value="Request changes" class="btn btn-success" />
             </div>
 
         </form>

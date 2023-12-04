@@ -36,6 +36,13 @@ namespace MemberDataEntryForm.Controllers
                 ViewBag.msg = "Success";
             }
 
+            if (myuser.UserRoleId == 2)
+            {
+                var FrontDeskUserId = myuser.UserId;
+                ViewBag.FrontDeskUserId = FrontDeskUserId;
+                
+            }
+
             if (myuser.UserRoleId == 1 || myuser.UserRoleId == 2)
             {
                 ViewBag.message = "Access Granted!";
@@ -134,28 +141,6 @@ namespace MemberDataEntryForm.Controllers
             //}
             //return View(userData);
         }
-
-
-        // GET: User/Edit/5
-        public async Task<IActionResult> Edit(int id)
-        {
-            if (id == null || _context.UserDirectoryData == null)
-            {
-                return NotFound();
-            }
-
-            ViewData["userType"] = new SelectList(_context.GetUserTypes, "RoleId", "RoleName");
-
-            var userData = await _context.UserDirectoryData.FindAsync(id);
-            
-            if (userData == null)
-            {
-                return NotFound();
-            }
-            return View(userData);
-        }
-
-
         //public async Task<IActionResult> Pending(int id)
         //{
         //    if (id == null || _context.UserProposedDirectoryData == null)
@@ -178,19 +163,54 @@ namespace MemberDataEntryForm.Controllers
         //}
 
 
+        // GET: User/Edit/5
+        public async Task<IActionResult> Edit(int id, int FrontDeskUserId, int AdminUserId)
+        {
+            if (id == null || _context.UserDirectoryData == null)
+            {
+                return NotFound();
+            }
+
+            if (AdminUserId != 0)
+            {
+                ViewBag.DataStatusId = AdminUserId;
+            }
+            else
+            {
+                ViewBag.DataStatusId = FrontDeskUserId;
+            }
+            ViewData["userType"] = new SelectList(_context.GetUserTypes, "RoleId", "RoleName");
+
+            var userData = await _context.UserDirectoryData.FindAsync(id);
+            //userData.DataStatusId = AdminUserId;
+
+
+            if (userData == null)
+            {
+                return NotFound();
+            }
+            return View(userData);
+        }
+
+
+
+
         // POST: User/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserId,FirstName,LastName,Email,EmailConfirmed,Password,PasswordConfirmed,Address,City,MobileNo,UserRoleId,DataStatusId")] UserData userData)
+        public async Task<IActionResult> Edit(int id, int FrontDeskUserId, int AdminUserId, [Bind("UserId,FirstName,LastName,Email,EmailConfirmed,Password,PasswordConfirmed,Address,City,MobileNo,UserRoleId,DataStatusId")] UserData userData)
         {
             if (id != userData.UserId)
             {
                 return NotFound();
             }
+            var Adminuserdata = await _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == userData.DataStatusId);
 
-            if (userData.UserRoleId == 2)
+            var FrontDeskuserdata = await _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == userData.DataStatusId);
+
+            if (FrontDeskuserdata.UserRoleId == 2)
             {
                 var allrecords = _context.UserProposedDirectoryData.ToList();
                 _context.UserProposedDirectoryData.RemoveRange(allrecords);
@@ -227,8 +247,9 @@ namespace MemberDataEntryForm.Controllers
                         throw;
                     }
                 }
+                return RedirectToAction("Index", new { id = userData.DataStatusId });
             }
-            else
+            if (Adminuserdata.UserRoleId == 1)
             {
                 try
                 {
@@ -246,9 +267,10 @@ namespace MemberDataEntryForm.Controllers
                         throw;
                     }
                 }
+            return RedirectToAction("Index", new { id = userData.DataStatusId });
             }
-            return RedirectToAction("Details", new { id = userData.UserId });
 
+            return RedirectToAction("Logout");
         }
 
 

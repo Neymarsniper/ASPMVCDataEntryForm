@@ -90,16 +90,16 @@
                     @Html.DisplayFor(modelItem => item.UserRoleId)
                     </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-secondary">Edit</a> 
+                    <a asp-action="Edit" asp-route-id="@item.UserId" asp-route-AdminUserId="@ViewBag.AdminUserId" asp-route-FrontDeskUserId="@ViewBag.FrontDeskUserId" class="btn btn-secondary">Edit</a>
                     @{
                         if(ViewBag.msg != null)
                         {
                             <span class="seperator"> | </span>
                             <a asp-controller="UserProposedData" asp-action="Edit" asp-route-id="@item.UserId" asp-route-AdminUserId="@ViewBag.AdminUserId" class="btn btn-primary">Pending Request</a>
                             <span class="seperator"> | </span>
+                            <a asp-action="Delete" asp-route-id="@item.UserId" asp-route-AdminUserId="@ViewBag.AdminUserId" class="btn btn-secondary">Delete</a>
                         }
                     }
-                    <a asp-action="Delete" asp-route-id="@item.UserId" class="btn btn-secondary">Delete</a>
                 </td>
             </tr>
         }

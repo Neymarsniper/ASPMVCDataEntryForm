@@ -25,7 +25,6 @@ namespace MemberDataEntryForm.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Please confirm your Email")]
-        [Compare("Email", ErrorMessage = "Email and Confirm Email must be same!!")]
         public string EmailConfirmed { get; set; }
 
         [Required(ErrorMessage = "Password is Mandatory!!!")]
@@ -33,7 +32,6 @@ namespace MemberDataEntryForm.Models
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Please confirm your Password")]
-        [Compare("Password", ErrorMessage = "Password and Confirm password must be same!!")]
         public string PasswordConfirmed { get; set; }
 
         [Required]

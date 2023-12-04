@@ -80,6 +80,11 @@ namespace PPCLUB.Controllers
                 return NotFound();
             }
 
+            if (AdminUserId != 0)
+            {
+                ViewBag.DataStatusId = AdminUserId;
+            }
+
             var userProposedData = await _context.UserProposedDirectoryData.Include(m => m.UserStatusCodes).Include(m => m.UserData).FirstOrDefaultAsync(m => m.UserId == id);
            
             if (userProposedData == null)
@@ -96,7 +101,7 @@ namespace PPCLUB.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, int AdminUserId, [Bind("FirstName,LastName,Email,EmailConfirmed,Password,PasswordConfirmed,Address,City,MobileNo,UserRoleId,UserId")] UserProposedData userProposedData)
+        public async Task<IActionResult> Edit(int id, int? AdminUserId, [Bind("FirstName,LastName,Email,EmailConfirmed,Password,PasswordConfirmed,Address,City,MobileNo,UserRoleId,UserId,DataStatusId")] UserProposedData userProposedData)
         {
             if (id != userProposedData.UserId)
             {
@@ -115,8 +120,6 @@ namespace PPCLUB.Controllers
             userdata.City = userProposedData.City;
             userdata.MobileNo = userProposedData.MobileNo;
             userdata.UserRoleId = userProposedData.UserRoleId;
-            userdata.DataStatusId = 2;
-            userProposedData.DataStatusId = 2;
 
             //if (ModelState.IsValid)
             //{
@@ -126,7 +129,7 @@ namespace PPCLUB.Controllers
                     //var allrecords = _context.UserProposedDirectoryData.ToList();
                     //_context.UserProposedDirectoryData.RemoveRange(allrecords);
                     await _context.SaveChangesAsync();
-            }
+                }
                 catch (DbUpdateConcurrencyException)
                 {
                     if (!UserProposedDataExists(userProposedData.Id))
@@ -138,10 +141,16 @@ namespace PPCLUB.Controllers
                         throw;
                     }
                 }
-            return RedirectToAction("Index", "User", new { id = AdminUserId });
+
+            var Adminuserdata = await _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == userProposedData.DataStatusId);
+            if (Adminuserdata.UserRoleId == 1)
+            {
+                return RedirectToAction("Index", "User", new { id = userProposedData.DataStatusId });
+            }
             //return RedirectToAction("Logout", "User");
             //}
             //return View(userProposedData);
+            return RedirectToAction("Logout");
         }
 
         public async Task<IActionResult> DeleteConfirmed(int id)
