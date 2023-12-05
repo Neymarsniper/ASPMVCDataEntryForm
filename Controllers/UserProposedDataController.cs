@@ -121,13 +121,11 @@ namespace PPCLUB.Controllers
             userdata.MobileNo = userProposedData.MobileNo;
             userdata.UserRoleId = userProposedData.UserRoleId;
 
-            //if (ModelState.IsValid)
-            //{
                 try
                 {
                     _context.UserDirectoryData.Update(userdata);
-                    //var allrecords = _context.UserProposedDirectoryData.ToList();
-                    //_context.UserProposedDirectoryData.RemoveRange(allrecords);
+                    var allrecords = _context.UserProposedDirectoryData.ToList();
+                    _context.UserProposedDirectoryData.RemoveRange(allrecords);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -142,15 +140,13 @@ namespace PPCLUB.Controllers
                     }
                 }
 
-            var Adminuserdata = await _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == userProposedData.DataStatusId);
-            if (Adminuserdata.UserRoleId == 1)
-            {
+            //var Adminuserdata = await _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == userProposedData.DataStatusId);
+            //if (Adminuserdata.UserRoleId == 1)
+            //{
                 return RedirectToAction("Index", "User", new { id = userProposedData.DataStatusId });
-            }
-            //return RedirectToAction("Logout", "User");
             //}
-            //return View(userProposedData);
-            return RedirectToAction("Logout");
+
+            //return RedirectToAction("Logout");
         }
 
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -166,8 +162,8 @@ namespace PPCLUB.Controllers
             }
             
             await _context.SaveChangesAsync();
-            //return RedirectToAction(nameof(Index));
-            return RedirectToAction("Logout", "User");
+
+            return RedirectToAction("Index", "User", new { id = userProposedData.DataStatusId });
         }
 
 

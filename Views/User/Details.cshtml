@@ -72,10 +72,10 @@
 @{
     if (ViewBag.AdminAuth != null)
     {
-        <a asp-action="Edit" asp-route-id="@Model?.UserId" class="btn btn-secondary">Edit Data</a>
-        <span class="seperator"> | </span>
-        <a asp-action="Delete" asp-route-id="@Model?.UserId" class="btn btn-secondary">Delete User Data</a>
-        <span class="seperator"> | </span>
+        // <a asp-action="Edit" asp-route-id="@Model?.UserId" class="btn btn-secondary">Edit Data</a>
+        // <span class="seperator"> | </span>
+        // <a asp-action="Delete" asp-route-id="@Model?.UserId" class="btn btn-secondary">Delete User Data</a>
+        // <span class="seperator"> | </span>
         <a asp-controller="User" asp-action="Index" asp-route-id="@Model?.UserId" class="btn btn-success">Access Users List</a>
         <span class="seperator"> | </span>
     }

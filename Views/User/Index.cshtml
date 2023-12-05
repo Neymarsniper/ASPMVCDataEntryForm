@@ -90,14 +90,14 @@
                     @Html.DisplayFor(modelItem => item.UserRoleId)
                     </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.UserId" asp-route-AdminUserId="@ViewBag.AdminUserId" asp-route-FrontDeskUserId="@ViewBag.FrontDeskUserId" class="btn btn-secondary">Edit</a>
+                    <a asp-action="Edit" asp-route-id="@item.UserId" asp-route-AdminUserId="@ViewBag.AdminUserId" asp-route-FrontDeskUserId="@ViewBag.FrontDeskUserId" class="btn btn-secondary">Edit Record</a>
                     @{
                         if(ViewBag.msg != null)
                         {
                             <span class="seperator"> | </span>
                             <a asp-controller="UserProposedData" asp-action="Edit" asp-route-id="@item.UserId" asp-route-AdminUserId="@ViewBag.AdminUserId" class="btn btn-primary">Pending Request</a>
                             <span class="seperator"> | </span>
-                            <a asp-action="Delete" asp-route-id="@item.UserId" asp-route-AdminUserId="@ViewBag.AdminUserId" class="btn btn-secondary">Delete</a>
+                            <a asp-action="Delete" asp-route-id="@item.UserId" asp-route-AdminUserId="@ViewBag.AdminUserId" class="btn btn-secondary">Delete Record</a>
                         }
                     }
                 </td>
@@ -110,8 +110,10 @@
 @{
     if(ViewBag.msg != null)
     {    
-        <a asp-controller="User" asp-action="Create" class="btn btn-primary">Create New User</a>
+        <a asp-controller="User" asp-action="Create" asp-route-AdminUserId="@ViewBag.AdminUserId" class="btn btn-primary">Create New User</a>
         <span class="seperator"> | </span>
-        <a asp-controller="UserType" asp-action="Index" class="btn btn-primary">User Types List</a> 
+        <a asp-controller="UserType" asp-action="Index" class="btn btn-primary">User Types List</a>
+        <span class="seperator"> | </span>  
     }
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Access Members List</a>
 }

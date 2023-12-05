@@ -26,7 +26,7 @@ namespace MemberDataEntryForm.Controllers
         //[Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
         public async Task<IActionResult> Index(int id)
         {
-            var myuser = await _context.UserDirectoryData.SingleOrDefaultAsync(u => u.UserId == id);
+            var myuser = await _context.UserDirectoryData.Include(m => m.UserType).SingleOrDefaultAsync(u => u.UserId == id);
 
 
             if(myuser.UserRoleId == 1)
@@ -95,7 +95,7 @@ namespace MemberDataEntryForm.Controllers
         }
 
         // GET: User/Details/5
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(int id, int DataStatusId)
         {
             //ViewBag.message = "Access Denied!!";
             if (id == null || _context.UserDirectoryData == null && HttpContext.Session.GetString("UserSession") == null)
@@ -103,26 +103,34 @@ namespace MemberDataEntryForm.Controllers
                 return NotFound();
             }
 
-            var userData = await _context.UserDirectoryData.Include(m => m.UserType).FirstOrDefaultAsync(m => m.UserId == id);
+            var AuthId = id;
+
+            if (DataStatusId != 0)
+            {
+                AuthId = DataStatusId;
+            }
+
+            var userData = await _context.UserDirectoryData.Include(m => m.UserType).FirstOrDefaultAsync(m => m.UserId == AuthId);
 
             if (userData.UserRoleId == 1 || userData.UserRoleId == 2)
             {
                 ViewBag.AdminAuth = "Success";
+                return RedirectToAction("Index", new { id = AuthId });
             }
-
-            if (userData == null)
+            else 
             {
-                return NotFound();
+                //return RedirectToAction("Details", new { id = AuthId });
+                return View(userData);
             }
 
-            return View(userData);
         }
 
         // GET: User/Create
-        public IActionResult Create()
+        public IActionResult Create(int AdminUserId)
         {
+            ViewBag.DataStatusId = AdminUserId;
             ViewData["userType"] = new SelectList(_context.GetUserTypes, "RoleId", "RoleName");
-            ViewData["statusCodes"] = new SelectList(_context.UserStatusDirectoryData, "StatusCode", "StatusMessage");
+            //ViewData["statusCodes"] = new SelectList(_context.UserStatusDirectoryData, "StatusCode", "StatusMessage");
             return View();
         }
 
@@ -137,30 +145,10 @@ namespace MemberDataEntryForm.Controllers
             //{
                 _context.Add(userData);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index", new { id = userData.UserId });
+                return RedirectToAction("Index", new { id = userData.DataStatusId });
             //}
             //return View(userData);
         }
-        //public async Task<IActionResult> Pending(int id)
-        //{
-        //    if (id == null || _context.UserProposedDirectoryData == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var userproposedData = _context.UserProposedDirectoryData.FindAsync(id);
-
-        //    var userData = _context.UserDirectoryData.FindAsync(id);
-
-        //    _context.Add(userData);
-        //    await _context.SaveChangesAsync();
-
-        //    if (userData == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return RedirectToAction("Details", new { id = userData.UserId });
-        //}
 
 
         // GET: User/Edit/5
@@ -182,8 +170,6 @@ namespace MemberDataEntryForm.Controllers
             ViewData["userType"] = new SelectList(_context.GetUserTypes, "RoleId", "RoleName");
 
             var userData = await _context.UserDirectoryData.FindAsync(id);
-            //userData.DataStatusId = AdminUserId;
-
 
             if (userData == null)
             {
@@ -200,17 +186,15 @@ namespace MemberDataEntryForm.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, int FrontDeskUserId, int AdminUserId, [Bind("UserId,FirstName,LastName,Email,EmailConfirmed,Password,PasswordConfirmed,Address,City,MobileNo,UserRoleId,DataStatusId")] UserData userData)
+        public async Task<IActionResult> Edit(int id, [Bind("UserId,FirstName,LastName,Email,EmailConfirmed,Password,PasswordConfirmed,Address,City,MobileNo,UserRoleId,DataStatusId")] UserData userData)
         {
             if (id != userData.UserId)
             {
                 return NotFound();
             }
-            var Adminuserdata = await _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == userData.DataStatusId);
+            var userdata = await _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == userData.DataStatusId);
 
-            var FrontDeskuserdata = await _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == userData.DataStatusId);
-
-            if (FrontDeskuserdata.UserRoleId == 2)
+            if (userdata.UserRoleId == 2)
             {
                 var allrecords = _context.UserProposedDirectoryData.ToList();
                 _context.UserProposedDirectoryData.RemoveRange(allrecords);
@@ -249,7 +233,7 @@ namespace MemberDataEntryForm.Controllers
                 }
                 return RedirectToAction("Index", new { id = userData.DataStatusId });
             }
-            if (Adminuserdata.UserRoleId == 1)
+            if (userdata.UserRoleId == 1)
             {
                 try
                 {
@@ -278,14 +262,22 @@ namespace MemberDataEntryForm.Controllers
 
 
         // GET: User/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, int AdminUserId)
         {
             if (id == null || _context.UserDirectoryData == null)
             {
                 return NotFound();
             }
 
+            //if (AdminUserId != 0)
+            //{
+            //    ViewBag.DataStatusId = AdminUserId;
+            //}
+
             var userData = await _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == id);
+            
+            userData.DataStatusId = AdminUserId;
+
             if (userData == null)
             {
                 return NotFound();
@@ -304,13 +296,14 @@ namespace MemberDataEntryForm.Controllers
                 return Problem("Entity set 'MemberDataContext.UserDirectoryData'  is null.");
             }
             var userData = await _context.UserDirectoryData.FindAsync(id);
+            var AdminUserId = userData.DataStatusId;
             if (userData != null)
             {
                 _context.UserDirectoryData.Remove(userData);
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Logout));
+            return RedirectToAction("Index", new {id = AdminUserId });
         }
 
         private bool UserDataExists(int id)

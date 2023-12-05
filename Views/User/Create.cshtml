@@ -105,8 +105,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <h6 class="d-inline">Data Edit Status*</h6>
-                        <select asp-for="DataStatusId" class="form-control" asp-items="ViewBag.statusCodes"></select>
+                        <input type="hidden" asp-for="DataStatusId" class="form-control" value="@ViewBag.DataStatusId"/>
                         <span asp-validation-for="DataStatusId" class="text-danger"></span>
                     </div>
                 </div>

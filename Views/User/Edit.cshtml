@@ -11,7 +11,7 @@
 
 <h4>User Existing Data</h4>
 <hr />
-<div class="row">
+<div class="row text-white" style="backdrop-filter:blur(260px); width:contain; padding:25px 25px;">
     <div class="col-md-4">
         <form asp-action="Edit" asp-route-AdminUserId="@ViewBag.AdminUserId">
 
@@ -126,7 +126,7 @@
 </div>
 <br />
 <div>
-    <a asp-action="Details" asp-route-id="@Model?.UserId" class="btn btn-secondary">Back to Details</a>
+    <a asp-action="Details" asp-route-id="@Model?.UserId" asp-route-AdminUserId="@Model.DataStatusId" asp-route-FrontDeskUserId="@Model.DataStatusId" class="btn btn-secondary">Back to List</a>
 </div>
 
 @section Scripts {
