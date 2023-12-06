@@ -22,8 +22,8 @@ namespace MemberDataEntryForm.Controllers
         }
 
         // GET: User
-        //[Authorize(Policy = "AdminOnly")]
         //[Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+        //[Authorize(Policy = "AdminOnly")]
         public async Task<IActionResult> Index(int id)
         {
             var myuser = await _context.UserDirectoryData.Include(m => m.UserType).SingleOrDefaultAsync(u => u.UserId == id);

@@ -54,9 +54,8 @@ namespace MemberDataEntryForm.Models
         [Required]
         public int UserRoleId { get; set; }
         [ForeignKey("UserRoleId")]
+        public virtual UserType UserType { get; set; }
 
-        [Required]
-        public UserType UserType { get; set; }
         [Required]
         public int DataStatusId { get; set; }
         //[ForeignKey("DataStatusId")]

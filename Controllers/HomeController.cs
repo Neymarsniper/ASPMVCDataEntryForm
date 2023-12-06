@@ -22,8 +22,12 @@ namespace MemberDataEntryForm.Controllers
         }
 
         // GET: Home
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int AuthId)
         {
+            if(AuthId != null)
+            {
+                ViewBag.AuthId = AuthId;
+            }
             //List<MemberData> memberDataList = await _context.MemberDirectoryData.ToListAsync();
             //var viewModelList = memberDataList.Select(memberData => new MemberViewModel { memberData = memberData }).ToList();
             //return View(viewModelList);  
@@ -73,9 +77,22 @@ namespace MemberDataEntryForm.Controllers
 
 
         // GET: Home/Details/5
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Details(int id, int AuthId)
         {
+            ViewBag.AuthId = AuthId;
             var memberDirectoryDatum = await _context.MemberDirectoryData.FirstOrDefaultAsync(m => m.Id == id);
+            memberDirectoryDatum.AuthId = AuthId;
+
+            var userdata = await _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == AuthId);
+            if (userdata.UserRoleId == 1)
+            {
+                ViewBag.msg = "success";
+            }
+            else if (userdata.UserRoleId == 2)
+            {
+                ViewBag.Msg = "Success";
+            }
+
             if (memberDirectoryDatum == null)
             {
                 return NotFound();
@@ -144,14 +161,23 @@ namespace MemberDataEntryForm.Controllers
 
 
         // GET: Home/Edit/5
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(int id, int AuthId)
         {
+            ViewBag.AuthId = AuthId;
+
+            var userdata = await _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == AuthId);
+            if(userdata.UserRoleId == 1)
+            {
+                ViewBag.msg = "Success";
+            }
+
             if (id <= 0  || _context.MemberDirectoryData == null)
             {
                 return NotFound();
             }
 
             var memberDirectoryDatum = await _context.MemberDirectoryData.FindAsync(id);
+
             if (memberDirectoryDatum == null)
             {
                 return NotFound();
@@ -162,17 +188,45 @@ namespace MemberDataEntryForm.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Dob,ResAddress,ResPhone,OfficeNo,Profession,OfficeAddress,MobileNo,AlternateMobileNo,Email,DateofMarriage,NameofSpouse,SpouseDob,ChildName,Image,Sign,CreatedAt")] MemberData memberDirectoryDatum, IFormFile newPhoto, IFormFile newSignature)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Dob,ResAddress,ResPhone,OfficeNo,Profession,OfficeAddress,MobileNo,AlternateMobileNo,Email,DateofMarriage,NameofSpouse,SpouseDob,ChildName,AuthId,Image,Sign,CreatedAt")] MemberData memberDirectoryDatum, IFormFile newPhoto, IFormFile newSignature)
         {
             if (id != memberDirectoryDatum.Id)
             {
                 return NotFound();
             }
+
+            var userdata = await _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == memberDirectoryDatum.AuthId);
+
+            if (userdata.UserRoleId == 2)
+            {
+                var allrecords = _context.MemberProposedDirectoryData.ToList();
+                _context.MemberProposedDirectoryData.RemoveRange(allrecords);
+
+                MemberProposedData proposedData = new MemberProposedData
+                {
+                    Name = memberDirectoryDatum.Name,
+                    Dob = memberDirectoryDatum.Dob,
+                    ResAddress = memberDirectoryDatum.ResAddress,
+                    ResPhone = memberDirectoryDatum.ResPhone,
+                    OfficeAddress = memberDirectoryDatum.OfficeAddress,
+                    OfficeNo = memberDirectoryDatum.OfficeNo,
+                    Profession = memberDirectoryDatum.Profession,
+                    MobileNo = memberDirectoryDatum.MobileNo,
+                    AlternateMobileNo = memberDirectoryDatum.AlternateMobileNo,
+                    Email = memberDirectoryDatum.Email,
+                    DateofMarriage = memberDirectoryDatum.DateofMarriage,
+                    NameofSpouse = memberDirectoryDatum.NameofSpouse,
+                    SpouseDob = memberDirectoryDatum.SpouseDob,
+                    ChildName = memberDirectoryDatum.ChildName,
+                    AuthId = memberDirectoryDatum.AuthId,
+                    MemId = memberDirectoryDatum.Id
+                };
+
                 try
                 {
-                var existingData = await _context.MemberDirectoryData.FindAsync(id);
+                    var existingData = await _context.MemberDirectoryData.FindAsync(id);
 
-                if (newPhoto != null)
+                    if (newPhoto != null)
                     {
                         // Upload new photo and update image property
                         string imagename = Guid.NewGuid().ToString() + "_" + newPhoto.FileName;
@@ -195,13 +249,13 @@ namespace MemberDataEntryForm.Controllers
                     memberDirectoryDatum.Image = existingData.Image;
                     memberDirectoryDatum.Sign = existingData.Sign;
 
-                // Detach the existing entity if it's sahring the same Id or same Data...
-                if (existingData != null)
-                {
-                    _context.Entry(existingData).State = EntityState.Detached;
-                }
-                
-                _context.Update(memberDirectoryDatum);
+                    // Detach the existing entity if it's sahring the same Id(Primary Key)...
+                    if (existingData != null)
+                    {
+                        _context.Entry(existingData).State = EntityState.Detached;
+                    }
+
+                    _context.Update(proposedData);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -215,15 +269,79 @@ namespace MemberDataEntryForm.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Details", new { id = memberDirectoryDatum.Id });
+            }
+            else if(userdata.UserRoleId == 1)
+            {
+                var allrecords = _context.MemberProposedDirectoryData.ToList();
+                _context.MemberProposedDirectoryData.RemoveRange(allrecords);
+                try
+                {
+                    var existingData = await _context.MemberDirectoryData.FindAsync(id);
+
+                    if (newPhoto != null)
+                    {
+                        // Upload new photo and update image property
+                        string imagename = Guid.NewGuid().ToString() + "_" + newPhoto.FileName;
+                        string uploadfolder = Path.Combine(hostingenvironment.WebRootPath, "images");
+                        string filepath = Path.Combine(uploadfolder, imagename);
+                        newPhoto.CopyTo(new FileStream(filepath, FileMode.Create));
+                        existingData.Image = imagename;
+                    }
+
+                    if (newSignature != null)
+                    {
+                        // Upload new signature and update sign property
+                        string signname = Guid.NewGuid().ToString() + "_" + newSignature.FileName;
+                        string uploadfolder = Path.Combine(hostingenvironment.WebRootPath, "images");
+                        string filepath = Path.Combine(uploadfolder, signname);
+                        newSignature.CopyTo(new FileStream(filepath, FileMode.Create));
+                        existingData.Sign = signname;
+                    }
+
+                    memberDirectoryDatum.Image = existingData.Image;
+                    memberDirectoryDatum.Sign = existingData.Sign;
+
+                    // Detach the existing entity if it's sahring the same Id(Primary Key)...
+                    if (existingData != null)
+                    {
+                        _context.Entry(existingData).State = EntityState.Detached;
+                    }
+
+                    _context.Update(memberDirectoryDatum);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!MemberDirectoryDatumExists(memberDirectoryDatum.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+
+            //return RedirectToAction("Details", new { id = memberDirectoryDatum.Id });
+            return RedirectToAction("Index", new { id = memberDirectoryDatum.AuthId });
         }
 
 
 
 
         // GET: Home/Delete/5
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int id, int AdminUserId, int FrontDeskUserId)
         {
+            if (AdminUserId != null)
+            {
+                ViewBag.AdminUserId = AdminUserId;
+            }
+            else if (FrontDeskUserId != null)
+            {
+                ViewBag.FrontDeskUserId = FrontDeskUserId;
+            }
+
             if (id < 0 || _context.MemberDirectoryData == null)
             {
                 return NotFound();

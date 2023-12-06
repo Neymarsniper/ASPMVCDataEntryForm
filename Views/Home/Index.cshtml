@@ -4,12 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1 class="text-white">Index</h1>
 
 <p>
     <a asp-action="Create" class="btn btn-light">Create New Member</a>
 </p>
-<table class="table">
+<table class="table text-white" style="border-radius:20px;border: hidden rgb(255,255,255);box-shadow: 0 0 100px rgba(255,255,255,.5); backdrop-filter:blur(300px); width:contain; padding:25px 25px;">
     <thead> 
         <tr>
             <th>
@@ -69,9 +69,6 @@
                 <td>
                     @Html.DisplayFor(modelItem  => item.Name)
                 </td>
-            @* <td>
-                @Html.DisplayFor(modelItem => item.MemNo)
-            </td> *@
             <td>
                     @Html.DisplayFor(modelItem  => item.Dob)
             </td>
@@ -112,7 +109,7 @@
                     @Html.DisplayFor(modelItem  => item.ChildName)
             </td>
             <td>
-                    <a asp-action="Details" asp-route-id="@item?.Id" class="btn btn-info">Details</a> <br />
+                    <a asp-action="Details" asp-route-id="@item?.Id" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-info">Details</a> <br />
             </td>
         </tr>
             }

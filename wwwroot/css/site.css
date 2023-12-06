@@ -33,25 +33,19 @@ body {
 }
 
 .box {
-    width:450px;
-    background:transparent;
-    border: rgba(0,0,0,.2);
-    backdrop-filter:blur(20px);
-    box-shadow: 0 0 50px rgba(0,0,0,.2);
-    padding:40px 25px;
-    /*justify-content: center;*/
-    /*align-items: center;*/
+    width: 530px;
+    height: 380px;
+    background: transparent;
+    border: 50px rgb(178, 0, 255);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 100px rgba(255,255,255,.5);
+    padding: 40px 25px;
     min-height: 30vh;
-    margin-left:1000px;
-    margin-top:200px;
+    margin-left: 900px;
+    margin-top: 200px;
 }
 
-.Container {
-    width: 400px;
-    display:contents;
-    flex-direction:row;
-    padding: 40px 40px;
-}
 
 /*.top-header span {
     color: #fff;
@@ -79,10 +73,10 @@ body {
         width: 100%;
         border: none;
         outline: none;
-        border-radius: 30px;
+        border-radius: 20px;
         color: #fff;
-        padding: 0 0 0 32px;
-        background: rgba(255, 255, 255, 0.1);
+        padding: 0 15px 0 15px;
+        background: rgba(0, 0, 0, 0.4);
     }
 
     .input-field i {
@@ -91,6 +85,10 @@ body {
         left: 17px;
         color: #fff;
     }
+.highlight-field {
+    background-color:aqua; /* Set your desired highlight color */
+    /* You can also apply other styles like border, etc., to make it more noticeable */
+}
 
 ::-webkit-input-placeholder {
     color: #fff;

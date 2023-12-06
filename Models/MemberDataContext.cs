@@ -24,6 +24,7 @@ namespace MemberDataEntryForm.Models
         public virtual DbSet<MembersFamilyData> MemberFamilyDirectoryData { get; set; }
         public virtual DbSet<MemberBusinessData> MemberBusinessDirectoryData { get; set; }
         public virtual DbSet<MemberAddressData> MemberAddressDirectoryData { get; set; }
+        public virtual DbSet<MemberProposedData> MemberProposedDirectoryData { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

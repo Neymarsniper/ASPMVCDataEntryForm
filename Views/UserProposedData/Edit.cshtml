@@ -9,16 +9,17 @@
 <div class="row text-white" style="backdrop-filter:blur(260px); width:contain; padding:25px 25px;">
     <form asp-action="Edit" asp-route-AdminUserId="@ViewBag.AdminUserId">
     <div class="col-md-6">
-<h4>User Existing Data</h4>
-<br />
 
+            <h4>User Existing Data</h4>
+            <br />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="UserId" />
+            
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
                         <h6 class="d-inline">First Name</h6>
-                    <input asp-for="UserData.FirstName" class="form-control" readonly/>
+                        <input asp-for="UserData.FirstName" class="form-control" readonly data-original-value="@Model.UserData.FirstName" data-proposed-value="@Model.FirstName" />
                         <span asp-validation-for="UserData.FirstName" class="text-danger"></span>
                     </div>
                 </div>
@@ -26,7 +27,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <h6 class="d-inline">Last Name</h6>
-                    <input asp-for="UserData.LastName" class="form-control" readonly />
+                        <input asp-for="UserData.LastName" class="form-control" readonly data-original-value="@Model.UserData.LastName" data-proposed-value="@Model.LastName" />
                         <span asp-validation-for="UserData.LastName" class="text-danger"></span>
                     </div>
                 </div>
@@ -36,7 +37,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <h6 class="d-inline">E-Mail Address</h6>
-                    <input asp-for="UserData.Email" class="form-control" />
+                        <input asp-for="UserData.Email" class="form-control" readonly data-original-value="@Model.UserData.Email" data-proposed-value="@Model.Email" />
                         <span asp-validation-for="UserData.Email" class="text-danger"></span>
                     </div>
                 </div>
@@ -44,7 +45,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <h6 class="d-inline">Password</h6>
-                    <input asp-for="UserData.Password" class="form-control" readonly />
+                        <input asp-for="UserData.Password" class="form-control" readonly data-original-value="@Model.UserData.Password" data-proposed-value="@Model.Password" />
                         <span asp-validation-for="UserData.Password" class="text-danger"></span>
                     </div>
                 </div>
@@ -54,7 +55,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <h6 class="d-inline">E-Mail Address</h6>
-                    <input asp-for="UserData.EmailConfirmed" class="form-control" />
+                        <input asp-for="UserData.EmailConfirmed" class="form-control" readonly data-original-value="@Model.UserData.EmailConfirmed" data-proposed-value="@Model.EmailConfirmed" />
                         <span asp-validation-for="UserData.EmailConfirmed" class="text-danger"></span>
                     </div>
                 </div>
@@ -62,7 +63,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <h6 class="d-inline">Password</h6>
-                    <input asp-for="UserData.PasswordConfirmed" class="form-control" readonly />
+                        <input asp-for="UserData.PasswordConfirmed" class="form-control" readonly data-original-value="@Model.UserData.PasswordConfirmed" data-proposed-value="@Model.PasswordConfirmed" />
                         <span asp-validation-for="UserData.PasswordConfirmed" class="text-danger"></span>
                     </div>
                 </div>
@@ -72,7 +73,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <h6 class="d-inline">Address</h6>
-                    <input asp-for="UserData.Address" class="form-control" readonly />
+                        <input asp-for="UserData.Address" class="form-control" readonly data-original-value="@Model.UserData.Address" data-proposed-value="@Model.Address" />
                         <span asp-validation-for="UserData.Address" class="text-danger"></span>
                     </div>
                 </div>
@@ -80,7 +81,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <h6 class="d-inline">City</h6>
-                    <input asp-for="UserData.City" class="form-control" readonly />
+                        <input asp-for="UserData.City" class="form-control" readonly data-original-value="@Model.UserData.City" data-proposed-value="@Model.City" />
                         <span asp-validation-for="UserData.City" class="text-danger"></span>
                     </div>
                 </div>
@@ -90,7 +91,7 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <h6 class="d-inline">Contact Number</h6>
-                    <input asp-for="UserData.MobileNo" class="form-control" readonly />
+                        <input asp-for="UserData.MobileNo" class="form-control" readonly data-original-value="@Model.UserData.MobileNo" data-proposed-value="@Model.MobileNo" />
                         <span asp-validation-for="UserData.MobileNo" class="text-danger"></span>
                     </div>
                 </div>
@@ -98,13 +99,13 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <h6 class="d-inline">User Role</h6>
-                    <input asp-for="UserData.UserRoleId" class="form-control" readonly />
+                        <input asp-for="UserData.UserRoleId" class="form-control" readonly data-original-value="@Model.UserData.UserRoleId"  data-proposed-value="@Model.UserRoleId" />
                     <span asp-validation-for="UserData.UserRoleId" class="text-danger"></span>
                     </div>
                 </div>
             </div>
         @* </form> *@
-</div>
+    </div>
 
 
         <div class="col-md-6">
@@ -117,7 +118,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <h6 class="d-inline">First Name</h6>
-                    <input asp-for="FirstName" class="form-control" readonly />
+                        <input asp-for="FirstName" class="form-control" readonly data-original-value="@Model.UserData.FirstName" data-proposed-value="@Model.FirstName" />
                     <span asp-validation-for="FirstName" class="text-danger"></span>
                 </div>
             </div>
@@ -125,7 +126,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <h6 class="d-inline">Last Name</h6>
-                    <input asp-for="LastName" class="form-control" readonly />
+                        <input asp-for="LastName" class="form-control" readonly data-original-value="@Model.UserData.LastName" data-proposed-value="@Model.LastName" />
                     <span asp-validation-for="LastName" class="text-danger"></span>
                 </div>
             </div>
@@ -135,7 +136,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <h6 class="d-inline">E-Mail Address</h6>
-                    <input asp-for="Email" class="form-control" readonly />
+                        <input asp-for="Email" class="form-control" readonly data-original-value="@Model.UserData.Email" data-proposed-value="@Model.Email" />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
             </div>
@@ -143,7 +144,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <h6 class="d-inline">Password</h6>
-                    <input asp-for="Password" class="form-control" readonly />
+                        <input asp-for="Password" class="form-control" readonly data-original-value="@Model.UserData.Password" data-proposed-value="@Model.Password" />
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
             </div>
@@ -153,15 +154,15 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <h6 class="d-inline">E-Mail Address</h6>
-                    <input asp-for="Email" class="form-control" readonly />
-                    <span asp-validation-for="Email" class="text-danger"></span>
+                        <input asp-for="EmailConfirmed" class="form-control" readonly data-original-value="@Model.UserData.EmailConfirmed" data-proposed-value="@Model.EmailConfirmed" />
+                    <span asp-validation-for="EmailConfirmed" class="text-danger"></span>
                 </div>
             </div>
 
             <div class="col-md-3">
                 <div class="form-group">
                     <h6 class="d-inline">Password</h6>
-                    <input asp-for="PasswordConfirmed" class="form-control" readonly />
+                        <input asp-for="PasswordConfirmed" class="form-control" readonly data-original-value="@Model.UserData.PasswordConfirmed" data-proposed-value="@Model.PasswordConfirmed" />
                     <span asp-validation-for="PasswordConfirmed" class="text-danger"></span>
                 </div>
             </div>
@@ -171,7 +172,18 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <h6 class="d-inline">Address</h6>
-                    <input asp-for="Address" class="form-control" readonly />
+                        @{
+                            // if (@Model.UserData.Address != @Model.Address)
+                            // {
+                                
+                            //     <input class="highlight-field" asp-for="Address" class="form-control" readonly data-original-value="@Model.UserData.Address" data-proposed-value="@Model.Address" />
+                            // }
+                            // else
+                            // {
+                            //     <input asp-for="Address" class="form-control" readonly data-original-value="@Model.UserData.Address" data-proposed-value="@Model.Address" />
+                            // }
+                        }
+                        <input asp-for="Address" class="form-control" readonly data-original-value="@Model.UserData.Address" data-proposed-value="@Model.Address" />
                     <span asp-validation-for="Address" class="text-danger"></span>
                 </div>
             </div>
@@ -179,7 +191,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <h6 class="d-inline">City</h6>
-                    <input asp-for="City" class="form-control" readonly />
+                        <input asp-for="City" class="form-control" readonly data-original-value="@Model.UserData.City" data-proposed-value="@Model.City" />
                     <span asp-validation-for="City" class="text-danger"></span>
                 </div>
             </div>
@@ -189,7 +201,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <h6 class="d-inline">Contact Number</h6>
-                    <input asp-for="MobileNo" class="form-control" readonly />
+                        <input asp-for="MobileNo" class="form-control" readonly data-original-value="@Model.UserData.MobileNo" data-proposed-value="@Model.MobileNo" />
                     <span asp-validation-for="MobileNo" class="text-danger"></span>
                 </div>
             </div>
@@ -197,8 +209,8 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <h6 class="d-inline">User Role</h6>
-                    <input asp-for="UserRoleId" class="form-control" readonly />
-                    <span asp-validation-for="UserRoleId" class="text-danger"></span>
+                        <input asp-for="UserRoleId" class="form-control" readonly data-original-value="@Model.UserData.UserRoleId" data-proposed-value="@Model.UserRoleId" />
+                        <span asp-validation-for="UserRoleId" class="text-danger"></span>
                 </div>
             </div>
         </div>
@@ -223,6 +235,34 @@
     <a asp-controller="User" asp-action="Logout" class="btn btn-primary">LogOut</a>
 </div>
 
+
+
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+                $("input[type='text']").each(function () {
+                    var originalValue = $(this).data("original-value");
+                    var proposedValue = $(this).data("proposed-value");
+
+                    console.log("Original: " + originalValue);
+                    console.log("Proposed: " + proposedValue);
+
+                    if (originalValue !== proposedValue) 
+                    {
+                        $(this).addClass("highlight-field");
+                    }
+                });
+        });
+
+    </script>
 }
+
+
+

@@ -80,6 +80,8 @@ namespace MemberDataEntryForm.Models
 
         public DateTime CreatedAt { get; set; }
 
+        public int? AuthId { get; set; }
+
         public MembersFamilyData FamilyData { get; set; }
         public MemberBusinessData BusinessData { get; set; }
         public MemberAddressData AddressData { get; set; }

@@ -14,18 +14,19 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddDbContext<MemberDataContext>(item => item.UseSqlServer(builder.Configuration.GetConnectionString("dbcs")));
 
 
-//builder.Services.AddAuthorization(options =>
-//{
-//    options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
-//    options.AddPolicy("UserAccess", policy => policy.RequireRole("OfficeClerk", "FrontDesk", "Receptionist"));
-//});
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/User/Login";
+        options.AccessDeniedPath = "/User/AccessDenied";
+    });
 
-//builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-//    .AddCookie(options =>
-//    {
-//        //options.LoginPath = "/User/Index"; // Set the login path
-//        //options.AccessDeniedPath = "/User/Index"; // Set the access denied path
-//    });
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+    options.AddPolicy("UserAccess", policy => policy.RequireRole("OfficeClerk", "FrontDesk", "Receptionist"));
+});
+
 
 
 var app = builder.Build();
