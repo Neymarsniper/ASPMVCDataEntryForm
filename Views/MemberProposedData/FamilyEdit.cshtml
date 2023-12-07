@@ -1,0 +1,165 @@
+﻿@model MemberDataEntryForm.Models.MemberProposedData
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="text-white">Edit</h1>
+
+
+<div class="row text-white" style="backdrop-filter:blur(260px); width:contain; padding:25px 25px;">
+    <form asp-action="FamilyEdit">
+        <div class="col-md-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MemProId" />
+
+            <h4 class="text-white">MemberFamily Existing Data</h4>
+            <br />
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">First Name</h6>
+                        <input asp-for="MembersFamilyData.FirstName" class="form-control" />
+                        <span asp-validation-for="MembersFamilyData.FirstName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Last Name</h6>
+                        <input asp-for="MembersFamilyData.LastName" class="form-control" />
+                        <span asp-validation-for="MembersFamilyData.LastName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Relation</h6>
+                        <input asp-for="MembersFamilyData.Relation" class="form-control" />
+                        <span asp-validation-for="MembersFamilyData.Relation" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Home Address</h6>
+                        <input asp-for="MembersFamilyData.HomeAddress" class="form-control" />
+                        <span asp-validation-for="MembersFamilyData.HomeAddress" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Mobile number</h6>
+                        <input asp-for="MembersFamilyData.Mobile" class="form-control" />
+                        <span asp-validation-for="MembersFamilyData.Mobile" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Child Name</h6>
+                        <input asp-for="MembersFamilyData.ChildName" class="form-control" />
+                        <span asp-validation-for="MembersFamilyData.ChildName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+               
+
+            
+        </div>
+
+
+        <div class="col-md-6">
+            <h4 class="text-white">Member Family Proposed Data</h4>
+            <br />
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Business Name</h6>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Business Detail</h6>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Business Address</h6>
+                        <input asp-for="Relation" class="form-control" />
+                        <span asp-validation-for="Relation" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Business City</h6>
+                        <input asp-for="HomeAddress" class="form-control" />
+                        <span asp-validation-for="HomeAddress" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Business PostalCode</h6>
+                        <input asp-for="Mobile" class="form-control" />
+                        <span asp-validation-for="Mobile" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Business Email</h6>
+                        <input asp-for="FamilyChildName" class="form-control" />
+                        <span asp-validation-for="FamilyChildName" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <input type="hidden" asp-for="AuthId" class="form-control" value="@ViewBag.AuthId" />
+                <span asp-validation-for="AuthId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="hidden" asp-for="MemFamilyId" class="form-control" value="@ViewBag.MemFamilyId" />
+                <span asp-validation-for="MemFamilyId" class="text-danger"></span>
+            </div>
+
+            <br />
+
+
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Accepted" class="btn btn-success" />
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-controller="Home" asp-action="Index" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-info">Back to Members List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

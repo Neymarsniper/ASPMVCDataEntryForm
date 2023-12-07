@@ -1,0 +1,181 @@
+﻿@model MemberDataEntryForm.Models.MemberProposedData
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="text-white">Edit</h1>
+
+
+<div class="row text-white" style="backdrop-filter:blur(260px); width:contain; padding:25px 25px;">
+    <form asp-action="AddressEdit">
+        <div class="col-md-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MemProId" />
+
+            <h4 class="text-white">MemberAddress Existing Data</h4>
+            <br />
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Address</h6>
+                        <input asp-for="MemberAddressData.Address" class="form-control" />
+                        <span asp-validation-for="MemberAddressData.Address" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Country</h6>
+                        <input asp-for="MemberAddressData.Country" class="form-control" />
+                        <span asp-validation-for="MemberAddressData.Country" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">State</h6>
+                        <input asp-for="MemberAddressData.State" class="form-control" />
+                        <span asp-validation-for="MemberAddressData.State" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">City</h6>
+                        <input asp-for="MemberAddressData.City" class="form-control" />
+                        <span asp-validation-for="MemberAddressData.City" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Postal Code</h6>
+                        <input asp-for="MemberAddressData.PostalCode" class="form-control" />
+                        <span asp-validation-for="MemberAddressData.PostalCode" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Address Type</h6>
+                        <input asp-for="MemberAddressData.AddressType" class="form-control" />
+                        <span asp-validation-for="MemberAddressData.AddressType" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <h6 class="d-inline">Additional Info</h6>
+                    <input asp-for="MemberAddressData.AdditonalInfo" class="form-control" />
+                    <span asp-validation-for="MemberAddressData.AdditonalInfo" class="text-danger"></span>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+        <div class="col-md-6">
+            <h4 class="text-white">MemberAddress Proposed Data</h4>
+            <br />
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Address</h6>
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Country</h6>
+                        <input asp-for="Country" class="form-control" />
+                        <span asp-validation-for="Country" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">State</h6>
+                        <input asp-for="State" class="form-control" />
+                        <span asp-validation-for="State" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">City</h6>
+                        <input asp-for="City" class="form-control" />
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Postal Code</h6>
+                        <input asp-for="PostalCode" class="form-control" />
+                        <span asp-validation-for="PostalCode" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Address Type</h6>
+                        <input asp-for="AddressType" class="form-control" />
+                        <span asp-validation-for="AddressType" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <h6 class="d-inline">Additional Info</h6>
+                    <input asp-for="AdditonalInfo" class="form-control" />
+                    <span asp-validation-for="AdditonalInfo" class="text-danger"></span>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <input type="hidden" asp-for="AuthId" class="form-control" value="@ViewBag.AuthId" />
+                <span asp-validation-for="AuthId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="hidden" asp-for="MemAddressId" class="form-control" value="@ViewBag.MemAddressId" />
+                <span asp-validation-for="MemAddressId" class="text-danger"></span>
+            </div>
+
+            <br />
+
+
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Accepted" class="btn btn-success" />
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-controller="Home" asp-action="Index" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-info">Back to Members List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

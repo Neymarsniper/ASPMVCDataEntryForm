@@ -129,9 +129,7 @@
             <a asp-action="Edit" asp-route-id="@Model?.Id" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-secondary">Edit Data</a>
             <span class="seperator"> | </span>
         }
-     }
 
-    @{
        if(ViewBag.msg != null)
        {
             <a asp-controller="MemberProposedData" asp-action="Edit" asp-route-id="@Model?.Id" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-secondary">Pending Request</a>
@@ -143,10 +141,10 @@
     <br />
     <br />
 
-    <a asp-controller="MemberBusiness" asp-action="Details" asp-route-id="@Model?.Id" class="btn btn-primary">Checkout Business Details</a> |
-    <a asp-controller="MembersFamily" asp-action="Details" asp-route-id="@Model?.Id" class="btn btn-primary">Ckeckout Family Details</a> |
-    <a asp-controller="MemberAddress" asp-action="Details" asp-route-id="@Model?.Id" class="btn btn-primary">Ckeckout Address Details</a>
+    <a asp-controller="MemberBusiness" asp-action="Details" asp-route-id="@Model?.Id" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-primary">Checkout Business Details</a> |
+    <a asp-controller="MembersFamily" asp-action="Details" asp-route-id="@Model?.Id" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-primary">Ckeckout Family Details</a> |
+    <a asp-controller="MemberAddress" asp-action="Details" asp-route-id="@Model?.Id" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-primary">Ckeckout Address Details</a>
     <br />
     <br /> 
-    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+    <a asp-action="Index" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-primary">Back to List</a>
 </div>

@@ -1,0 +1,161 @@
+﻿@model MemberDataEntryForm.Models.MemberProposedData
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="text-white">Edit</h1>
+
+
+<div class="row text-white" style="backdrop-filter:blur(260px); width:contain; padding:25px 25px;">
+    <form asp-action="BusinessEdit">
+        <div class="col-md-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MemProId" />
+
+            <h4 class="text-white">Member Business Existing Data</h4>
+            <br />
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Business Name</h6>
+                        <input asp-for="MemberBusinessData.BusinessName" class="form-control" />
+                        <span asp-validation-for="MemberBusinessData.BusinessName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Business Detail</h6>
+                        <input asp-for="MemberBusinessData.BusinessDetail" class="form-control" />
+                        <span asp-validation-for="MemberBusinessData.BusinessDetail" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Business Address</h6>
+                        <input asp-for="MemberBusinessData.BusinessAddress" class="form-control" />
+                        <span asp-validation-for="MemberBusinessData.BusinessAddress" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Business City</h6>
+                        <input asp-for="MemberBusinessData.BusinessCity" class="form-control" />
+                        <span asp-validation-for="MemberBusinessData.BusinessCity" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Business PostalCode</h6>
+                        <input asp-for="MemberBusinessData.BusinessPostalCode" class="form-control" />
+                        <span asp-validation-for="MemberBusinessData.BusinessPostalCode" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Business Email</h6>
+                        <input asp-for="MemberBusinessData.BusinessEmail" class="form-control" />
+                        <span asp-validation-for="MemberBusinessData.BusinessEmail" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-6">
+            <h4 class="text-white">Member Business Proposed Data</h4>
+            <br />
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Business Name</h6>
+                        <input asp-for="BusinessName" class="form-control" />
+                        <span asp-validation-for="BusinessName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Business Detail</h6>
+                        <input asp-for="BusinessDetail" class="form-control" />
+                        <span asp-validation-for="BusinessDetail" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Business Address</h6>
+                        <input asp-for="BusinessAddress" class="form-control" />
+                        <span asp-validation-for="BusinessAddress" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Business City</h6>
+                        <input asp-for="BusinessCity" class="form-control" />
+                        <span asp-validation-for="BusinessCity" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Business PostalCode</h6>
+                        <input asp-for="BusinessPostalCode" class="form-control" />
+                        <span asp-validation-for="BusinessPostalCode" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <h6 class="d-inline">Business Email</h6>
+                        <input asp-for="BusinessEmail" class="form-control" />
+                        <span asp-validation-for="BusinessEmail" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <input type="hidden" asp-for="AuthId" class="form-control" value="@ViewBag.AuthId" />
+                <span asp-validation-for="AuthId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="hidden" asp-for="MemBusinessId" class="form-control" value="@ViewBag.MemBusinessId" />
+                <span asp-validation-for="MemBusinessId" class="text-danger"></span>
+            </div>
+
+            <br />
+
+
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Accepted" class="btn btn-success" />
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-controller="Home" asp-action="Index" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-info">Back to Members List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

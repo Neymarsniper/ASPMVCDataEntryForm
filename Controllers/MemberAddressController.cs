@@ -26,12 +26,14 @@ namespace MemberDataEntryForm.Controllers
         }
 
         // GET: MemberAddress/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, int?AuthId)
         {
             if (id == null || _context.MemberAddressDirectoryData == null)
             {
                 return NotFound();
             }
+
+            ViewBag.AuthId = AuthId;
 
             var memberAddressData = await _context.MemberAddressDirectoryData.Include(m => m.MemberData).FirstOrDefaultAsync(m => m.MemNo == id);
             if (memberAddressData == null)
@@ -52,7 +54,7 @@ namespace MemberDataEntryForm.Controllers
         // POST: MemberAddress/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Address,Country,State,City,PostalCode,AdditonalInfo,AddressType,MemNo")] MemberAddressData memberAddressData)
+        public async Task<IActionResult> Create([Bind("Id,Address,Country,State,City,PostalCode,AdditonalInfo,AddressType,MemNo,AuthId")] MemberAddressData memberAddressData)
         {
             //if (ModelState.IsValid)
             //{
@@ -65,11 +67,19 @@ namespace MemberDataEntryForm.Controllers
         }
 
         // GET: MemberAddress/Edit/5
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(int id, int? AuthId)
         {
             if (id == null || _context.MemberAddressDirectoryData == null)
             {
                 return NotFound();
+            }
+
+            ViewBag.AuthId = AuthId;
+
+            var userdata = await _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == AuthId);
+            if (userdata.UserRoleId == 1)
+            {
+                ViewBag.msg = "Success";
             }
 
             var memberAddressData = await _context.MemberAddressDirectoryData.FindAsync(id);
@@ -86,15 +96,52 @@ namespace MemberDataEntryForm.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Address,Country,State,City,PostalCode,AdditonalInfo,AddressType,MemNo")] MemberAddressData memberAddressData)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Address,Country,State,City,PostalCode,AdditonalInfo,AddressType,MemNo,AuthId")] MemberAddressData memberAddressData)
         {
             if (id != memberAddressData.Id)
             {
                 return NotFound();
             }
 
-            //if (ModelState.IsValid)
-            //{
+            var userdata = await _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == memberAddressData.AuthId);
+
+            if (userdata.UserRoleId == 2)
+            {
+                var allrecords = _context.MemberProposedDirectoryData.ToList();
+                _context.MemberProposedDirectoryData.RemoveRange(allrecords);
+
+                MemberProposedData proposedData = new MemberProposedData
+                {
+                    Address = memberAddressData.Address,
+                    Country = memberAddressData.Country,
+                    State = memberAddressData.State,
+                    City = memberAddressData.City,
+                    PostalCode = memberAddressData.PostalCode,
+                    AdditonalInfo = memberAddressData.AdditonalInfo,
+                    AddressType = memberAddressData.AddressType,
+                    AuthId = memberAddressData.AuthId,
+                    MemBusinessId = memberAddressData.Id
+                };
+                try
+                {
+                    _context.Update(proposedData);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!MemberAddressDataExists(memberAddressData.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+
+            else if(userdata.UserRoleId == 1)
+            {
                 try
                 {
                     _context.Update(memberAddressData);
@@ -111,11 +158,13 @@ namespace MemberDataEntryForm.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Details", new { id = memberAddressData.MemNo });
-            //}
-            ViewData["MemNo"] = new SelectList(_context.MemberDirectoryData, "Id", "Email", memberAddressData.MemNo);
-            return View(memberAddressData);
+            }
+            ViewBag.AuthId = memberAddressData.AuthId;
+            //ViewData["MemNo"] = new SelectList(_context.MemberDirectoryData, "Id", "Email", memberAddressData.MemNo);
+            return RedirectToAction("Index","Home", new { AuthId = ViewBag.AuthId });
         }
+            
+        
 
         // GET: MemberAddress/Delete/5
         public async Task<IActionResult> Delete(int? id)

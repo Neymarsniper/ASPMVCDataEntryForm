@@ -25,12 +25,14 @@ namespace MemberDataEntryForm.Controllers
         }
 
         // GET: MemberBusiness/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, int? AuthId)
         {
             if (id == 0 || _context.MemberBusinessDirectoryData == null)
             {
                 return NotFound();
             }
+
+            ViewBag.AuthId = AuthId;
 
             var memberBusiessData = await _context.MemberBusinessDirectoryData.FirstOrDefaultAsync(m => m.MemNo == id);
             if (memberBusiessData == null)
@@ -59,7 +61,7 @@ namespace MemberDataEntryForm.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,MemNo,BusinessName,BusinessDetail,BusinessAddress,BusinessCity,BusinessPostalCode,BusinessEmail")] MemberBusinessData memberBusiessData)
+        public async Task<IActionResult> Create([Bind("Id,MemNo,BusinessName,BusinessDetail,BusinessAddress,BusinessCity,BusinessPostalCode,BusinessEmail,AuthId")] MemberBusinessData memberBusiessData)
         {
             //if (ModelState.IsValid)
             //{
@@ -73,11 +75,19 @@ namespace MemberDataEntryForm.Controllers
         }
 
         // GET: MemberBusiness/Edit/5
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(int id, int? AuthId)
         {
             if (id == null || _context.MemberBusinessDirectoryData == null)
             {
                 return NotFound();
+            }
+
+            ViewBag.AuthId = AuthId;
+
+            var userdata = await _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == AuthId);
+            if (userdata.UserRoleId == 1)
+            {
+                ViewBag.msg = "Success";
             }
 
             var memberBusiessData = await _context.MemberBusinessDirectoryData.FindAsync(id);
@@ -93,18 +103,34 @@ namespace MemberDataEntryForm.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,MemNo,BusinessName,BusinessDetail,BusinessAddress,BusinessCity,BusinessPostalCode,BusinessEmail")] MemberBusinessData memberBusiessData)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,MemNo,BusinessName,BusinessDetail,BusinessAddress,BusinessCity,BusinessPostalCode,BusinessEmail,AuthId")] MemberBusinessData memberBusiessData)
         {
             if (id != memberBusiessData.Id)
             {
                 return NotFound();
             }
 
-            //if (ModelState.IsValid)
-            //{
+            var userdata = await _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == memberBusiessData.AuthId);
+
+            if (userdata.UserRoleId == 2)
+            {
+                var allrecords = _context.MemberProposedDirectoryData.ToList();
+                _context.MemberProposedDirectoryData.RemoveRange(allrecords);
+
+                MemberProposedData proposedData = new MemberProposedData
+                {
+                    BusinessName = memberBusiessData.BusinessName,
+                    BusinessDetail = memberBusiessData.BusinessDetail,
+                    BusinessAddress = memberBusiessData.BusinessAddress,
+                    BusinessCity = memberBusiessData.BusinessCity,
+                    BusinessPostalCode = memberBusiessData.BusinessPostalCode,
+                    BusinessEmail = memberBusiessData.BusinessEmail,
+                    AuthId = memberBusiessData.AuthId,
+                    MemBusinessId = memberBusiessData.Id
+                };
                 try
                 {
-                    _context.Update(memberBusiessData);
+                    _context.Update(proposedData);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -118,9 +144,33 @@ namespace MemberDataEntryForm.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Details", new { id = memberBusiessData.MemNo });
-            //}
-            return View(memberBusiessData);
+            }
+
+            else if (userdata.UserRoleId == 1)
+            {
+                try
+                {
+                    _context.Update(memberBusiessData);
+                    var allrecords = _context.MemberProposedDirectoryData.ToList();
+                    _context.MemberProposedDirectoryData.RemoveRange(allrecords);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!MemberBusiessDataExists(memberBusiessData.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+
+            ViewBag.AuthId = memberBusiessData.AuthId;
+
+            return RedirectToAction("Index","Home", new { AuthId = ViewBag.AuthId });
         }
 
         // GET: MemberBusiness/Delete/5

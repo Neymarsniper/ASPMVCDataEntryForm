@@ -30,6 +30,7 @@ namespace MemberDataEntryForm.Models
         [MaxLength(100)]
         [MinLength(3)]
         public string BusinessEmail { get; set; }
+        public int? AuthId { get; set; }
         [Required]
         public int MemNo { get; set; }
         [ForeignKey("MemNo")]

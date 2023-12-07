@@ -4,11 +4,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
 
-<div>
-    <h4>MemberBusiessData</h4>
-    <hr />
+<div class="text-white">
+    <h3>MemberBusiessData - Existing Details</h3>
+
     <dl class="row">
         <dt class="col-sm-2">
             Member No.
@@ -61,6 +60,9 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-secondary">Edit Details</a> |
-    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back to Member Details</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-secondary">Edit Details</a> |
+
+    <a asp-controller="MemberProposedData" asp-action="BusinessEdit" asp-route-id="@Model?.Id" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-secondary">Pending Request</a> |
+
+    <a asp-controller="Home" asp-action="Details" asp-route-id="@Model?.MemNo" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-primary">Back to Member Details</a>
 </div>

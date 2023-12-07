@@ -22,9 +22,9 @@ namespace PPCLUB.Controllers
         // GET: MemberProposedData
         public async Task<IActionResult> Index()
         {
-              return _context.MemberProposedDirectoryData != null ? 
-                          View(await _context.MemberProposedDirectoryData.ToListAsync()) :
-                          Problem("Entity set 'MemberDataContext.MemberProposedDirectoryData'  is null.");
+            return _context.MemberProposedDirectoryData != null ?
+                        View(await _context.MemberProposedDirectoryData.ToListAsync()) :
+                        Problem("Entity set 'MemberDataContext.MemberProposedDirectoryData'  is null.");
         }
 
         // GET: MemberProposedData/Details/5
@@ -67,7 +67,8 @@ namespace PPCLUB.Controllers
             return View(memberProposedData);
         }
 
-        // GET: MemberProposedData/Edit/5
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //this is for MemberData Proposed data
         public async Task<IActionResult> Edit(int? id, int AuthId)
         {
             if (id == null || _context.MemberProposedDirectoryData == null)
@@ -83,7 +84,7 @@ namespace PPCLUB.Controllers
 
             if (memberProposedData == null)
             {
-                return RedirectToAction("Index", "Home", new { AuthId });
+                return RedirectToAction("Index", "Home", new { AuthId = ViewBag.AuthId });
             }
             return View(memberProposedData);
         }
@@ -118,12 +119,14 @@ namespace PPCLUB.Controllers
             memberdata.ChildName = memberProposedData.ChildName;
             memberdata.AuthId = memberProposedData.AuthId;
 
-                _context.MemberDirectoryData.Update(memberdata);
-                var allrecords = _context.MemberProposedDirectoryData.ToList();
-                _context.MemberProposedDirectoryData.RemoveRange(allrecords);
-                await _context.SaveChangesAsync();
+            _context.MemberDirectoryData.Update(memberdata);
+            var allrecords = _context.MemberProposedDirectoryData.ToList();
+            _context.MemberProposedDirectoryData.RemoveRange(allrecords);
+            await _context.SaveChangesAsync();
 
-            return RedirectToAction("Index","Home", new { memberdata.AuthId });
+            ViewBag.AuthId = memberProposedData.AuthId;
+
+            return RedirectToAction("Index", "Home", new { AuthId = ViewBag.AuthId });
         }
 
         // GET: MemberProposedData/Delete/5
@@ -158,14 +161,179 @@ namespace PPCLUB.Controllers
             {
                 _context.MemberProposedDirectoryData.Remove(memberProposedData);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool MemberProposedDataExists(int id)
         {
-          return (_context.MemberProposedDirectoryData?.Any(e => e.MemProId == id)).GetValueOrDefault();
+            return (_context.MemberProposedDirectoryData?.Any(e => e.MemProId == id)).GetValueOrDefault();
+        }
+
+
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //this is for MemberBusinessData Proposed data
+        public async Task<IActionResult> BusinessEdit(int? id, int? AuthId)
+        {
+            if (id == null || _context.MemberProposedDirectoryData == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.AuthId = AuthId;
+
+            var memberProposedData = await _context.MemberProposedDirectoryData.Include(m => m.MemberBusinessData).FirstOrDefaultAsync(m => m.MemBusinessId == id);
+            memberProposedData.AuthId = AuthId;
+            ViewBag.MemBusinessId = id;
+
+            if (memberProposedData == null)
+            {
+                return RedirectToAction("Index", "Home", new { AuthId = ViewBag.AuthId });
+            }
+            return View(memberProposedData);
+        }
+
+        [HttpPost,ActionName("BusinessEdit")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> BusinessEdit(int id, [Bind("MemProId,Name,Dob,ResAddress,ResPhone,OfficeNo,Profession,OfficeAddress,MobileNo,AlternateMobileNo,Email,DateofMarriage,NameofSpouse,SpouseDob,ChildName,Address,Country,State,City,PostalCode,AdditonalInfo,AddressType,FirstName,LastName,Relation,HomeAddress,Mobile,FamilyChildName,BusinessName,BusinessDetail,BusinessAddress,BusinessCity,BusinessPostalCode,BusinessEmail,AuthId,MemId,MemBusinessId,MemFamilyId,MemAddressId")] MemberProposedData memberProposedData)
+        {
+            if (id != memberProposedData.MemBusinessId)
+            {
+                return NotFound();
+            }
+
+            var memberbusinessdata = await _context.MemberBusinessDirectoryData.FirstOrDefaultAsync(m => m.Id == memberProposedData.MemBusinessId);
+
+            memberbusinessdata.BusinessName = memberProposedData.BusinessName;
+            memberbusinessdata.BusinessDetail = memberProposedData.BusinessDetail;
+            memberbusinessdata.BusinessAddress = memberProposedData.BusinessAddress;
+            memberbusinessdata.BusinessCity = memberProposedData.BusinessCity;
+            memberbusinessdata.BusinessPostalCode = memberProposedData.BusinessPostalCode;
+            memberbusinessdata.BusinessEmail = memberProposedData.BusinessEmail;
+            memberbusinessdata.AuthId = memberProposedData.AuthId;
+
+            _context.MemberBusinessDirectoryData.Update(memberbusinessdata);
+            var allrecords = _context.MemberProposedDirectoryData.ToList();
+            _context.MemberProposedDirectoryData.RemoveRange(allrecords);
+            await _context.SaveChangesAsync();
+
+            ViewBag.AuthId = memberProposedData.AuthId;
+
+            return RedirectToAction("Index", "Home", new { AuthId = ViewBag.AuthId });
+        }
+
+
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //this is for MemberFamilyData Proposed data
+        public async Task<IActionResult> FamilyEdit(int? id, int? AuthId)
+        {
+            if (id == null || _context.MemberProposedDirectoryData == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.AuthId = AuthId;
+
+            var memberProposedData = await _context.MemberProposedDirectoryData.Include(m => m.MembersFamilyData).FirstOrDefaultAsync(m => m.MemFamilyId == id);
+            memberProposedData.AuthId = AuthId;
+            ViewBag.MemFamilyId = id;
+
+            if (memberProposedData == null)
+            {
+                return RedirectToAction("Index", "Home", new { AuthId = ViewBag.AuthId });
+            }
+            return View(memberProposedData);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> FamilyEdit(int id, int AuthId, [Bind("MemProId,Name,Dob,ResAddress,ResPhone,OfficeNo,Profession,OfficeAddress,MobileNo,AlternateMobileNo,Email,DateofMarriage,NameofSpouse,SpouseDob,ChildName,Address,Country,State,City,PostalCode,AdditonalInfo,AddressType,FirstName,LastName,Relation,HomeAddress,Mobile,FamilyChildName,BusinessName,BusinessDetail,BusinessAddress,BusinessCity,BusinessPostalCode,BusinessEmail,AuthId,MemId,MemBusinessId,MemFamilyId,MemAddressId")] MemberProposedData memberProposedData)
+        {
+            if (id != memberProposedData.MemFamilyId)
+            {
+                return NotFound();
+            }
+
+            var membersFamilydata = await _context.MemberFamilyDirectoryData.FirstOrDefaultAsync(m => m.Id == memberProposedData.MemFamilyId);
+
+            membersFamilydata.FirstName = memberProposedData.FirstName;
+            membersFamilydata.LastName = memberProposedData.LastName;
+            membersFamilydata.Relation = memberProposedData.Relation;
+            membersFamilydata.HomeAddress = memberProposedData.HomeAddress;
+            membersFamilydata.Mobile = memberProposedData.Mobile;
+            membersFamilydata.ChildName = memberProposedData.FamilyChildName;
+            membersFamilydata.AuthId = memberProposedData.AuthId;
+
+            _context.MemberFamilyDirectoryData.Update(membersFamilydata);
+            var allrecords = _context.MemberProposedDirectoryData.ToList();
+            _context.MemberProposedDirectoryData.RemoveRange(allrecords);
+            await _context.SaveChangesAsync();
+
+            ViewBag.AuthId = memberProposedData.AuthId;
+
+            return RedirectToAction("Index", "Home", new { AuthId = ViewBag.AuthId });
+        }
+
+
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //this is for MemberAddressData Proposed data
+        public async Task<IActionResult> AddressEdit(int? id, int? AuthId)
+        {
+            if (id == null || _context.MemberProposedDirectoryData == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.AuthId = AuthId;
+
+            var memberProposedData = await _context.MemberProposedDirectoryData.Include(m => m.MemberAddressData).FirstOrDefaultAsync(m => m.MemAddressId == id);
+            memberProposedData.AuthId = AuthId;
+            ViewBag.MemAddressId = id;
+
+            if (memberProposedData == null)
+            {
+                return RedirectToAction("Index", "Home", new { AuthId = ViewBag.AuthId });
+            }
+            return View(memberProposedData);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddressEdit(int id, int AuthId, [Bind("MemProId,Name,Dob,ResAddress,ResPhone,OfficeNo,Profession,OfficeAddress,MobileNo,AlternateMobileNo,Email,DateofMarriage,NameofSpouse,SpouseDob,ChildName,Address,Country,State,City,PostalCode,AdditonalInfo,AddressType,FirstName,LastName,Relation,HomeAddress,Mobile,FamilyChildName,BusinessName,BusinessDetail,BusinessAddress,BusinessCity,BusinessPostalCode,BusinessEmail,AuthId,MemId,MemBusinessId,MemFamilyId,MemAddressId")] MemberProposedData memberProposedData)
+        {
+            if (id != memberProposedData.MemAddressId)
+            {
+                return NotFound();
+            }
+
+            var memberAddressdata = await _context.MemberAddressDirectoryData.FirstOrDefaultAsync(m => m.Id == memberProposedData.MemAddressId);
+
+            memberAddressdata.Address = memberProposedData.Address;
+            memberAddressdata.Country = memberProposedData.Country;
+            memberAddressdata.City = memberProposedData.City;
+            memberAddressdata.State = memberProposedData.State;
+            memberAddressdata.PostalCode = memberProposedData.PostalCode;
+            memberAddressdata.AdditonalInfo = memberProposedData.AdditonalInfo;
+            memberAddressdata.AddressType = memberProposedData.AddressType;
+            memberAddressdata.AuthId = memberProposedData.AuthId;
+
+            _context.MemberAddressDirectoryData.Update(memberAddressdata);
+            var allrecords = _context.MemberProposedDirectoryData.ToList();
+            _context.MemberProposedDirectoryData.RemoveRange(allrecords);
+            await _context.SaveChangesAsync();
+
+            ViewBag.AuthId = memberProposedData.AuthId;
+
+            return RedirectToAction("Index", "Home", new { AuthId = ViewBag.AuthId });
         }
     }
 }

@@ -77,7 +77,7 @@ namespace MemberDataEntryForm.Controllers
 
 
         // GET: Home/Details/5
-        public async Task<IActionResult> Details(int id, int AuthId)
+        public async Task<IActionResult> Details(int id, int? AuthId)
         {
             ViewBag.AuthId = AuthId;
             var memberDirectoryDatum = await _context.MemberDirectoryData.FirstOrDefaultAsync(m => m.Id == id);
@@ -323,8 +323,8 @@ namespace MemberDataEntryForm.Controllers
                 }
             }
 
-            //return RedirectToAction("Details", new { id = memberDirectoryDatum.Id });
-            return RedirectToAction("Index", new { id = memberDirectoryDatum.AuthId });
+            ViewBag.AuthId = memberDirectoryDatum.AuthId;
+            return RedirectToAction("Index", new { AuthId = ViewBag.AuthId });
         }
 
 

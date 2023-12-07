@@ -61,6 +61,9 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-secondary">Edit Details</a> |
-    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back to Member List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-secondary">Edit Details</a> |
+
+    <a asp-controller="MemberProposedData" asp-action="AddressEdit" asp-route-id="@Model?.Id" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-secondary">Pending Request</a> |
+
+    <a asp-controller="Home" asp-action="Details" asp-route-id="@Model?.MemNo" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-primary">Back to Member Details</a>
 </div>

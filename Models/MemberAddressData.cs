@@ -35,6 +35,8 @@ namespace MemberDataEntryForm.Models
         [Required]
         public string AddressType { get; set; }
 
+        public int? AuthId { get; set; }
+
         [Required]
         public int MemNo { get; set; }
 

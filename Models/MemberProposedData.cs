@@ -93,9 +93,21 @@ namespace MemberDataEntryForm.Models
         //this below property is storing the Current Admin or FrontDesk Id which is accessing the Data...
         public int? AuthId { get; set; }
 
-        //this below properties is the Foreign key refrenced to MemberData Model...
+        //this below properties is the Foreign key refrenced to MemberData Models...
         public int? MemId { get; set; }
         [ForeignKey("MemId")]
         public virtual MemberData MemberData { get; set; }
+
+        public int? MemBusinessId { get; set; }
+        [ForeignKey("MemBusinessId")]
+        public virtual MemberBusinessData MemberBusinessData { get; set; }
+
+        public int? MemFamilyId { get; set; }
+        [ForeignKey("MemFamilyId")]
+        public virtual MembersFamilyData MembersFamilyData { get; set; }
+
+        public int? MemAddressId { get; set; }
+        [ForeignKey("MemAddressId")]
+        public virtual MemberAddressData MemberAddressData { get; set; }
     }
 }

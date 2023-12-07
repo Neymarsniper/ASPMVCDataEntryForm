@@ -27,12 +27,14 @@ namespace MemberDataEntryForm.Controllers
         }
 
         // GET: MemberFamily/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id , int? AuthId)
         {
             if (id == 0 || _context.MemberFamilyDirectoryData == null)
             {
                 return NotFound();
             }
+
+            ViewBag.AuthId = AuthId;
 
             var memberFamilyData = await _context.MemberFamilyDirectoryData.FirstOrDefaultAsync(m => m.MemNo == id);
             if (memberFamilyData == null)
@@ -64,7 +66,7 @@ namespace MemberDataEntryForm.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,MemNo,FirstName,LastName,Mobile,Relation,HomeAddress,ChildName")] MembersFamilyData memberFamilyData)
+        public async Task<IActionResult> Create([Bind("Id,MemNo,FirstName,LastName,Mobile,Relation,HomeAddress,ChildName,AuthId")] MembersFamilyData memberFamilyData)
         {
             //MembersFamilyData membersFamilyData = new MembersFamilyData()
             //{
@@ -90,11 +92,19 @@ namespace MemberDataEntryForm.Controllers
         }
 
         // GET: MemberFamily/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, int? AuthId)
         {
             if (id == null || _context.MemberFamilyDirectoryData == null)
             {
                 return NotFound();
+            }
+
+            ViewBag.AuthId = AuthId;
+
+            var userdata = await _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == AuthId);
+            if (userdata.UserRoleId == 1)
+            {
+                ViewBag.msg = "Success";
             }
 
             var memberFamilyData = await _context.MemberFamilyDirectoryData.FindAsync(id);
@@ -110,18 +120,34 @@ namespace MemberDataEntryForm.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,MemNo,FirstName,LastName,Mobile,Relation,HomeAddress,ChildName")] MembersFamilyData memberFamilyData)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,MemNo,FirstName,LastName,Mobile,Relation,HomeAddress,ChildName,AuthId")] MembersFamilyData memberFamilyData)
         {
             if (id != memberFamilyData.Id)
             {
                 return NotFound();
             }
 
-            //if (ModelState.IsValid)
-            //{
+            var userdata = await _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == memberFamilyData.AuthId);
+
+            if (userdata.UserRoleId == 2)
+            {
+                var allrecords = _context.MemberProposedDirectoryData.ToList();
+                _context.MemberProposedDirectoryData.RemoveRange(allrecords);
+
+                MemberProposedData proposedData = new MemberProposedData
+                {
+                    FirstName = memberFamilyData.FirstName,
+                    LastName = memberFamilyData.LastName,
+                    Mobile = memberFamilyData.Mobile,
+                    ChildName = memberFamilyData.ChildName,
+                    Relation = memberFamilyData.Relation,
+                    HomeAddress = memberFamilyData.HomeAddress,
+                    AuthId = memberFamilyData.AuthId,
+                    MemFamilyId = memberFamilyData.Id
+                };
                 try
                 {
-                    _context.Update(memberFamilyData);
+                    _context.Update(proposedData);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -135,9 +161,33 @@ namespace MemberDataEntryForm.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
-            //}
-            return View(memberFamilyData);
+            }
+
+            else if (userdata.UserRoleId == 1)
+            {
+                try
+                {
+                    _context.Update(memberFamilyData);
+                    var allrecords = _context.MemberProposedDirectoryData.ToList();
+                    _context.MemberProposedDirectoryData.RemoveRange(allrecords);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!MemberFamilyDataExists(memberFamilyData.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+
+            ViewBag.AuthId = memberFamilyData.AuthId;
+
+            return RedirectToAction("Index","Home", new {AuthId = ViewBag.AuthId });
         }
 
         // GET: MemberFamily/Delete/5

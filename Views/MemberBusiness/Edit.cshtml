@@ -53,16 +53,34 @@
                 <input asp-for="BusinessEmail" class="form-control" />
                 <span asp-validation-for="BusinessEmail" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-success" />
+            <div class="col-md-3">
+                <div class="form-group">
+                    <input type="hidden" asp-for="AuthId" class="form-control" value="@ViewBag.AuthId" />
+                    <span asp-validation-for="AuthId" class="text-danger"></span>
+                </div>
             </div>
+
+            <br />
+            @{
+                if (ViewBag.msg != null)
+                {
+                    <div class="form-group">
+                        <input type="submit" value="Save data" class="btn btn-success" />
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group">
+                        <input type="submit" value="request Changes" class="btn btn-success" />
+                    </div>
+                }
+            }
         </form>
     </div>
 </div>
 <br />
 <div>
-    <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn btn-danger">Delete</a> |
-    <a asp-action="Details" asp-route-id="@Model?.MemNo" class="btn btn-primary">Back to Details</a>
+    <a asp-action="Details" asp-route-id="@Model?.Id" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-primary">Back to Details</a>
 </div>
 
 @section Scripts {

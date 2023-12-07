@@ -30,6 +30,7 @@ namespace MemberDataEntryForm.Models
         [MaxLength(20)]
         [MinLength(3)]
         public string ChildName { get; set; }
+        public int? AuthId { get; set; }
         [Required]
         public int MemNo { get; set; }
         [ForeignKey("MemNo")]
