@@ -86,11 +86,11 @@ namespace MemberDataEntryForm.Controllers
             var userdata = await _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == AuthId);
             if (userdata.UserRoleId == 1)
             {
-                ViewBag.msg = "success";
+                ViewBag.Admin = "success";
             }
-            else if (userdata.UserRoleId == 2)
+            if (userdata.UserRoleId == 2)
             {
-                ViewBag.Msg = "Success";
+                ViewBag.FrontDesk = "success";
             }
 
             if (memberDirectoryDatum == null)
@@ -102,8 +102,9 @@ namespace MemberDataEntryForm.Controllers
         }
 
         // GET: Home/Create
-        public IActionResult Create()
+        public IActionResult Create(int? AuthId)
         {
+            ViewBag.AuthId = AuthId;
             var memberViewModel = new MemberViewModel();
             return View(memberViewModel);
         }
@@ -151,7 +152,10 @@ namespace MemberDataEntryForm.Controllers
             {
                 _context.AddRange(memberViewModel.FamilyData, memberViewModel.BusinessData, memberViewModel.AddressData);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+
+                ViewBag.AuthId = memberViewModel.memberData.AuthId;
+
+                return RedirectToAction("Index", new {ViewBag.AuthId});
             }
 
             ViewData["ErrorCreating"] = "Only MemberData is successfully saved!! Please complete all remaining forms...";
@@ -331,15 +335,11 @@ namespace MemberDataEntryForm.Controllers
 
 
         // GET: Home/Delete/5
-        public async Task<IActionResult> Delete(int id, int AdminUserId, int FrontDeskUserId)
+        public async Task<IActionResult> Delete(int id, int AuthId)
         {
-            if (AdminUserId != null)
+            if (AuthId != null)
             {
-                ViewBag.AdminUserId = AdminUserId;
-            }
-            else if (FrontDeskUserId != null)
-            {
-                ViewBag.FrontDeskUserId = FrontDeskUserId;
+                ViewBag.AuthId = AuthId;
             }
 
             if (id < 0 || _context.MemberDirectoryData == null)
@@ -401,7 +401,8 @@ namespace MemberDataEntryForm.Controllers
             //}
 
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+
+            return RedirectToAction("Index", new { AuthId = ViewBag.AuthId });
         }
 
         private bool MemberDirectoryDatumExists(int id)

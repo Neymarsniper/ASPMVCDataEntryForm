@@ -79,7 +79,7 @@ namespace PPCLUB.Controllers
             ViewBag.AuthId = AuthId;
 
             var memberProposedData = await _context.MemberProposedDirectoryData.Include(m => m.MemberData).FirstOrDefaultAsync(m => m.MemId == id);
-            memberProposedData.AuthId = AuthId;
+            //memberProposedData.AuthId = AuthId;
             ViewBag.MemId = id;
 
             if (memberProposedData == null)
@@ -181,7 +181,7 @@ namespace PPCLUB.Controllers
         {
             if (id == null || _context.MemberProposedDirectoryData == null)
             {
-                return NotFound();
+                return RedirectToAction("Index", "Home", new { AuthId = ViewBag.AuthId });
             }
 
             ViewBag.AuthId = AuthId;
@@ -242,7 +242,7 @@ namespace PPCLUB.Controllers
             ViewBag.AuthId = AuthId;
 
             var memberProposedData = await _context.MemberProposedDirectoryData.Include(m => m.MembersFamilyData).FirstOrDefaultAsync(m => m.MemFamilyId == id);
-            memberProposedData.AuthId = AuthId;
+            //memberProposedData.AuthId = AuthId;
             ViewBag.MemFamilyId = id;
 
             if (memberProposedData == null)
@@ -296,7 +296,7 @@ namespace PPCLUB.Controllers
             ViewBag.AuthId = AuthId;
 
             var memberProposedData = await _context.MemberProposedDirectoryData.Include(m => m.MemberAddressData).FirstOrDefaultAsync(m => m.MemAddressId == id);
-            memberProposedData.AuthId = AuthId;
+           // memberProposedData.AuthId = AuthId;
             ViewBag.MemAddressId = id;
 
             if (memberProposedData == null)

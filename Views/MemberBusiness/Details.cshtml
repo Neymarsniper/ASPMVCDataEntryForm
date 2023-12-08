@@ -5,7 +5,7 @@
 }
 
 
-<div class="text-white">
+<div class="text-white" style="border-radius:20px;border: hidden rgb(255,255,255);box-shadow: 0 0 100px rgba(255,255,255,.5); backdrop-filter:blur(300px); width:contain; padding:25px 25px;">
     <h3>MemberBusiessData - Existing Details</h3>
 
     <dl class="row">
@@ -59,6 +59,8 @@
         </dd>
     </dl>
 </div>
+<br />
+<br />
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-secondary">Edit Details</a> |
 

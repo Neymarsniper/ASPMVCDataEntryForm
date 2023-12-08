@@ -54,7 +54,7 @@ namespace MemberDataEntryForm.Controllers
         // POST: MemberAddress/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Address,Country,State,City,PostalCode,AdditonalInfo,AddressType,MemNo,AuthId")] MemberAddressData memberAddressData)
+        public async Task<IActionResult> Create([Bind("Id,MemMo,Address,Country,State,City,PostalCode,AdditonalInfo,AddressType,MemNo,AuthId")] MemberAddressData memberAddressData)
         {
             //if (ModelState.IsValid)
             //{
@@ -96,7 +96,7 @@ namespace MemberDataEntryForm.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Address,Country,State,City,PostalCode,AdditonalInfo,AddressType,MemNo,AuthId")] MemberAddressData memberAddressData)
+        public async Task<IActionResult> Edit(int id, int AuthId, [Bind("Id,MemNo,Address,Country,State,City,PostalCode,AdditonalInfo,AddressType,MemNo,AuthId")] MemberAddressData memberAddressData)
         {
             if (id != memberAddressData.Id)
             {
@@ -120,7 +120,7 @@ namespace MemberDataEntryForm.Controllers
                     AdditonalInfo = memberAddressData.AdditonalInfo,
                     AddressType = memberAddressData.AddressType,
                     AuthId = memberAddressData.AuthId,
-                    MemBusinessId = memberAddressData.Id
+                    MemAddressId = memberAddressData.Id
                 };
                 try
                 {
@@ -159,7 +159,7 @@ namespace MemberDataEntryForm.Controllers
                     }
                 }
             }
-            ViewBag.AuthId = memberAddressData.AuthId;
+            ViewBag.AuthId = AuthId;
             //ViewData["MemNo"] = new SelectList(_context.MemberDirectoryData, "Id", "Email", memberAddressData.MemNo);
             return RedirectToAction("Index","Home", new { AuthId = ViewBag.AuthId });
         }

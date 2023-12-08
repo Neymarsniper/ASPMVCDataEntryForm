@@ -120,7 +120,7 @@ namespace MemberDataEntryForm.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,MemNo,FirstName,LastName,Mobile,Relation,HomeAddress,ChildName,AuthId")] MembersFamilyData memberFamilyData)
+        public async Task<IActionResult> Edit(int id, int AuthId, [Bind("Id,MemNo,FirstName,LastName,Mobile,Relation,HomeAddress,ChildName,AuthId")] MembersFamilyData memberFamilyData)
         {
             if (id != memberFamilyData.Id)
             {

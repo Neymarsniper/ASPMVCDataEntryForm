@@ -18,7 +18,7 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
 @*     <div class="row d-inline"> *@
-    <div class="row">
+    <div class="row text-white" style="border-radius:20px;border: hidden rgb(255,255,255);box-shadow: 0 0 100px rgba(255,255,255,.5); backdrop-filter:blur(300px); width:contain; padding:25px 25px;">
         <div class="col">
             <h4>FOR MEMBER DIRECTORY</h4>
             <br />
@@ -163,6 +163,12 @@
                             <span asp-validation-for="memberImageModel.Signature" class="text-danger"></span>
                         </div>
                     </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input class="hidden" asp-for="memberData.AuthId" class="form-control" value="@ViewBag.AuthId"/>
+                    <span asp-validation-for="memberData.AuthId" class="text-danger"></span>
+                </div>
             </div>
         </div>
 
@@ -360,7 +366,7 @@
 
 <br />
 <div>
-    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back to the list</a>
+    <a asp-controller="Home" asp-action="Index" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-primary">Back to the list</a>
 </div>
 
 

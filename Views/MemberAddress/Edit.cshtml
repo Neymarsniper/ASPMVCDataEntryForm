@@ -4,15 +4,20 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<div class="row text-white" style="border-radius:20px;border: hidden rgb(255,255,255);box-shadow: 0 0 100px rgba(255,255,255,.5); backdrop-filter:blur(300px); width:contain; padding:25px 25px;">
+<h1 class="text-white">Edit</h1>
 
-<h4>MemberAddressData</h4>
+<h4 class="text-white">MemberAddressData</h4>
 <hr />
-<div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="MemNo" class="control-label"></label>
+                <input asp-for="MemNo" class="form-control" />
+                <span asp-validation-for="MemNo" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <h6 class="d-inline">Address</h6>
                 <input asp-for="Address" class="form-control" />
@@ -48,6 +53,12 @@
                 <input asp-for="AddressType" class="form-control" />
                 <span asp-validation-for="AddressType" class="text-danger"></span>
             </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <input type="hidden" asp-for="AuthId" class="form-control" value="@ViewBag.AuthId" />
+                    <span asp-validation-for="AuthId" class="text-danger"></span>
+                </div>
+            </div>
             <br />
             @{
                 if (ViewBag.msg != null)
@@ -67,7 +78,7 @@
     </div>
 </div>
 <br />
-<a asp-action="Details" asp-route-id="@Model?.Id" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-primary">Back to Details</a>
+<a asp-controller="Home" asp-action="Details" asp-route-id="@Model?.MemNo" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-primary">Back to Member Details</a>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

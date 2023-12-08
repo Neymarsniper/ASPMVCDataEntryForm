@@ -7,7 +7,7 @@
 <h1 class="text-white">Index</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-light">Create New Member</a>
+    <a asp-action="Create" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-light">Create New Member</a>
 </p>
 <table class="table text-white" style="border-radius:20px;border: hidden rgb(255,255,255);box-shadow: 0 0 100px rgba(255,255,255,.5); backdrop-filter:blur(300px); width:contain; padding:25px 25px;">
     <thead> 
