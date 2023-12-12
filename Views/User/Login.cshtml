@@ -18,7 +18,7 @@
             }
         }
 
-        <div style="width: 530px; height: 380px;background: transparent;border: 50px rgb(178, 0, 255);border-radius: 20px;backdrop-filter: blur(20px);box-shadow: 0 0 100px rgba(255,255,255,.5); padding: 40px 25px;min-height: 30vh;margin-left: 900px;margin-top: 200px;">
+        <div style="width: 530px; height: 380px;background: transparent;border: 50px rgb(178, 0, 255);border-radius: 20px;backdrop-filter: blur(20px);box-shadow: 0 0 50px rgba(0,0,0,.5); padding: 40px 25px;min-height: 30vh;margin-left: 900px;margin-top: 200px;">
             <div class="Container">
         <form asp-action="Login">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -26,15 +26,15 @@
                     <header><h1>User Login</h1></header>
                     </div>
                     <div class="input-field">
-                        <input asp-for="Email" type="text" class="input" placeholder="E-Mail" required>
-                        <i class="bx bx-user"></i>
+                        <input asp-for="Email" type="text" class="input" placeholder="E-Mail" required/>
+                        <i class="bi bi-person-circle" style="position:relative;top: -35px;left: 450px;color: rgba(0, 0, 0, 0.9);"></i>
                     </div>
-                    <br />
+                    
                     <div class="input-field">
-                        <input asp-for="Password" type="password" class="input" placeholder="Password" required>
-                        <i class="bx bx-lock-alt"></i>
+                        <input asp-for="Password" type="password" class="input" placeholder="Password" required/>
+                        <i class="bi bi-lock-fill" style="position:relative;top: -35px;left: 450px;color: rgba(0, 0, 0, 0.9);"></i>
                     </div>
-                    <br />
+                    
                     <div class="input-field">
                         <input type="submit" class="submit" value="Login">
                     </div>

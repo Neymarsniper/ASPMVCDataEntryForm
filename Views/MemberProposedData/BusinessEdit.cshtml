@@ -9,7 +9,7 @@
 
 <div class="row text-white" style="border-radius:20px;border: hidden rgb(255,255,255);box-shadow: 0 0 100px rgba(255,255,255,.5); backdrop-filter:blur(300px); width:contain; padding:25px 25px;">
     <form asp-action="BusinessEdit">
-        <div class="col-md-6">
+        <div class="col">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="MemProId" />
 
@@ -17,17 +17,17 @@
             <br />
             <div class="row">
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group input-field">
                         <h6 class="d-inline">Business Name</h6>
-                        <input asp-for="MemberBusinessData.BusinessName" class="form-control" />
+                        <input class="input" asp-for="MemberBusinessData.BusinessName" class="form-control" />
                         <span asp-validation-for="MemberBusinessData.BusinessName" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group input-field">
                         <h6 class="d-inline">Business Detail</h6>
-                        <input asp-for="MemberBusinessData.BusinessDetail" class="form-control" />
+                        <input class="input" asp-for="MemberBusinessData.BusinessDetail" class="form-control" />
                         <span asp-validation-for="MemberBusinessData.BusinessDetail" class="text-danger"></span>
                     </div>
                 </div>
@@ -35,17 +35,17 @@
 
             <div class="row">
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group input-field">
                         <h6 class="d-inline">Business Address</h6>
-                        <input asp-for="MemberBusinessData.BusinessAddress" class="form-control" />
+                        <input class="input" asp-for="MemberBusinessData.BusinessAddress" class="form-control" />
                         <span asp-validation-for="MemberBusinessData.BusinessAddress" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group input-field">
                         <h6 class="d-inline">Business City</h6>
-                        <input asp-for="MemberBusinessData.BusinessCity" class="form-control" />
+                        <input class="input" asp-for="MemberBusinessData.BusinessCity" class="form-control" />
                         <span asp-validation-for="MemberBusinessData.BusinessCity" class="text-danger"></span>
                     </div>
                 </div>
@@ -53,40 +53,41 @@
 
             <div class="row">
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group input-field">
                         <h6 class="d-inline">Business PostalCode</h6>
-                        <input asp-for="MemberBusinessData.BusinessPostalCode" class="form-control" />
+                        <input class="input" asp-for="MemberBusinessData.BusinessPostalCode" class="form-control" />
                         <span asp-validation-for="MemberBusinessData.BusinessPostalCode" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group input-field">
                         <h6 class="d-inline">Business Email</h6>
-                        <input asp-for="MemberBusinessData.BusinessEmail" class="form-control" />
+                        <input class="input" asp-for="MemberBusinessData.BusinessEmail" class="form-control" />
                         <span asp-validation-for="MemberBusinessData.BusinessEmail" class="text-danger"></span>
                     </div>
                 </div>
             </div>
         </div>
-
+        <br />
+        <br />
 
         <div class="col-md-6">
             <h4 class="text-white">Member Business Proposed Data</h4>
             <br />
             <div class="row">
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group input-field">
                         <h6 class="d-inline">Business Name</h6>
-                        <input asp-for="BusinessName" class="form-control" />
+                        <input class="input" asp-for="BusinessName" class="form-control" />
                         <span asp-validation-for="BusinessName" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group input-field">
                         <h6 class="d-inline">Business Detail</h6>
-                        <input asp-for="BusinessDetail" class="form-control" />
+                        <input class="input" asp-for="BusinessDetail" class="form-control" />
                         <span asp-validation-for="BusinessDetail" class="text-danger"></span>
                     </div>
                 </div>
@@ -94,17 +95,17 @@
 
             <div class="row">
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group input-field">
                         <h6 class="d-inline">Business Address</h6>
-                        <input asp-for="BusinessAddress" class="form-control" />
+                        <input class="input" asp-for="BusinessAddress" class="form-control" />
                         <span asp-validation-for="BusinessAddress" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group input-field">
                         <h6 class="d-inline">Business City</h6>
-                        <input asp-for="BusinessCity" class="form-control" />
+                        <input class="input" asp-for="BusinessCity" class="form-control" />
                         <span asp-validation-for="BusinessCity" class="text-danger"></span>
                     </div>
                 </div>
@@ -112,17 +113,17 @@
 
             <div class="row">
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group input-field">
                         <h6 class="d-inline">Business PostalCode</h6>
-                        <input asp-for="BusinessPostalCode" class="form-control" />
+                        <input class="input" asp-for="BusinessPostalCode" class="form-control" />
                         <span asp-validation-for="BusinessPostalCode" class="text-danger"></span>
                     </div>
                 </div>
 
                 <div class="col-md-3">
-                    <div class="form-group">
+                    <div class="form-group input-field">
                         <h6 class="d-inline">Business Email</h6>
-                        <input asp-for="BusinessEmail" class="form-control" />
+                        <input class="input" asp-for="BusinessEmail" class="form-control" />
                         <span asp-validation-for="BusinessEmail" class="text-danger"></span>
                     </div>
                 </div>
@@ -151,6 +152,7 @@
 </div>
 
 <div>
+    <a asp-controller="MemberProposedData" asp-action="BusinessDeleteConfirmed" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-danger">Reject Request</a> |
     <a asp-controller="Home" asp-action="Index" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-info">Back to Members List</a>
 </div>
 

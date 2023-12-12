@@ -43,6 +43,9 @@ namespace MemberDataEntryForm.Controllers
                 
             }
 
+            ViewBag.AuthId = id;
+
+
             if (myuser.UserRoleId == 1 || myuser.UserRoleId == 2)
             {
                 ViewBag.message = "Access Granted!";
@@ -73,6 +76,8 @@ namespace MemberDataEntryForm.Controllers
             //It checks if a user with matching credentials exists in the database.
             if (myuser != null)
             {
+                //ViewBag.AuthId = myuser.UserId;
+
                 HttpContext.Session.SetString("UserSession", myuser.Email);  // In this case, the user's email is stored in a session variable named "UserSession."
                                                                              // This session variable is used to keep track of whether a user is logged in. Storing the email is a common practice to identify the user in future requests.
                 return RedirectToAction("Details", new { id = myuser.UserId });
@@ -110,6 +115,8 @@ namespace MemberDataEntryForm.Controllers
                 AuthId = DataStatusId;
             }
 
+            ViewBag.AuthId = id;
+
             var userData = await _context.UserDirectoryData.Include(m => m.UserType).FirstOrDefaultAsync(m => m.UserId == AuthId);
 
             if (userData.UserRoleId == 1 || userData.UserRoleId == 2)
@@ -117,11 +124,12 @@ namespace MemberDataEntryForm.Controllers
                 ViewBag.AdminAuth = "Success";
                 return RedirectToAction("Index", new { id = AuthId });
             }
-            else 
+            else if (userData.UserRoleId == 3 || userData.UserRoleId == 4)
             {
-                //return RedirectToAction("Details", new { id = AuthId });
                 return View(userData);
             }
+            return View(userData);
+            //return RedirectToAction("Details", new { id = AuthId });
 
         }
 

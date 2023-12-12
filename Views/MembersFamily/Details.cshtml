@@ -4,10 +4,8 @@
     ViewData["Title"] = "Details";
 }
 
-<h1 class="text-white">Details</h1>
-
 <div class="text-white" style="border-radius:20px;border: hidden rgb(255,255,255);box-shadow: 0 0 100px rgba(255,255,255,.5); backdrop-filter:blur(300px); width:contain; padding:25px 25px;">
-    <h4>MemberFamilyData</h4>
+<h1 class="text-white">MemberFamily - Details</h1>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -54,10 +52,17 @@
         </dd>
     </dl>
 </div>
+<br />
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-secondary">Edit Details</a> |
 
-    <a asp-controller="MemberProposedData" asp-action="FamilyEdit" asp-route-id="@Model?.Id" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-secondary">Pending Request</a> |
+     @{
+        if (ViewBag.AdminAuth != null)
+        {
+            <a asp-controller="MemberProposedData" asp-action="FamilyEdit" asp-route-id="@Model?.Id" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-info">Pending Request</a> 
+            <span class="seperator"> | </span>
+        }
+    }
 
     <a asp-controller="Home" asp-action="Details" asp-route-id="@Model?.MemNo" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-primary">Back to Member Details</a>
 </div>

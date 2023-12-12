@@ -35,6 +35,11 @@ namespace MemberDataEntryForm.Controllers
             }
 
             ViewBag.AuthId = AuthId;
+            var userdata = await _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == AuthId);
+            if (userdata.UserRoleId == 1)
+            {
+                ViewBag.AdminAuth = "Success";
+            }
 
             var memberFamilyData = await _context.MemberFamilyDirectoryData.FirstOrDefaultAsync(m => m.MemNo == id);
             if (memberFamilyData == null)

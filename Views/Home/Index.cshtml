@@ -5,11 +5,15 @@
 }
 
 <h1 class="text-white">Index</h1>
-
-<p>
-    <a asp-action="Create" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-light">Create New Member</a>
-</p>
-<table class="table text-white" style="border-radius:20px;border: hidden rgb(255,255,255);box-shadow: 0 0 100px rgba(255,255,255,.5); backdrop-filter:blur(300px); width:contain; padding:25px 25px;">
+@{
+    if (@ViewBag.Admin != null)
+    {
+        <a asp-action="Create" asp-route-AuthId="@ViewBag.AuthId" class="btn btn-light"><i class="bi bi-building-fill-add"></i>  Create New Member</a>
+    }
+}
+<br />
+<br />
+<table class="table text-white-400" style="font-weight:bold; border-radius:20px;border: hidden rgb(255,255,255);box-shadow: 0 0 100px rgba(0,0,0,.5); backdrop-filter:blur(300px); width:contain; padding:25px 25px;">
     <thead> 
         <tr>
             <th>
@@ -115,4 +119,4 @@
             }
     </tbody>
 </table>
-            <a asp-controller="User" asp-action="Logout" class="btn btn-primary">User Logout</a>
+<a asp-controller="User" asp-action="Index" asp-route-id="@ViewBag.AuthId" class="btn btn-primary"><i class="bi bi-arrow-left-circle-fill"></i>  Back to User List</a>

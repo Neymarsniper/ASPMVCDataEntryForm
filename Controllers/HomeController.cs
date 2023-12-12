@@ -28,6 +28,16 @@ namespace MemberDataEntryForm.Controllers
             {
                 ViewBag.AuthId = AuthId;
             }
+            var userdata = await _context.UserDirectoryData.FirstOrDefaultAsync(m => m.UserId == AuthId);
+            if(userdata.UserRoleId == 1)
+            {
+                ViewBag.Admin = "success";
+            }
+            else
+            {
+                ViewBag.Admin = null;
+            }
+
             //List<MemberData> memberDataList = await _context.MemberDirectoryData.ToListAsync();
             //var viewModelList = memberDataList.Select(memberData => new MemberViewModel { memberData = memberData }).ToList();
             //return View(viewModelList);  
@@ -91,6 +101,12 @@ namespace MemberDataEntryForm.Controllers
             if (userdata.UserRoleId == 2)
             {
                 ViewBag.FrontDesk = "success";
+            }
+
+            var allrecords = _context.MemberProposedDirectoryData.ToList();
+            if(allrecords != null)
+            {
+                ViewBag.Pending = "success";
             }
 
             if (memberDirectoryDatum == null)

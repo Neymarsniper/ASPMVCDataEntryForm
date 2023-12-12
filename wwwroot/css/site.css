@@ -22,11 +22,12 @@ html {
 
 body {
     /*display : flex;*/
-    justify-content:center;
-    align-content:center;
-    min-height:100vh;
-    background-image: url('../images/photo4.jpg');
-    background-size:cover;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    /*background-image: url('../images/photo4.jpg');*/
+    background-image: url('../images/photo3.jpg');
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
@@ -79,12 +80,14 @@ body {
         background: rgba(0, 0, 0, 0.4);
     }
 
-    .input-field i {
-        position: relative;
-        top: -31px;
-        left: 17px;
-        color: #fff;
-    }
+    /*i {
+        position:relative;
+        top: -35px;
+        left: 450px;
+        color: rgba(0, 0, 0, 0.9);
+    }*/
+
+
 .highlight-field {
     background-color:aqua; /* Set your desired highlight color */
     /* You can also apply other styles like border, etc., to make it more noticeable */

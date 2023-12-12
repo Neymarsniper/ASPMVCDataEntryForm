@@ -129,41 +129,43 @@ namespace PPCLUB.Controllers
             return RedirectToAction("Index", "Home", new { AuthId = ViewBag.AuthId });
         }
 
-        // GET: MemberProposedData/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null || _context.MemberProposedDirectoryData == null)
-            {
-                return NotFound();
-            }
+        //// GET: MemberProposedData/Delete/5
+        //public async Task<IActionResult> Delete(int? id)
+        //{
+        //    if (id == null || _context.MemberProposedDirectoryData == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var memberProposedData = await _context.MemberProposedDirectoryData
-                .FirstOrDefaultAsync(m => m.MemProId == id);
-            if (memberProposedData == null)
-            {
-                return NotFound();
-            }
+        //    var memberProposedData = await _context.MemberProposedDirectoryData
+        //        .FirstOrDefaultAsync(m => m.MemProId == id);
+        //    if (memberProposedData == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(memberProposedData);
-        }
+        //    return View(memberProposedData);
+        //}
 
-        // POST: MemberProposedData/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        //// POST: MemberProposedData/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.MemberProposedDirectoryData == null)
             {
                 return Problem("Entity set 'MemberDataContext.MemberProposedDirectoryData'  is null.");
             }
-            var memberProposedData = await _context.MemberProposedDirectoryData.FindAsync(id);
-            if (memberProposedData != null)
-            {
-                _context.MemberProposedDirectoryData.Remove(memberProposedData);
-            }
-
+            //var memberProposedData = await _context.MemberProposedDirectoryData.FindAsync(id);
+            //if (memberProposedData != null)
+            //{
+            //    _context.MemberProposedDirectoryData.Remove(memberProposedData);
+            //}
+            ViewBag.AuthId = id;
+            var allrecords = _context.MemberProposedDirectoryData.ToList();
+            _context.MemberProposedDirectoryData.RemoveRange(allrecords);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index","Home", new {AuthId = ViewBag.AuthId});
         }
 
         private bool MemberProposedDataExists(int id)
@@ -187,13 +189,15 @@ namespace PPCLUB.Controllers
             ViewBag.AuthId = AuthId;
 
             var memberProposedData = await _context.MemberProposedDirectoryData.Include(m => m.MemberBusinessData).FirstOrDefaultAsync(m => m.MemBusinessId == id);
-            memberProposedData.AuthId = AuthId;
-            ViewBag.MemBusinessId = id;
-
+            
             if (memberProposedData == null)
             {
                 return RedirectToAction("Index", "Home", new { AuthId = ViewBag.AuthId });
             }
+            
+            memberProposedData.AuthId = AuthId;
+            ViewBag.MemBusinessId = id;
+
             return View(memberProposedData);
         }
 
@@ -227,6 +231,22 @@ namespace PPCLUB.Controllers
         }
 
 
+        public async Task<IActionResult> BusinessDeleteConfirmed(int id)
+        {
+            if (_context.MemberProposedDirectoryData == null)
+            {
+                return Problem("Entity set 'MemberDataContext.MemberProposedDirectoryData'  is null.");
+            }
+            var memberProposedData = await _context.MemberProposedDirectoryData.FindAsync(id);
+            if (memberProposedData != null)
+            {
+                _context.MemberProposedDirectoryData.Remove(memberProposedData);
+            }
+            ViewBag.AuthId = id;
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Home", new { ViewBag.AuthId });
+        }
+
 
 
 
@@ -242,13 +262,13 @@ namespace PPCLUB.Controllers
             ViewBag.AuthId = AuthId;
 
             var memberProposedData = await _context.MemberProposedDirectoryData.Include(m => m.MembersFamilyData).FirstOrDefaultAsync(m => m.MemFamilyId == id);
-            //memberProposedData.AuthId = AuthId;
-            ViewBag.MemFamilyId = id;
-
             if (memberProposedData == null)
             {
                 return RedirectToAction("Index", "Home", new { AuthId = ViewBag.AuthId });
             }
+            memberProposedData.AuthId = AuthId;
+            ViewBag.MemFamilyId = id;
+
             return View(memberProposedData);
         }
 
@@ -282,6 +302,22 @@ namespace PPCLUB.Controllers
         }
 
 
+        public async Task<IActionResult> FamilyDeleteConfirmed(int id)
+        {
+            if (_context.MemberProposedDirectoryData == null)
+            {
+                return Problem("Entity set 'MemberDataContext.MemberProposedDirectoryData'  is null.");
+            }
+            var memberProposedData = await _context.MemberProposedDirectoryData.FindAsync(id);
+            if (memberProposedData != null)
+            {
+                _context.MemberProposedDirectoryData.Remove(memberProposedData);
+            }
+            ViewBag.AuthId = id;
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Home", new { ViewBag.AuthId });
+        }
+
 
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -296,13 +332,13 @@ namespace PPCLUB.Controllers
             ViewBag.AuthId = AuthId;
 
             var memberProposedData = await _context.MemberProposedDirectoryData.Include(m => m.MemberAddressData).FirstOrDefaultAsync(m => m.MemAddressId == id);
-           // memberProposedData.AuthId = AuthId;
-            ViewBag.MemAddressId = id;
-
             if (memberProposedData == null)
             {
                 return RedirectToAction("Index", "Home", new { AuthId = ViewBag.AuthId });
             }
+            memberProposedData.AuthId = AuthId;
+            ViewBag.MemAddressId = id;
+
             return View(memberProposedData);
         }
 
@@ -335,5 +371,22 @@ namespace PPCLUB.Controllers
 
             return RedirectToAction("Index", "Home", new { AuthId = ViewBag.AuthId });
         }
+
+        public async Task<IActionResult> AddressDeleteConfirmed(int id)
+        {
+            if (_context.MemberProposedDirectoryData == null)
+            {
+                return Problem("Entity set 'MemberDataContext.MemberProposedDirectoryData'  is null.");
+            }
+            var memberProposedData = await _context.MemberProposedDirectoryData.FindAsync(id);
+            if (memberProposedData != null)
+            {
+                _context.MemberProposedDirectoryData.Remove(memberProposedData);
+            }
+            ViewBag.AuthId = id;
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Home", new { ViewBag.AuthId });
+        }
+
     }
 }

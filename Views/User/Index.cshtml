@@ -14,10 +14,10 @@
     }
 }
 
-<a asp-action="Logout" class="btn btn-primary">LogOut</a>
+@* <a asp-action="Logout" class="btn btn-primary">LogOut</a> *@
 <br />
 <br />
-<table class="table text-white" style="border-radius:20px;border: hidden rgb(255,255,255);box-shadow: 0 0 100px rgba(255,255,255,.5); backdrop-filter:blur(300px); width:contain; padding:25px 25px;">
+<table class="table text-white" style="font-weight:500; border-radius:20px;border: hidden rgb(255,255,255);box-shadow: 0 0 50px rgba(0,0,0,.5); backdrop-filter:blur(300px); width:contain; padding:25px 25px;">
     <thead>
         <tr>
             <th>
@@ -99,7 +99,7 @@
                         if(ViewBag.msg != null)
                         {
                             <span class="seperator"> | </span>
-                            <a asp-controller="UserProposedData" asp-action="Edit" asp-route-id="@item.UserId" asp-route-AdminUserId="@ViewBag.AdminUserId" class="btn btn-primary">Pending Request</a>
+                            <a asp-controller="UserProposedData" asp-action="Edit" asp-route-id="@item.UserId" asp-route-AdminUserId="@ViewBag.AdminUserId" class="btn btn-primary"><i class="bi bi-chat-square-dots-fill"></i>  Pending Request</a>
                             <span class="seperator"> | </span>
                             <a asp-action="Delete" asp-route-id="@item.UserId" asp-route-AdminUserId="@ViewBag.AdminUserId" class="btn btn-secondary">Delete Record</a>
                         }
@@ -113,8 +113,8 @@
     
 @{
     if(ViewBag.msg != null)
-    {    
-        <a asp-controller="User" asp-action="Create" asp-route-AdminUserId="@ViewBag.AdminUserId" class="btn btn-primary">Create New User</a>
+    {
+        <a asp-controller="User" asp-action="Create" asp-route-AdminUserId="@ViewBag.AdminUserId" class="btn btn-primary"><i class="bi bi-building-fill-add"></i>  Create New User</a>
         <span class="seperator"> | </span>
         <a asp-controller="UserType" asp-action="Index" class="btn btn-primary">User Types List</a>
         <span class="seperator"> | </span>  

@@ -4,51 +4,51 @@
     ViewData["Title"] = "Edit";
 }
 
+<div class="row text-white" style="border-radius:20px;border: hidden rgb(255,255,255);box-shadow: 0 0 100px rgba(255,255,255,.5); backdrop-filter:blur(300px); width:contain; padding:25px 25px;">
 <h1 class="text-white">Edit</h1>
 
 <h4 class="text-white">MemberFamilyData</h4>
 <hr />
-<div class="row text-white" style="border-radius:20px;border: hidden rgb(255,255,255);box-shadow: 0 0 100px rgba(255,255,255,.5); backdrop-filter:blur(300px); width:contain; padding:25px 25px;">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
+            <div class="form-group input-field">
                 <label asp-for="MemNo" class="control-label"></label>
-                <input asp-for="MemNo" class="form-control" />
+                <input class="input" asp-for="MemNo" class="form-control" />
                 <span asp-validation-for="MemNo" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group input-field">
                 <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
+                <input class="input" asp-for="FirstName" class="form-control" />
                 <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group input-field">
                 <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
+                <input class="input" asp-for="LastName" class="form-control" />
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group input-field">
                 <label asp-for="Mobile" class="control-label"></label>
-                <input asp-for="Mobile" class="form-control" />
+                <input class="input" asp-for="Mobile" class="form-control" />
                 <span asp-validation-for="Mobile" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group input-field">
                 <label asp-for="ChildName" class="control-label"></label>
-                <input asp-for="ChildName" class="form-control" />
+                <input class="input" asp-for="ChildName" class="form-control" />
                 <span asp-validation-for="ChildName" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group input-field">
                 <label asp-for="Relation" class="control-label"></label>
-                <input asp-for="Relation" class="form-control" />
+                <input class="input" asp-for="Relation" class="form-control" />
                 <span asp-validation-for="Relation" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group input-field">
                 <label asp-for="HomeAddress" class="control-label"></label>
-                <input asp-for="HomeAddress" class="form-control" />
+                <input class="input" asp-for="HomeAddress" class="form-control" />
                 <span asp-validation-for="HomeAddress" class="text-danger"></span>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 input-field">
                 <div class="form-group">
                     <input type="hidden" asp-for="AuthId" class="form-control" value="@ViewBag.AuthId" />
                     <span asp-validation-for="AuthId" class="text-danger"></span>

@@ -32,6 +32,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\2d523cb3-ab5a-4a54-b415-f6cb52e8fb9d_Mercian-Regiment.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>PPCLUB</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/PPCLUB</BasePath>
+      <RelativePath>images/2d523cb3-ab5a-4a54-b415-f6cb52e8fb9d_Mercian-Regiment.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\2d523cb3-ab5a-4a54-b415-f6cb52e8fb9d_Mercian-Regiment.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\3abc4257-96cb-4e13-920f-c612076ce572_img.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>PPCLUB</SourceId>
@@ -47,6 +63,54 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\3abc4257-96cb-4e13-920f-c612076ce572_img.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\3ea9346d-204d-4caf-a669-35228a073798_The-Best-4K-Wallpapers-Free-Download-Yep-Wallpaperxyz.com-21.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>PPCLUB</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/PPCLUB</BasePath>
+      <RelativePath>images/3ea9346d-204d-4caf-a669-35228a073798_The-Best-4K-Wallpapers-Free-Download-Yep-Wallpaperxyz.com-21.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\3ea9346d-204d-4caf-a669-35228a073798_The-Best-4K-Wallpapers-Free-Download-Yep-Wallpaperxyz.com-21.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\73d76db5-e573-40b6-aabb-b7761c5186c5_neymar_fifa_football_player_soccer_world_cup_2014_brazil_96072_3840x2160.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>PPCLUB</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/PPCLUB</BasePath>
+      <RelativePath>images/73d76db5-e573-40b6-aabb-b7761c5186c5_neymar_fifa_football_player_soccer_world_cup_2014_brazil_96072_3840x2160.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\73d76db5-e573-40b6-aabb-b7761c5186c5_neymar_fifa_football_player_soccer_world_cup_2014_brazil_96072_3840x2160.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\a0c323a1-14a4-4f02-b4c1-1180a70c31cb_vlcsnap-2021-08-11-21h35m31s154.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>PPCLUB</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/PPCLUB</BasePath>
+      <RelativePath>images/a0c323a1-14a4-4f02-b4c1-1180a70c31cb_vlcsnap-2021-08-11-21h35m31s154.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\a0c323a1-14a4-4f02-b4c1-1180a70c31cb_vlcsnap-2021-08-11-21h35m31s154.png))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\bc6aab53-df1a-4b45-a39a-ae05522b98c2_luis-suarez-lionel-messi-neymar-barcelona_1ehok1iadk3771k3unyiojp8zl.jpg))">
       <SourceType>Package</SourceType>

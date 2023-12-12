@@ -13,49 +13,49 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
+            <div class="form-group input-field">
                 <label asp-for="MemNo" class="control-label"></label>
-                <input asp-for="MemNo" class="form-control" />
+                <input class="input" asp-for="MemNo" class="form-control" />
                 <span asp-validation-for="MemNo" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group input-field">
                 <h6 class="d-inline">Address</h6>
-                <input asp-for="Address" class="form-control" />
+                <input class="input" asp-for="Address" class="form-control" />
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group input-field">
                 <h6 class="d-inline">Country</h6>
-                <input asp-for="Country" class="form-control" />
+                <input class="input" asp-for="Country" class="form-control" />
                 <span asp-validation-for="Country" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group input-field">
                 <h6 class="d-inline">State</h6>
-                <input asp-for="State" class="form-control" />
+                <input class="input" asp-for="State" class="form-control" />
                 <span asp-validation-for="State" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group input-field">
                 <h6 class="d-inline">City</h6>
-                <input asp-for="City" class="form-control" />
+                <input class="input" asp-for="City" class="form-control" />
                 <span asp-validation-for="City" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group input-field">
                 <h6 class="d-inline">Postal Code</h6>
-                <input asp-for="PostalCode" class="form-control" />
+                <input class="input" asp-for="PostalCode" class="form-control" />
                 <span asp-validation-for="PostalCode" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group input-field">
                 <h6 class="d-inline">Additional Information</h6>
-                <input asp-for="AdditonalInfo" class="form-control" />
+                <input class="input" asp-for="AdditonalInfo" class="form-control" />
                 <span asp-validation-for="AdditonalInfo" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group input-field">
                 <h6 class="d-inline">Address Type</h6>
-                <input asp-for="AddressType" class="form-control" />
+                <input class="input" asp-for="AddressType" class="form-control" />
                 <span asp-validation-for="AddressType" class="text-danger"></span>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <input type="hidden" asp-for="AuthId" class="form-control" value="@ViewBag.AuthId" />
+                    <input class="input" type="hidden" asp-for="AuthId" class="form-control" value="@ViewBag.AuthId" />
                     <span asp-validation-for="AuthId" class="text-danger"></span>
                 </div>
             </div>
